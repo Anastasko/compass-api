@@ -1,10 +1,9 @@
 package com.anastasko.lnucompass.model.view;
 
-import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
-import com.anastasko.lnucompass.model.enums.SocialMediaService;
+import com.anastasko.lnucompass.model.enums.SocialProvider;
 
 @ApiObject(name="User")
 public class UserViewModel extends AbstractEntityViewModel {
@@ -28,7 +27,7 @@ public class UserViewModel extends AbstractEntityViewModel {
 	private String token;
 
 	@ApiObjectField
-	private SocialMediaService signInProvider;
+	private SocialProvider signInProvider;
 	
 	public String getUsername() {
 		return username;
@@ -78,11 +77,11 @@ public class UserViewModel extends AbstractEntityViewModel {
 		this.password = password;
 	}
 
-	public SocialMediaService getSignInProvider() {
+	public SocialProvider getSignInProvider() {
 		return signInProvider;
 	}
 
-	public void setSignInProvider(SocialMediaService signInProvider) {
+	public void setSignInProvider(SocialProvider signInProvider) {
 		this.signInProvider = signInProvider;
 	}
 

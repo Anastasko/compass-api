@@ -24,51 +24,6 @@ public class UserAccountController extends AbstractController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserAccountController.class);
 
-//	@Value("${facebook.app.id}")
-//	private String facebookApp;
-//	
-//	@Value("${facebook.app.secret}")
-//	private String facebookSecret;
-//	
-//	@Value("${endpoint}")
-//	private String endpoint;
-//	
-//	private String requestURI;
-//	
-//	@Autowired
-//	private RestTemplate restTemplate;
-//	
-//	@RequestMapping(value="/facebook", method=RequestMethod.GET)
-//	public RedirectView signin(HttpServletRequest request){
-//		requestURI = request.getRequestURI();
-//		System.out.println(requestURI);
-//		String redir = endpoint + "/auth/facebook/connect";
-//		return new RedirectView("https://www.facebook.com/v2.8/dialog/oauth?client_id=" 
-//		+ facebookApp 
-//		+ "&redirect_uri=" + redir);
-//	}
-//	
-//	@RequestMapping(value="/facebook/connect", method=RequestMethod.GET)
-//	public @ResponseBody JsonNode connect(HttpServletRequest request){
-//				
-//		String code = request.getParameter("code");
-//		
-//		URIBuilder builder = URIBuilder.fromUri(String.format("%s/v2.8/oauth/access_token", "https://graph.facebook.com"));
-//		builder.queryParam("client_id", facebookApp);
-//		builder.queryParam("redirect_uri", endpoint + "/auth/facebook/connect");
-//		builder.queryParam("client_secret", facebookSecret);
-//		builder.queryParam("code", code);
-//		URI uri = builder.build();
-//
-//		JsonNode resp = null;
-//		try {
-//			resp = restTemplate.getForObject(uri, JsonNode.class);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return resp;
-//	}
-	
 	@Autowired
 	private UserService userService;
 	

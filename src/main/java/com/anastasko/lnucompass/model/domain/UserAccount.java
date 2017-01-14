@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.anastasko.lnucompass.model.enums.SocialMediaService;
+import com.anastasko.lnucompass.model.enums.SocialProvider;
 
 @Entity
 public class UserAccount extends AbstractEntity {
@@ -34,7 +34,7 @@ public class UserAccount extends AbstractEntity {
 	private String token;
 
 	@Basic
-	private SocialMediaService signInProvider;
+	private SocialProvider signInProvider;
 
 	public String getUsername() {
 		return username;
@@ -84,11 +84,11 @@ public class UserAccount extends AbstractEntity {
 		this.password = password;
 	}
 
-	public SocialMediaService getSignInProvider() {
+	public SocialProvider getSignInProvider() {
 		return signInProvider;
 	}
 
-	public void setSignInProvider(SocialMediaService signInProvider) {
+	public void setSignInProvider(SocialProvider signInProvider) {
 		this.signInProvider = signInProvider;
 	}
 

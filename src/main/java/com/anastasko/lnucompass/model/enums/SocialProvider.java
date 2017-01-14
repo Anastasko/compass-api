@@ -1,6 +1,6 @@
 package com.anastasko.lnucompass.model.enums;
 
-public enum SocialMediaService {
+public enum SocialProvider {
 	
 	FACEBOOK,
 	TWITTER,
