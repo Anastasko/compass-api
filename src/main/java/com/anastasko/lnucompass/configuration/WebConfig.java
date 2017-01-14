@@ -77,6 +77,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		for (String resource : resources) {
 			registry.addResourceHandler(resource + "**").addResourceLocations(resource);
 		}
+		System.out.println(System.getProperty("user.name"));
+		registry.addResourceHandler("/uploads/**").addResourceLocations("file:///home/" + System.getProperty("user.name") + "/compass/uploads/");
 	}
 
 	@Override

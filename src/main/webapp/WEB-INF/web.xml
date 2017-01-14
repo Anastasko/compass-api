@@ -10,8 +10,4 @@
     <load-on-startup>1</load-on-startup>
 </servlet>
 
-<servlet-mapping>
-    <servlet-name>DirectoryListing</servlet-name>
-    <url-pattern>/uploads/*</url-pattern>
-</servlet-mapping>
 </web-app>
