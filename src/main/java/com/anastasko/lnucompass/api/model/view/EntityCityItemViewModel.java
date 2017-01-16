@@ -2,6 +2,7 @@
 package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
+import com.anastasko.lnucompass.model.enums.ItemKind;
 import com.anastasko.lnucompass.model.view.AbstractEntitiesViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import org.jsondoc.core.annotation.ApiObject;
@@ -20,6 +21,8 @@ public class EntityCityItemViewModel
     private Double latitude;
     @ApiObjectField
     private AbstractEntitiesViewModel maps;
+    @ApiObjectField
+    private ItemKind kind;
 
     public EntityCityItemViewModel() {
         setMaps(new AbstractEntitiesViewModel());
@@ -31,6 +34,7 @@ public class EntityCityItemViewModel
         setLongitude(item.getLongitude());
         setLatitude(item.getLatitude());
         setMaps(new AbstractEntitiesViewModel(item.getMaps()));
+        setKind(item.getKind());
     }
 
     public String getName() {
@@ -63,6 +67,14 @@ public class EntityCityItemViewModel
 
     public void setMaps(AbstractEntitiesViewModel maps) {
         this.maps = maps;
+    }
+
+    public ItemKind getKind() {
+        return kind;
+    }
+
+    public void setKind(ItemKind kind) {
+        this.kind = kind;
     }
 
 }

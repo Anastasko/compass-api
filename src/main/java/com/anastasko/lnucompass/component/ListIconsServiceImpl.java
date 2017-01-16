@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.anastasko.lnucompass.infrastructure.ListIconsService;
 import com.anastasko.lnucompass.infrastructure.PropertyService;
+import com.anastasko.lnucompass.model.enums.ItemKind;
 
 @Service
 public class ListIconsServiceImpl implements ListIconsService {
@@ -24,6 +25,27 @@ public class ListIconsServiceImpl implements ListIconsService {
 	
 	@Autowired
 	protected PropertyService properties;
+	
+	@Override
+	public Map<ItemKind, String> getMap(){
+		Map<ItemKind, String> icons = new HashMap<>();
+		icons.put(ItemKind.FACULTIES, "ATM");
+		icons.put(ItemKind.RESIDENCES, "hostel");
+		icons.put(ItemKind.CANTEENS, "cafeteria");
+		icons.put(ItemKind.PARKINGS, "bicycle_parking");
+		icons.put(ItemKind.PCROOMS, "corps");
+		icons.put(ItemKind.LIBRARIES, "corps");
+		icons.put(ItemKind.MUSEUMS, "corps");
+		icons.put(ItemKind.ARCHIVE, "corps");
+		icons.put(ItemKind.CLINICS, "clinic");
+		icons.put(ItemKind.STUFF, "corps");
+		icons.put(ItemKind.DEPARTMENTS, "corps");
+		icons.put(ItemKind.ROUTES, "corps");
+		icons.put(ItemKind.SHOP, "shop");
+		icons.put(ItemKind.GROUP, "group");
+		icons.put(ItemKind.WC, "WC");
+		return icons;
+	}
 	
 	/**
 	 * Android icons
@@ -44,9 +66,9 @@ public class ListIconsServiceImpl implements ListIconsService {
 	public Map<String, Map<String, String>> getAndroidIcons() {
 		final String SOURCE_FOLDER = context.getRealPath("/");
 		final String PATH_TO_ICONS = 
-						properties.get("routing.uploads") + "/" + 
-						properties.get("routing.icons") + "/" + 
-						properties.get("routing.android") + "/";
+						"uploads" + File.separator +
+						"icons" + File.separator + 
+						"android" + File.separator;
 		
 		File folder = new File(SOURCE_FOLDER + "/" + PATH_TO_ICONS);
 		logger.info("absolute path = " + folder.getAbsolutePath());
@@ -90,9 +112,9 @@ public class ListIconsServiceImpl implements ListIconsService {
 	public Map<String, Map<String, String>> getiosIcons() {
 		final String SOURCE_FOLDER = context.getRealPath("/");
 		final String PATH_TO_ICONS = 
-						properties.get("routing.uploads") + "/" + 
-						properties.get("routing.icons") + "/" + 
-						properties.get("routing.ios") + "/";
+				"uploads" + File.separator +
+				"icons" + File.separator + 
+				"android" + File.separator;
 		
 		File folder = new File(SOURCE_FOLDER + "/" + PATH_TO_ICONS);
 		logger.info("absolute path = " + folder.getAbsolutePath());
