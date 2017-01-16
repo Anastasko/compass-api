@@ -37,7 +37,7 @@ public class JpaConfig {
 
 	private static final Logger logger = LoggerFactory.getLogger(JpaConfig.class);
 
-// 	public final static JpaConfigKind CONFIG_KIND = JpaConfigKind.EMBEDDED;
+//	public final static JpaConfigKind CONFIG_KIND = JpaConfigKind.EMBEDDED;
 	public final static JpaConfigKind CONFIG_KIND = JpaConfigKind.POSTGRESQL;
 	
 	public enum JpaConfigKind {

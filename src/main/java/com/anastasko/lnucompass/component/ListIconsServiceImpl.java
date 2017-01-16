@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.anastasko.lnucompass.configuration.WebConfig;
 import com.anastasko.lnucompass.infrastructure.ListIconsService;
 import com.anastasko.lnucompass.infrastructure.PropertyService;
 import com.anastasko.lnucompass.model.enums.ItemKind;
@@ -64,13 +65,11 @@ public class ListIconsServiceImpl implements ListIconsService {
 	
 	@Override
 	public Map<String, Map<String, String>> getAndroidIcons() {
-		final String SOURCE_FOLDER = context.getRealPath("/");
-		final String PATH_TO_ICONS = 
-						"uploads" + File.separator +
+		final String PATH_TO_ICONS = WebConfig.UPLOADS_DIR +
 						"icons" + File.separator + 
 						"android" + File.separator;
 		
-		File folder = new File(SOURCE_FOLDER + "/" + PATH_TO_ICONS);
+		File folder = new File(PATH_TO_ICONS);
 		logger.info("absolute path = " + folder.getAbsolutePath());
 		Map<String, Map<String, String>> json = new HashMap<String, Map<String, String>>();
 		if (folder.listFiles() != null){
@@ -110,13 +109,11 @@ public class ListIconsServiceImpl implements ListIconsService {
 
 	@Override
 	public Map<String, Map<String, String>> getiosIcons() {
-		final String SOURCE_FOLDER = context.getRealPath("/");
-		final String PATH_TO_ICONS = 
-				"uploads" + File.separator +
+		final String PATH_TO_ICONS = WebConfig.UPLOADS_DIR +
 				"icons" + File.separator + 
 				"android" + File.separator;
 		
-		File folder = new File(SOURCE_FOLDER + "/" + PATH_TO_ICONS);
+		File folder = new File(PATH_TO_ICONS);
 		logger.info("absolute path = " + folder.getAbsolutePath());
 		Map<String, Map<String, String>> json = new HashMap<String, Map<String, String>>();
 		if (folder.listFiles() != null){

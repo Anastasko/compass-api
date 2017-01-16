@@ -45,6 +45,8 @@ import javax.servlet.ServletContext;
 @ComponentScan({ "${controller.api.package}", "${controller.package}",  })
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
+	public static String UPLOADS_DIR = "/home/" + System.getProperty("user.name") + "/compass/uploads/";
+	
 	@Autowired
 	private Environment environment;
 	
@@ -78,7 +80,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 			registry.addResourceHandler(resource + "**").addResourceLocations(resource);
 		}
 		System.out.println(System.getProperty("user.name"));
-		registry.addResourceHandler("/uploads/**").addResourceLocations("file:///home/" + System.getProperty("user.name") + "/compass/uploads/");
+		registry.addResourceHandler("/uploads/**").addResourceLocations("file://" + UPLOADS_DIR);
 	}
 
 	@Override
