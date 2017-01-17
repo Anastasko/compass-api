@@ -65,11 +65,8 @@ public class ListIconsServiceImpl implements ListIconsService {
 	
 	@Override
 	public Map<String, Map<String, String>> getAndroidIcons() {
-		final String PATH_TO_ICONS = WebConfig.UPLOADS_DIR +
-						"icons" + File.separator + 
-						"android" + File.separator;
-		
-		File folder = new File(PATH_TO_ICONS);
+		final String PATH_TO_ICONS = "uploads/icons/android/";
+		File folder = new File(WebConfig.COMPASS_DIR + PATH_TO_ICONS);
 		logger.info("absolute path = " + folder.getAbsolutePath());
 		Map<String, Map<String, String>> json = new HashMap<String, Map<String, String>>();
 		if (folder.listFiles() != null){
@@ -109,11 +106,8 @@ public class ListIconsServiceImpl implements ListIconsService {
 
 	@Override
 	public Map<String, Map<String, String>> getiosIcons() {
-		final String PATH_TO_ICONS = WebConfig.UPLOADS_DIR +
-				"icons" + File.separator + 
-				"android" + File.separator;
-		
-		File folder = new File(PATH_TO_ICONS);
+		final String PATH_TO_ICONS = "uploads/icons/ios/";
+		File folder = new File(WebConfig.COMPASS_DIR + PATH_TO_ICONS);
 		logger.info("absolute path = " + folder.getAbsolutePath());
 		Map<String, Map<String, String>> json = new HashMap<String, Map<String, String>>();
 		if (folder.listFiles() != null){
