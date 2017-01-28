@@ -1,17 +1,15 @@
 package com.anastasko.lnucompass.model.domain;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
+import com.anastasko.lnucompass.model.view.AuthViewModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.anastasko.lnucompass.model.enums.SocialProvider;
+import org.springframework.transaction.annotation.Transactional;
 
 @Entity
 public class SocialUserAccount extends AbstractEntity {
@@ -25,14 +23,23 @@ public class SocialUserAccount extends AbstractEntity {
 	@Basic
 	private String lastName;
 
-	@Basic
-	private String token;
+	@MapKeyColumn(name = "deviceUUID")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Map<String, SocialUserLogin> logins = new HashMap<>();
 
 	@Basic
 	private SocialProvider provider;
 
-	@Basic
+    @Basic
     private String imageUrl;
+
+    public Map<String, SocialUserLogin> getLogins() {
+        return logins;
+    }
+
+    public void setLogins(Map<String, SocialUserLogin> logins) {
+        this.logins = logins;
+    }
 
     public String getImageUrl() {
         return imageUrl;
@@ -48,14 +55,6 @@ public class SocialUserAccount extends AbstractEntity {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 
 	public SocialProvider getProvider() {
@@ -81,5 +80,16 @@ public class SocialUserAccount extends AbstractEntity {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	@Transactional
+    public void setLogin(String deviceUUID, String token) {
+        if (!getLogins().containsKey(deviceUUID)){
+            SocialUserLogin login = new SocialUserLogin();
+            login.setOwner(this);
+            login.setDeviceUUID(deviceUUID);
+            getLogins().put(deviceUUID, login);
+        }
+        getLogins().get(deviceUUID).setToken(token);
+    }
 
 }

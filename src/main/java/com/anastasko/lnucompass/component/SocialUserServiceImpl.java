@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.anastasko.lnucompass.model.view.AuthViewModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -34,11 +35,14 @@ public class SocialUserServiceImpl extends AbstractEntityPersistenceServiceImpl<
 
 	@Override
 	@Transactional
-	public SocialUserAccount findByToken(String token) {
+	public SocialUserAccount findByAuth(AuthViewModel auth) {
 		CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<SocialUserAccount> query = criteriaBuilder.createQuery(this.getEntityClass());
 		Root<SocialUserAccount> root = query.from(getEntityClass());
-		Predicate predicate = criteriaBuilder.equal(root.get("token"), token);
+		Predicate predicate = criteriaBuilder.and(
+				criteriaBuilder.equal(root.joinMap("logins").get("token"), auth.getToken()),
+				criteriaBuilder.equal(root.joinMap("logins").get("deviceUUID"), auth.getDeviceUUID())
+		);
 		query = query.select(root).where(predicate);
 		TypedQuery<SocialUserAccount> typedQuery = getEntityManager().createQuery(query);
 		List<SocialUserAccount> result = typedQuery.getResultList();

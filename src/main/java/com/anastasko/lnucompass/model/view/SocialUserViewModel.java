@@ -30,11 +30,11 @@ public class SocialUserViewModel extends AbstractEntityViewModel {
         setProvider(provider);
     }
 
-    public SocialUserViewModel(SocialUserAccount user){
+    public SocialUserViewModel(SocialUserAccount user, String deviceUUID){
         super(user);
         setFirstName(user.getFirstName());
         setLastName(user.getLastName());
-    	setToken(user.getToken());
+    	setToken(user.getLogins().get(deviceUUID).getToken());
     	setProvider(user.getProvider());
     	setImageUrl(user.getImageUrl());
     }
