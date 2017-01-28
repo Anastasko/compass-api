@@ -26,7 +26,7 @@ public class SocialUserViewModel {
     public SocialUserViewModel(SocialUserAccount user){
     	setName(user.getName());
     	setToken(user.getToken());
-    	setProvider(user.getSignInProvider());
+    	setProvider(user.getProvider());
     	setExpiration(user.getExpiration());
     }
     

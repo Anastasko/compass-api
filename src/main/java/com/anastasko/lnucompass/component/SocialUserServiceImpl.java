@@ -17,6 +17,7 @@ import com.anastasko.lnucompass.implementation.AbstractEntityPersistenceServiceI
 import com.anastasko.lnucompass.infrastructure.SocialUserService;
 import com.anastasko.lnucompass.model.domain.SocialUserAccount;
 import com.anastasko.lnucompass.model.domain.UserAccount;
+import com.anastasko.lnucompass.model.enums.SocialProvider;
 import com.anastasko.lnucompass.model.view.UserViewModel;
 import com.anastasko.lnucompass.validation.exceptions.DuplicateEmailException;
 
@@ -46,11 +47,14 @@ public class SocialUserServiceImpl extends AbstractEntityPersistenceServiceImpl<
 
 	@Override
 	@Transactional
-	public SocialUserAccount findByUserId(String userId) {
+	public SocialUserAccount findByUserIdAndProvider(String userId, SocialProvider provider) {
 		CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<SocialUserAccount> query = criteriaBuilder.createQuery(this.getEntityClass());
 		Root<SocialUserAccount> root = query.from(getEntityClass());
-		Predicate predicate = criteriaBuilder.equal(root.get("userId"), userId);
+		Predicate predicate = criteriaBuilder.and(
+			criteriaBuilder.equal(root.get("userId"), userId),
+			criteriaBuilder.equal(root.get("provider"), provider)
+		);
 		query = query.select(root).where(predicate);
 		TypedQuery<SocialUserAccount> typedQuery = getEntityManager().createQuery(query);
 		List<SocialUserAccount> result = typedQuery.getResultList();

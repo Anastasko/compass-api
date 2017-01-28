@@ -4,6 +4,6 @@ public enum SocialProvider {
 	
 	FACEBOOK,
 	TWITTER,
-	GOOGLE_PLUS
+	GOOGLE
 	
 }

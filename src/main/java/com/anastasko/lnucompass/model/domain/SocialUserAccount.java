@@ -26,7 +26,7 @@ public class SocialUserAccount extends AbstractEntity {
 	private String token;
 
 	@Basic
-	private SocialProvider signInProvider;
+	private SocialProvider provider;
 
 	@Basic
 	private Date expiration;
@@ -63,12 +63,13 @@ public class SocialUserAccount extends AbstractEntity {
 		this.token = token;
 	}
 
-	public SocialProvider getSignInProvider() {
-		return signInProvider;
+	public SocialProvider getProvider() {
+		return provider;
 	}
 
-	public void setSignInProvider(SocialProvider signInProvider) {
-		this.signInProvider = signInProvider;
+	public void setProvider(SocialProvider provider) {
+		this.provider = provider;
 	}
-	
+
+
 }
