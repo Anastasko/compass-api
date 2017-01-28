@@ -20,8 +20,11 @@ public class SocialUserAccount extends AbstractEntity {
 	private String userId;
 
 	@Basic
-	private String name;
-	
+	private String firstName;
+
+	@Basic
+	private String lastName;
+
 	@Basic
 	private String token;
 
@@ -29,30 +32,22 @@ public class SocialUserAccount extends AbstractEntity {
 	private SocialProvider provider;
 
 	@Basic
-	private Date expiration;
-	
-	public Date getExpiration() {
-		return expiration;
-	}
+    private String imageUrl;
 
-	public void setExpiration(Date expiration) {
-		this.expiration = expiration;
-	}
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-	public String getUserId() {
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getUserId() {
 		return userId;
 	}
 
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getToken() {
@@ -71,5 +66,20 @@ public class SocialUserAccount extends AbstractEntity {
 		this.provider = provider;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
 }

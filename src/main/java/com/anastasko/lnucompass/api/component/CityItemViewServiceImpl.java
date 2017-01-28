@@ -42,7 +42,6 @@ public class CityItemViewServiceImpl
         for (AbstractEntityViewModel view: item.getMaps()) {
             entity.getMaps().add(mapService.getReference(view.getId()));
         }
-        entity.setKind(item.getKind());
     }
 
     @Override

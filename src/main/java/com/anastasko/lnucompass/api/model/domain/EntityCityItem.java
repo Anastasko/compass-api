@@ -13,7 +13,6 @@ import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedEntityGraphs;
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
-import com.anastasko.lnucompass.model.enums.ItemKind;
 
 @Entity
 @NamedEntityGraphs({
@@ -37,9 +36,6 @@ public class EntityCityItem
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "cityItem_maps")
     private Set<EntityMap> maps;
-    @Basic
-    @Column(nullable = true)
-    private ItemKind kind;
 
     public EntityCityItem() {
         setMaps(new HashSet<EntityMap>());
@@ -75,14 +71,6 @@ public class EntityCityItem
 
     public void setMaps(Set<EntityMap> maps) {
         this.maps = maps;
-    }
-
-    public ItemKind getKind() {
-        return kind;
-    }
-
-    public void setKind(ItemKind kind) {
-        this.kind = kind;
     }
 
 }

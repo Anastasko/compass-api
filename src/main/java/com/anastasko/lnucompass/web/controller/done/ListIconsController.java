@@ -14,8 +14,8 @@ import com.anastasko.lnucompass.infrastructure.ListIconsService;
 import com.anastasko.lnucompass.model.enums.ItemKind;
 
 @Api(name="Icons", description = "Retrieve icon's name & url", visibility=ApiVisibility.PRIVATE)
-@RestController
 @RequestMapping("/icons")
+@RestController(value = "IconsController")
 public class ListIconsController  {
 
 	@Autowired

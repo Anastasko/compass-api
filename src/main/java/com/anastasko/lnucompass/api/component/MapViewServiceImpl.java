@@ -29,8 +29,6 @@ public class MapViewServiceImpl
     @Override
     @Transactional
     public void mergeFields(EntityMap entity, EntityMapViewModel item) {
-        entity.setName(item.getName());
-        entity.setFloor(item.getFloor());
     }
 
     @Override

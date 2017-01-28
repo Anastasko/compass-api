@@ -31,40 +31,43 @@ import com.fasterxml.jackson.databind.JsonNode;
 @RestController
 public class AuthController {
 
-	private static long TOKEN_EXPIRATION_TIME = 1000*60*60*240; // 10 days
-	
+    private static long TOKEN_EXPIRATION_TIME = 1000 * 60 * 60 * 240; // 10 days
+
     @Autowired
     private RestTemplate restTemplate;
 
     @Autowired
     private PasswordEncoder encoder;
-    
+
     @Autowired
     private SocialUserService socialUserService;
-  
-    private SocialUserAccount findOrCreateSocialUser(String id, String name, String token, SocialProvider provider) {
-    	SocialUserAccount acc = socialUserService.findByUserIdAndProvider(id, provider);
-        Date exp = new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME);
-        if (acc == null){
-        	acc = new SocialUserAccount();
-        	acc.setUserId(id);
-        	acc.setProvider(provider);
-        	acc.setName(name);
-        	acc.setToken(token);
-        	acc.setExpiration(exp);
-        	socialUserService.create(acc);
+
+    private void mergeFields(SocialUserAccount acc, SocialUserViewModel user) {
+        acc.setFirstName(user.getFirstName());
+        acc.setLastName(user.getLastName());
+        acc.setImageUrl(user.getImageUrl());
+        acc.setToken(user.getToken());
+    }
+
+    private SocialUserAccount findOrCreateSocialUser(String id, SocialUserViewModel user) {
+        SocialUserAccount acc = socialUserService.findByUserIdAndProvider(id, user.getProvider());
+        if (acc == null) {
+            acc = new SocialUserAccount();
+            acc.setUserId(id);
+            acc.setProvider(user.getProvider());
+            mergeFields(acc, user);
+            socialUserService.create(acc);
         } else {
-        	acc.setName(name);
-        	acc.setToken(token);
-        	acc.setExpiration(exp);
-        	socialUserService.update(acc);
+            mergeFields(acc, user);
+            socialUserService.update(acc);
         }
         return acc;
-	}
-    
+    }
+
     @RequestMapping(value = "/facebook", method = RequestMethod.POST)
     public SocialUserViewModel facebook(@RequestBody AuthViewModel auth) {
         URIBuilder builder = URIBuilder.fromUri(String.format("%s/me", "https://graph.facebook.com"));
+        builder.queryParam("fields", "id,last_name,first_name,picture");
         builder.queryParam("access_token", auth.getToken());
         URI uri = builder.build();
         JsonNode resp = null;
@@ -73,14 +76,19 @@ public class AuthController {
         } catch (HttpClientErrorException e) {
             throw new SocialAuthenticationException("Error validating token");
         }
-        String id = resp.get("id").asText();   
-        String name = resp.get("name").asText();
-        String token = encoder.encode(auth.getToken());
-        SocialUserAccount acc = findOrCreateSocialUser(id, name, token, SocialProvider.FACEBOOK);
+        SocialUserViewModel view = new SocialUserViewModel(SocialProvider.FACEBOOK);
+        String id = resp.get("id").asText();
+        view.setToken(encoder.encode(auth.getToken()));
+        view.setFirstName(resp.get("first_name").asText());
+        view.setLastName(resp.get("last_name").asText());
+        try {
+            view.setImageUrl(resp.get("picture").get("data").get("url").asText());
+        } catch (Exception e){}
+        SocialUserAccount acc = findOrCreateSocialUser(id, view);
         return new SocialUserViewModel(acc);
     }
 
-	@RequestMapping(value = "/twitter", method = RequestMethod.POST)
+    @RequestMapping(value = "/twitter", method = RequestMethod.POST)
     public SocialUserViewModel twitter(@RequestBody AuthViewModel auth) {
 
         URIBuilder builder = URIBuilder.fromUri(String.format("%s/1.1/account/verify_credentials.json", "https://api.twitter.com"));
@@ -93,14 +101,13 @@ public class AuthController {
             throw new SocialAuthenticationException("Error validating token");
         }
         String id = resp.get("id_str").asText();
-        String name = resp.get("name").asText();
-        String token = encoder.encode(auth.getToken());
-        SocialUserAccount acc = findOrCreateSocialUser(id, name, token, SocialProvider.GOOGLE);
+        SocialUserViewModel view = new SocialUserViewModel(SocialProvider.TWITTER);
+        SocialUserAccount acc = findOrCreateSocialUser(id, view);
         return new SocialUserViewModel(acc);
     }
 
     @RequestMapping(value = "/google", method = RequestMethod.POST)
-    public SocialUserViewModel google_plus(@RequestBody AuthViewModel auth) {
+    public SocialUserViewModel google(@RequestBody AuthViewModel auth) {
 
         URIBuilder builder = URIBuilder.fromUri(String.format("%s/plus/v1/people/me", "https://www.googleapis.com"));
         builder.queryParam("access_token", auth.getToken());
@@ -112,9 +119,14 @@ public class AuthController {
             throw new SocialAuthenticationException("Error validating token");
         }
         String id = resp.get("id").asText();
-        String name = resp.get("displayName").asText();
-        String token = encoder.encode(auth.getToken());
-        SocialUserAccount acc = findOrCreateSocialUser(id, name, token, SocialProvider.GOOGLE);
+        SocialUserViewModel view = new SocialUserViewModel(SocialProvider.GOOGLE);
+        view.setToken(encoder.encode(auth.getToken()));
+        view.setFirstName(resp.get("name").get("givenName").asText());
+        view.setLastName(resp.get("name").get("familyName").asText());
+        try {
+            view.setImageUrl(resp.get("image").get("url").asText());
+        } catch (Exception e) {}
+        SocialUserAccount acc = findOrCreateSocialUser(id, view);
         return new SocialUserViewModel(acc);
     }
 

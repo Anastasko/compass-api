@@ -9,42 +9,59 @@ import com.anastasko.lnucompass.model.domain.SocialUserAccount;
 import com.anastasko.lnucompass.model.enums.SocialProvider;
 
 @ApiObject(name="SocialUser")
-public class SocialUserViewModel {
+public class SocialUserViewModel extends AbstractEntityViewModel {
 
 	@ApiObjectField
-	private String name;
+	private String firstName;
 
 	@ApiObjectField
+    private String lastName;
+
+    @ApiObjectField
     private String token;
 
     @ApiObjectField
     private SocialProvider provider;
-    
+
     @ApiObjectField
-    private Date expiration;
-    
+    private String imageUrl;
+
+    public SocialUserViewModel(SocialProvider provider){
+        setProvider(provider);
+    }
+
     public SocialUserViewModel(SocialUserAccount user){
-    	setName(user.getName());
+        super(user);
+        setFirstName(user.getFirstName());
+        setLastName(user.getLastName());
     	setToken(user.getToken());
     	setProvider(user.getProvider());
-    	setExpiration(user.getExpiration());
+    	setImageUrl(user.getImageUrl());
     }
-    
-    public Date getExpiration() {
-		return expiration;
-	}
 
-	public void setExpiration(Date expiration) {
-		this.expiration = expiration;
-	}
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getToken() {
         return token;
