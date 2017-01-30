@@ -3,6 +3,8 @@ package com.anastasko.lnucompass.infrastructure;
 import com.anastasko.lnucompass.model.enums.SocialProvider;
 import com.anastasko.lnucompass.model.view.AuthViewModel;
 import com.anastasko.lnucompass.model.view.SocialUserViewModel;
+import com.anastasko.lnucompass.model.view.TwitterAuthViewModel;
+
 import org.springframework.transaction.annotation.Transactional;
 
 public interface AuthService {
@@ -11,7 +13,8 @@ public interface AuthService {
 
     SocialUserViewModel authFacebook(AuthViewModel auth);
 
-    SocialUserViewModel authTwitter(AuthViewModel auth);
+    SocialUserViewModel authTwitter(TwitterAuthViewModel auth);
 
     void logout(AuthViewModel auth);
+
 }

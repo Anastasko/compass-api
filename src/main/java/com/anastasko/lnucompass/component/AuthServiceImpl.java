@@ -1,14 +1,7 @@
 package com.anastasko.lnucompass.component;
 
-import com.anastasko.lnucompass.infrastructure.AuthService;
-import com.anastasko.lnucompass.infrastructure.SocialUserService;
-import com.anastasko.lnucompass.model.domain.SocialUserAccount;
-import com.anastasko.lnucompass.model.domain.SocialUserLogin;
-import com.anastasko.lnucompass.model.enums.SocialProvider;
-import com.anastasko.lnucompass.model.view.AuthViewModel;
-import com.anastasko.lnucompass.model.view.SocialUserViewModel;
-import com.anastasko.lnucompass.validation.exceptions.ServiceException;
-import com.fasterxml.jackson.databind.JsonNode;
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.social.security.SocialAuthenticationException;
@@ -18,7 +11,21 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
+import com.anastasko.lnucompass.infrastructure.AuthService;
+import com.anastasko.lnucompass.infrastructure.SocialUserService;
+import com.anastasko.lnucompass.model.domain.SocialUserAccount;
+import com.anastasko.lnucompass.model.enums.SocialProvider;
+import com.anastasko.lnucompass.model.view.AuthViewModel;
+import com.anastasko.lnucompass.model.view.SocialUserViewModel;
+import com.anastasko.lnucompass.model.view.TwitterAuthViewModel;
+import com.anastasko.lnucompass.validation.exceptions.ServiceException;
+import com.fasterxml.jackson.databind.JsonNode;
+
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
+import twitter4j.auth.AccessToken;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -109,19 +116,31 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     @Transactional
-    public SocialUserViewModel authTwitter(AuthViewModel auth) {
-        checkAuth(auth);
-        URIBuilder builder = URIBuilder.fromUri(String.format("%s/1.1/account/verify_credentials.json", "https://api.twitter.com"));
-        builder.queryParam("oauth_access_token", auth.getToken());
-        URI uri = builder.build();
-        JsonNode resp = null;
-        try {
-            resp = restTemplate.getForObject(uri, JsonNode.class);
-        } catch (HttpClientErrorException e) {
-            throw new SocialAuthenticationException("Error validating token");
+    public SocialUserViewModel authTwitter(TwitterAuthViewModel auth) {
+    	checkAuth(auth);
+        if (auth.getTokenSecret() == null || auth.getTokenSecret().length()<1){
+        	throw new ServiceException("twitter auth must contain token secret");
         }
-        String id = resp.get("id_str").asText();
+        TwitterFactory factory = new TwitterFactory();
+        AccessToken accessToken = new AccessToken(auth.getToken(), auth.getTokenSecret());
+        Twitter twitter = factory.getInstance();
+        twitter.setOAuthConsumer("036iLbempT7VznCfIDOVblcBJ", "gQJKStNOgNTsrxzxnZDkjccUWPe2fhuRk4jCZQsmmn07egIrrL");
+        twitter.setOAuthAccessToken(accessToken);
+        String id = null;
         SocialUserViewModel view = new SocialUserViewModel(SocialProvider.TWITTER);
+        try {
+			User user = twitter.verifyCredentials();
+			id = ""+user.getId();
+			view.setToken(auth.getToken());
+			try {
+	        view.setFirstName(user.getName().split(" ")[0]);
+	        view.setLastName(user.getName().split(" ")[1]);
+			} catch (Exception e) {}
+	        view.setImageUrl(user.getProfileImageURLHttps());
+	       
+		} catch (TwitterException e) {
+			throw new ServiceException(e.getMessage());
+		}
         SocialUserAccount acc = findOrCreateSocialUser(id, auth.getDeviceUUID(), view);
         return new SocialUserViewModel(acc, auth.getDeviceUUID());
     }
@@ -131,13 +150,13 @@ public class AuthServiceImpl implements AuthService {
             throw new ServiceException("auth must contain token");
         }
         if (auth.getToken().length()==0){
-            throw new ServiceException("token must not be an empty string");
+            throw new ServiceException("token must not be empty string");
         }
         if (auth.getDeviceUUID() == null){
             throw new ServiceException("auth must contain deviceUUID");
         }
         if (auth.getDeviceUUID().length()==0){
-            throw new ServiceException("deviceUUID must not be an empty string");
+            throw new ServiceException("deviceUUID must not be empty string");
         }
     }
 
