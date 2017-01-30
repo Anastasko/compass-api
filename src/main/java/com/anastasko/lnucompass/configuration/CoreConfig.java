@@ -31,7 +31,9 @@ public class CoreConfig {
 		RestTemplate restTemplate = new RestTemplate();
 		if ("true".equals(properties().get("use.proxy"))){
 			SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-		    InetSocketAddress address = new InetSocketAddress("194.44.198.39", 3128);
+		    InetSocketAddress address = new InetSocketAddress(
+		    		properties().get("proxy.host"), 
+		    		Integer.parseInt(properties().get("proxy.port")));
 		    Proxy proxy = new Proxy(Proxy.Type.HTTP, address);
 		    factory.setProxy(proxy);
 		    restTemplate.setRequestFactory(factory);

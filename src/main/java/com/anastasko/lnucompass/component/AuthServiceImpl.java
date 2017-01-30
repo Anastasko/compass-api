@@ -1,17 +1,17 @@
 package com.anastasko.lnucompass.component;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.social.security.SocialAuthenticationException;
-import org.springframework.social.support.URIBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.anastasko.lnucompass.infrastructure.AuthService;
+import com.anastasko.lnucompass.infrastructure.PropertyService;
 import com.anastasko.lnucompass.infrastructure.SocialUserService;
 import com.anastasko.lnucompass.model.domain.SocialUserAccount;
 import com.anastasko.lnucompass.model.enums.SocialProvider;
@@ -26,6 +26,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
 import twitter4j.auth.AccessToken;
+import twitter4j.conf.ConfigurationBuilder;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -38,6 +39,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private SocialUserService socialUserService;
+    
+    @Autowired
+    private PropertyService properties;
 
     private void mergeFields(SocialUserAccount acc, SocialUserViewModel user) {
         acc.setFirstName(user.getFirstName());
@@ -65,14 +69,12 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public SocialUserViewModel authGoogle(AuthViewModel auth) {
         checkAuth(auth);
-        URIBuilder builder = URIBuilder.fromUri(String.format("%s/plus/v1/people/me", "https://www.googleapis.com"));
-        builder.queryParam("access_token", auth.getToken());
-        URI uri = builder.build();
         JsonNode resp = null;
         try {
+        	URI uri = new URI("https://www.googleapis.com/plus/v1/people/me?access_token=" + auth.getToken());
             resp = restTemplate.getForObject(uri, JsonNode.class);
-        } catch (HttpClientErrorException e) {
-            throw new SocialAuthenticationException("Error validating token");
+        } catch (HttpClientErrorException | URISyntaxException e) {
+            throw new ServiceException("Error validating token: " + e.getMessage());
         }
         String id = resp.get("id").asText();
         SocialUserViewModel view = new SocialUserViewModel(SocialProvider.GOOGLE);
@@ -91,15 +93,12 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public SocialUserViewModel authFacebook(AuthViewModel auth) {
         checkAuth(auth);
-        URIBuilder builder = URIBuilder.fromUri(String.format("%s/me", "https://graph.facebook.com"));
-        builder.queryParam("fields", "id,last_name,first_name,picture");
-        builder.queryParam("access_token", auth.getToken());
-        URI uri = builder.build();
         JsonNode resp = null;
         try {
+        	URI uri = new URI("https://graph.facebook.com/me?fields=id,last_name,first_name,picture&access_token=" +auth.getToken());
             resp = restTemplate.getForObject(uri, JsonNode.class);
-        } catch (HttpClientErrorException e) {
-            throw new SocialAuthenticationException("Error validating token");
+        } catch (HttpClientErrorException | URISyntaxException e) {
+            throw new ServiceException("Error validating token: " + e.getMessage());
         }
         SocialUserViewModel view = new SocialUserViewModel(SocialProvider.FACEBOOK);
         String id = resp.get("id").asText();
@@ -122,6 +121,12 @@ public class AuthServiceImpl implements AuthService {
         	throw new ServiceException("twitter auth must contain token secret");
         }
         TwitterFactory factory = new TwitterFactory();
+        if (Boolean.valueOf(properties.get("use.proxy"))){
+        	ConfigurationBuilder b = new ConfigurationBuilder();
+            b.setHttpProxyHost(properties.get("proxy.host"));
+            b.setHttpProxyPort(Integer.parseInt(properties.get("proxy.port")));
+            factory = new TwitterFactory(b.build());
+        }
         AccessToken accessToken = new AccessToken(auth.getToken(), auth.getTokenSecret());
         Twitter twitter = factory.getInstance();
         twitter.setOAuthConsumer("036iLbempT7VznCfIDOVblcBJ", "gQJKStNOgNTsrxzxnZDkjccUWPe2fhuRk4jCZQsmmn07egIrrL");
