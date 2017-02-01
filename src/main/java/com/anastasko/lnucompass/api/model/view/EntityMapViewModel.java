@@ -12,25 +12,28 @@ public class EntityMapViewModel
 {
 
     @ApiObjectField
-    private String name;
+    private String imageUrl;
     @ApiObjectField
     private Long floor;
+    @ApiObjectField
+    private AbstractEntityViewModel owner;
 
     public EntityMapViewModel() {
     }
 
     public EntityMapViewModel(EntityMap item) {
         super(item);
-        setName(item.getName());
+        setImageUrl(item.getImageUrl());
         setFloor(item.getFloor());
+        setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
-    public String getName() {
-        return name;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Long getFloor() {
@@ -39,6 +42,14 @@ public class EntityMapViewModel
 
     public void setFloor(Long floor) {
         this.floor = floor;
+    }
+
+    public AbstractEntityViewModel getOwner() {
+        return owner;
+    }
+
+    public void setOwner(AbstractEntityViewModel owner) {
+        this.owner = owner;
     }
 
 }

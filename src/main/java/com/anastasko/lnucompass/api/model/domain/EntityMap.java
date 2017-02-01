@@ -4,6 +4,7 @@ package com.anastasko.lnucompass.api.model.domain;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedEntityGraphs;
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 
@@ -17,20 +18,22 @@ public class EntityMap
 
     @Basic
     @Column(nullable = true)
-    private String name;
+    private String imageUrl;
     @Basic
     @Column(nullable = true)
     private Long floor;
+    @ManyToOne
+    private EntityCityItem owner;
 
     public EntityMap() {
     }
 
-    public String getName() {
-        return name;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Long getFloor() {
@@ -39,6 +42,14 @@ public class EntityMap
 
     public void setFloor(Long floor) {
         this.floor = floor;
+    }
+
+    public EntityCityItem getOwner() {
+        return owner;
+    }
+
+    public void setOwner(EntityCityItem owner) {
+        this.owner = owner;
     }
 
 }

@@ -4,14 +4,14 @@ package com.anastasko.lnucompass.api.model.domain;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedEntityGraphs;
+import javax.persistence.OneToMany;
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 import com.anastasko.lnucompass.model.enums.ItemKind;
 
@@ -34,8 +34,7 @@ public class EntityCityItem
     @Basic
     @Column(nullable = true)
     private Double latitude;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "cityItem_maps")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<EntityMap> maps;
     @Basic
     @Column(nullable = true)

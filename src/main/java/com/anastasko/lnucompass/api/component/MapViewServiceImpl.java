@@ -1,6 +1,7 @@
 
 package com.anastasko.lnucompass.api.component;
 
+import com.anastasko.lnucompass.api.infrastructure.CityItemService;
 import com.anastasko.lnucompass.api.infrastructure.MapService;
 import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityMap;
@@ -18,6 +19,8 @@ public class MapViewServiceImpl
 {
 
     @Autowired
+    private CityItemService cityItemService;
+    @Autowired
     private MapService mapService;
 
     @Override
@@ -29,8 +32,9 @@ public class MapViewServiceImpl
     @Override
     @Transactional
     public void mergeFields(EntityMap entity, EntityMapViewModel item) {
-        entity.setName(item.getName());
+        entity.setImageUrl(item.getImageUrl());
         entity.setFloor(item.getFloor());
+        entity.setOwner(cityItemService.getReference(item.getOwner().getId()));
     }
 
     @Override
