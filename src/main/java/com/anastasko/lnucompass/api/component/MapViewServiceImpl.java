@@ -7,7 +7,7 @@ import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityMap;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
 import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
-import com.anastasko.lnucompass.infrastructure.EntityWithHistoryService;
+import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +39,7 @@ public class MapViewServiceImpl
 
     @Override
     @Transactional
-    public EntityWithHistoryService<EntityMap> getEntityService() {
+    public ContentEntityService<EntityMap> getEntityService() {
         return mapService;
     }
 

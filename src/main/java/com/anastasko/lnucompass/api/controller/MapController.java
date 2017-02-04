@@ -4,6 +4,7 @@ package com.anastasko.lnucompass.api.controller;
 import java.util.List;
 import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
+import com.anastasko.lnucompass.model.view.FindModifiedArgs;
 import org.jsondoc.core.annotation.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +52,13 @@ public class MapController {
         @PathVariable("id")
         Long id) {
         mapViewService.delete(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/find")
+    public List<EntityMapViewModel> findModified(
+        @RequestBody
+        FindModifiedArgs args) {
+        return mapViewService.find(args);
     }
 
 }

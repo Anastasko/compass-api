@@ -155,13 +155,13 @@ public class AuthServiceImpl implements AuthService {
             throw new ServiceException("auth must contain token");
         }
         if (auth.getToken().length()==0){
-            throw new ServiceException("token must not be empty string");
+            throw new ServiceException("token must not be an empty string");
         }
         if (auth.getDeviceUUID() == null){
             throw new ServiceException("auth must contain deviceUUID");
         }
         if (auth.getDeviceUUID().length()==0){
-            throw new ServiceException("deviceUUID must not be empty string");
+            throw new ServiceException("deviceUUID must not be an empty string");
         }
     }
 

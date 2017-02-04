@@ -77,12 +77,6 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 	}
 	
 	@Override
-	public final JPAJinqStream<T> getStream() {
-		
-		return jinqJPAStreamProvider.streamAll(getEntityManager(), getEntityClass());
-	}
-	
-	@Override
 	@Transactional(readOnly = true)
 	public final List<T> findMany(Iterable<Long> keys) {
 		

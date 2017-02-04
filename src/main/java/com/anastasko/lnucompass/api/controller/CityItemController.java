@@ -8,6 +8,7 @@ import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
 import com.anastasko.lnucompass.api.model.view.EntityCityItemViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
+import com.anastasko.lnucompass.model.view.FindModifiedArgs;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import org.jsondoc.core.annotation.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,13 @@ public class CityItemController {
             throw new ResourceNotFoundException(("CityItem does not exist. id="+ id));
         }
         return mapViewService.viewModels(item.getMaps());
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/find")
+    public List<EntityCityItemViewModel> findModified(
+        @RequestBody
+        FindModifiedArgs args) {
+        return cityItemViewService.find(args);
     }
 
 }

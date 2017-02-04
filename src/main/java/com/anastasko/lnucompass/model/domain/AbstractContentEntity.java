@@ -1,33 +1,20 @@
 package com.anastasko.lnucompass.model.domain;
 
-import javax.persistence.Basic;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
 public class AbstractContentEntity extends AbstractEntity {
 
-	@Basic(fetch=FetchType.LAZY)
-	private Long timestamp;     // last change
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private UserAccount author;
+    @MapsId
+    @JoinColumn(name="id")
+    @OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+    private ItemProperties properties = new ItemProperties();
 
-	public Long getTimestamp() {
-		return timestamp;
-	}
+    public ItemProperties getProperties() {
+        return properties;
+    }
 
-	public void setTimestamp(Long timestamp) {
-		this.timestamp = timestamp;
-	}
-
-	public UserAccount getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(UserAccount author) {
-		this.author = author;
-	}
-	
+    public void setProperties(ItemProperties properties) {
+        this.properties = properties;
+    }
 }

@@ -1,28 +1,28 @@
 package com.anastasko.lnucompass.implementation;
 
-import com.anastasko.lnucompass.infrastructure.EntityWithHistoryService;
+import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.ViewService;
+import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
+import com.anastasko.lnucompass.model.view.FindModifiedArgs;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * controller will get here
+ * controller will invoke methods from here
  */
-public abstract class AbstractViewServiceImpl<T extends AbstractEntity, V extends AbstractEntityViewModel> implements ViewService<T, V> {
+public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V extends AbstractEntityViewModel> implements ViewService<T, V> {
 
     public abstract V toView(T e);
 
     public abstract void mergeFields(T e, V v);
 
-    public abstract EntityWithHistoryService<T> getEntityService();
+    public abstract ContentEntityService<T> getEntityService();
 
     public List<V> viewModels(Collection<T> list){
         return list.stream().map(e -> toView(e)).collect(Collectors.toList());
@@ -65,6 +65,12 @@ public abstract class AbstractViewServiceImpl<T extends AbstractEntity, V extend
     @Transactional
     public void delete(Long id) {
         getEntityService().deleteOne(id);
+    }
+
+    @Override
+    @Transactional
+    public List<V> find(FindModifiedArgs args){
+        return viewModels(getEntityService().find(args));
     }
 
 }

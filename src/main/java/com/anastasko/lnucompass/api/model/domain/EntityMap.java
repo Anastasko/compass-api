@@ -6,14 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedEntityGraphs;
-import com.anastasko.lnucompass.model.domain.AbstractEntity;
+import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
 
 @Entity
 @NamedEntityGraphs({
 
 })
 public class EntityMap
-    extends AbstractEntity
+    extends AbstractContentEntity
 {
 
     @Basic

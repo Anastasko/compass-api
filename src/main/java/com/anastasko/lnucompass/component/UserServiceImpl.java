@@ -8,6 +8,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.anastasko.lnucompass.model.enums.EntityTypeName;
+import com.anastasko.lnucompass.validation.exceptions.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,16 @@ public class UserServiceImpl extends AbstractEntityPersistenceServiceImpl<UserAc
 	@Override
 	public Class<UserAccount> getEntityClass() {
 		return UserAccount.class;
+	}
+
+	@Override
+	public UserAccount newInstance() {
+		throw new ServiceException();
+	}
+
+	@Override
+	public EntityTypeName getEntityTypeName() {
+		return EntityTypeName.USER_ACCOUNT;
 	}
 
 	@Override

@@ -4,6 +4,6 @@ public enum EntityTypeName {
 
     CITY_ITEM,
     MAP,
-    MAP_ITEM
+    USER_ACCOUNT, SOCIAL_USER_ACCOUNT, MAP_ITEM
 
 }

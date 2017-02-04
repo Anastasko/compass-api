@@ -2,6 +2,8 @@ package com.anastasko.lnucompass.infrastructure;
 
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
+import com.anastasko.lnucompass.model.view.FindModifiedArgs;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,6 +15,8 @@ public interface ViewService<T extends AbstractEntity, V extends AbstractEntityV
     List<V> findAll();
 
     V findOne(Long id);
+
+    List<V> find(FindModifiedArgs args);
 
     Long create(V model);
 

@@ -3,13 +3,13 @@ package com.anastasko.lnucompass.api.component;
 
 import com.anastasko.lnucompass.api.infrastructure.CityItemService;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
-import com.anastasko.lnucompass.implementation.AbstractEntityWithHistoryServiceImpl;
+import com.anastasko.lnucompass.implementation.AbstractContentEntityServiceImpl;
 import com.anastasko.lnucompass.model.enums.EntityTypeName;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CityItemServiceImpl
-    extends AbstractEntityWithHistoryServiceImpl<EntityCityItem>
+    extends AbstractContentEntityServiceImpl<EntityCityItem>
     implements CityItemService
 {
 

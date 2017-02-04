@@ -12,7 +12,7 @@ import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedEntityGraphs;
 import javax.persistence.OneToMany;
-import com.anastasko.lnucompass.model.domain.AbstractEntity;
+import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
 import com.anastasko.lnucompass.model.enums.ItemKind;
 
 @Entity
@@ -22,7 +22,7 @@ import com.anastasko.lnucompass.model.enums.ItemKind;
     })
 })
 public class EntityCityItem
-    extends AbstractEntity
+    extends AbstractContentEntity
 {
 
     @Basic
