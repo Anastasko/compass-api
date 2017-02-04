@@ -8,6 +8,7 @@ import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
 import com.anastasko.lnucompass.api.model.view.EntityCityItemViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
+import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jsondoc.core.annotation.Api;
@@ -77,8 +78,8 @@ public class CityItemController {
     @RequestMapping(method = RequestMethod.POST, value = "/find")
     public List<ObjectNode> forSynchronisation(
         @RequestBody
-        List<Long> ids) {
-        return cityItemViewService.findForSynchronisation(ids);
+        LongIdsList ids) {
+        return cityItemViewService.findForSynchronisation(ids.getIds());
     }
 
 }

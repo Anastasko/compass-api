@@ -4,6 +4,7 @@ package com.anastasko.lnucompass.api.controller;
 import java.util.List;
 import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
+import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jsondoc.core.annotation.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +58,8 @@ public class MapController {
     @RequestMapping(method = RequestMethod.POST, value = "/find")
     public List<ObjectNode> forSynchronisation(
         @RequestBody
-        List<Long> ids) {
-        return mapViewService.findForSynchronisation(ids);
+        LongIdsList ids) {
+        return mapViewService.findForSynchronisation(ids.getIds());
     }
 
 }
