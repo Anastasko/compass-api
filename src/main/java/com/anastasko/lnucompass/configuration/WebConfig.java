@@ -45,7 +45,7 @@ import javax.servlet.ServletContext;
 @ComponentScan({ "${controller.api.package}", "${controller.package}",  })
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
-	public static String COMPASS_DIR = "/home/" + System.getProperty("user.name") + "/compass/";
+	public static String COMPASS_DIR = "/home/" + System.getProperty("user.name") + "/compass";
 	
 	@Autowired
 	private Environment environment;
@@ -82,17 +82,18 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/uploads/**").addResourceLocations("file://" + COMPASS_DIR + "uploads/");
 	}
 
+	@Autowired
+    private MappingJackson2HttpMessageConverter jacksonConverter;
+
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		converters.add(jacksonConverter());
+		converters.add(jacksonConverter);
 		super.configureMessageConverters(converters);
 	}
 
 	@Bean
-	MappingJackson2HttpMessageConverter jacksonConverter() {
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.getTypeFactory().clearCache();
-		objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    @Autowired
+	public MappingJackson2HttpMessageConverter jacksonConverter(ObjectMapper objectMapper) {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		converter.setObjectMapper(objectMapper);
 		return converter;

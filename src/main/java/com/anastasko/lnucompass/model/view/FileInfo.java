@@ -3,16 +3,19 @@ package com.anastasko.lnucompass.model.view;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
-import java.util.Date;
-
-@ApiObject(name="File", description="on disk file view model")
-public class FileViewModel {
+@ApiObject(name="File View Model", description = "on disk file view model")
+public class FileInfo {
 
     @ApiObjectField
     private String path;
 
     @ApiObjectField
-    private Date modified;
+    private long modified;
+
+    public FileInfo(String path, long m) {
+        setPath(path);
+        setModified(m);
+    }
 
     public String getPath() {
         return path;
@@ -22,11 +25,11 @@ public class FileViewModel {
         this.path = path;
     }
 
-    public Date getModified() {
+    public long getModified() {
         return modified;
     }
 
-    public void setModified(Date modified) {
+    public void setModified(long modified) {
         this.modified = modified;
     }
 }

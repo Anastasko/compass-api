@@ -2,21 +2,18 @@ package com.anastasko.lnucompass.infrastructure;
 
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
-import com.anastasko.lnucompass.model.view.FindModifiedArgs;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public interface ViewService<T extends AbstractEntity, V extends AbstractEntityViewModel> {
 
     List<V> findAll();
 
     V findOne(Long id);
-
-    List<V> find(FindModifiedArgs args);
 
     Long create(V model);
 
@@ -25,5 +22,7 @@ public interface ViewService<T extends AbstractEntity, V extends AbstractEntityV
     void delete(Long id);
 
     List<V> viewModels(Collection<T> list);
+
+    List<ObjectNode> findForSynchronisation(List<Long> ids);
 
 }

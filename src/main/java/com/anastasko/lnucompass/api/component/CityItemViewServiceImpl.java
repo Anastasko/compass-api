@@ -9,6 +9,9 @@ import com.anastasko.lnucompass.api.model.view.EntityCityItemViewModel;
 import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
+import com.anastasko.lnucompass.model.view.ModifiedEntitiesViewModel;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +23,8 @@ public class CityItemViewServiceImpl
 {
 
     @Autowired
+    private ObjectMapper objectMapper;
+    @Autowired
     private MapService mapService;
     @Autowired
     private CityItemService cityItemService;
@@ -28,6 +33,18 @@ public class CityItemViewServiceImpl
     @Transactional
     public EntityCityItemViewModel toView(EntityCityItem entity) {
         return new EntityCityItemViewModel(entity);
+    }
+
+    @Override
+    @Transactional
+    public ObjectNode toSynchronisationView(EntityCityItem entity) {
+        ObjectNode dataNode = objectMapper.createObjectNode();
+        dataNode.putPOJO("maps", new ModifiedEntitiesViewModel(entity.getMaps()));
+        ObjectNode item = objectMapper.createObjectNode();
+        item.put("id", entity.getId());
+        item.put("modified", entity.getProperties().getModified().getTime());
+        item.set("data", dataNode);
+        return item;
     }
 
     @Override

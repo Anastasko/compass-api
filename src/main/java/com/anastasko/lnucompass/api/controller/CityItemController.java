@@ -8,8 +8,8 @@ import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
 import com.anastasko.lnucompass.api.model.view.EntityCityItemViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
-import com.anastasko.lnucompass.model.view.FindModifiedArgs;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jsondoc.core.annotation.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,10 +75,10 @@ public class CityItemController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/find")
-    public List<EntityCityItemViewModel> findModified(
+    public List<ObjectNode> forSynchronisation(
         @RequestBody
-        FindModifiedArgs args) {
-        return cityItemViewService.find(args);
+        List<Long> ids) {
+        return cityItemViewService.findForSynchronisation(ids);
     }
 
 }

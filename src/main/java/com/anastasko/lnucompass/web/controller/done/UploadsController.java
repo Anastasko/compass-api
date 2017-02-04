@@ -1,23 +1,16 @@
 package com.anastasko.lnucompass.web.controller.done;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
-import javax.servlet.ServletContext;
-import javax.swing.filechooser.FileView;
+import javax.servlet.http.HttpServletResponse;
 
-import com.anastasko.lnucompass.model.view.FileViewModel;
+import com.anastasko.lnucompass.model.view.FileInfo;
 import com.anastasko.lnucompass.web.controller.AbstractController;
 import org.jsondoc.core.annotation.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.anastasko.lnucompass.configuration.WebConfig;
 
@@ -28,15 +21,12 @@ class UploadsController extends AbstractController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadsController.class);
 
-	private List<FileViewModel> populateList(File file, int crop) {
-		List<FileViewModel> files = new ArrayList<>();
+	private List<String> populateList(File file, int crop) {
+		List<String> files = new ArrayList<>();
 		if (file.exists()) {
 			for (File item : file.listFiles()) {
 				if (item.isFile()) {
-					FileViewModel fileView = new FileViewModel();
-					fileView.setPath(item.getPath().substring(crop-1));
-					fileView.setModified(new Date(item.lastModified()));
-					files.add(fileView);
+					files.add(item.getPath().substring(crop));
 				} else if (item.isDirectory()) {
 					files.addAll(populateList(item, crop));
 				}
@@ -45,7 +35,7 @@ class UploadsController extends AbstractController {
 		return files;
 	}
 
-	private List<FileViewModel> traverse(String prefix){
+	private List<String> traverse(String prefix){
 		String path = WebConfig.COMPASS_DIR + prefix;
 		logger.info("get path list from " + path);
 		File file = new File(path);
@@ -53,12 +43,25 @@ class UploadsController extends AbstractController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<FileViewModel> getList(@RequestParam(value = "prefix", required = false) String prefix) {
+	public List<String> getList(@RequestParam(value = "prefix", required = false) String prefix) {
         if (prefix == null){
-            prefix = "uploads";
+            prefix = "/uploads";
         }
 	    return traverse(prefix);
 	}
+
+    @RequestMapping(method = RequestMethod.POST)
+    public List<FileInfo> getList(@RequestBody List<String> list, HttpServletResponse response) {
+	    List<FileInfo> result = new ArrayList<>();
+	    for(String path : list){
+            File file = new File(WebConfig.COMPASS_DIR + path);
+            if (file.exists()){
+                result.add(new FileInfo(path, file.lastModified()));
+            }
+        }
+        response.setHeader("Timestamp", ""+System.currentTimeMillis());
+        return result;
+    }
 
 
 }

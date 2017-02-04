@@ -110,7 +110,7 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 		if(!(keys instanceof Collection)){
 			throw new DomainModelException();
 		}
-		
+
 		CriteriaQuery<T> query = createSelectQuery(graphName);
 		query = query.where(query.getRoots().iterator().next().get("id").in((Collection<Long>)keys));
 		return getSelectQueryResultSet(query, graphName);

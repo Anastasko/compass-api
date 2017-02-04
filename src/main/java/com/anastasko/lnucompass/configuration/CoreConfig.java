@@ -3,6 +3,8 @@ package com.anastasko.lnucompass.configuration;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,14 @@ public class CoreConfig {
 	@Bean
 	PropertyService properties() {
 		return new PropertyServiceImpl();
+	}
+
+	@Bean
+	public ObjectMapper objectMapper(){
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.getTypeFactory().clearCache();
+		objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+		return objectMapper;
 	}
 
 	/**
