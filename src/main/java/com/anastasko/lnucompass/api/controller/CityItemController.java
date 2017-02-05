@@ -36,6 +36,13 @@ public class CityItemController {
         return cityItemViewService.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/findmany")
+    public List<EntityCityItemViewModel> findMany(
+        @RequestBody
+        LongIdsList ids) {
+        return cityItemViewService.findMany(ids.getIds());
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public EntityCityItemViewModel findOne(
         @PathVariable("id")

@@ -44,6 +44,12 @@ public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V
 
     @Override
     @Transactional
+    public List<V> findMany(Iterable<Long> ids) {
+        return viewModels(getEntityService().findMany(ids));
+    }
+
+    @Override
+    @Transactional
     public V findOne(Long id) {
         T entity = getEntityService().findOne(id);
         if (entity == null){

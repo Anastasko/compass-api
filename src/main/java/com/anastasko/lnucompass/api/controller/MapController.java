@@ -27,6 +27,13 @@ public class MapController {
         return mapViewService.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/findmany")
+    public List<EntityMapViewModel> findMany(
+        @RequestBody
+        LongIdsList ids) {
+        return mapViewService.findMany(ids.getIds());
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public EntityMapViewModel findOne(
         @PathVariable("id")

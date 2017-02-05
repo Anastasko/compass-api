@@ -13,6 +13,8 @@ public interface ViewService<T extends AbstractEntity, V extends AbstractEntityV
 
     List<V> findAll();
 
+    List<V> findMany(Iterable<Long> ids);
+
     V findOne(Long id);
 
     Long create(V model);
