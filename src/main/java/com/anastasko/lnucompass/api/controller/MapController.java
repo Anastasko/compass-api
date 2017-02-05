@@ -27,7 +27,7 @@ public class MapController {
         return mapViewService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/findmany")
+    @RequestMapping(method = RequestMethod.POST, value = "/findMany")
     public List<EntityMapViewModel> findMany(
         @RequestBody
         LongIdsList ids) {
