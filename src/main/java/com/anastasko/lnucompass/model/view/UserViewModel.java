@@ -3,9 +3,10 @@ package com.anastasko.lnucompass.model.view;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
+import com.anastasko.lnucompass.model.domain.UserAccount;
 import com.anastasko.lnucompass.model.enums.SocialProvider;
 
-@ApiObject(name="User")
+@ApiObject(name="User", description="User")
 public class UserViewModel extends AbstractEntityViewModel {
 
 	@ApiObjectField
@@ -25,10 +26,20 @@ public class UserViewModel extends AbstractEntityViewModel {
 	
 	@ApiObjectField
 	private String token;
-
-	@ApiObjectField
-	private SocialProvider signInProvider;
 	
+	public UserViewModel(){
+		
+	}
+	
+	public UserViewModel(UserAccount user) {
+		super(user);
+		setUsername(user.getUsername());
+		setEmail(user.getEmail());
+		setFirstName(user.getFirstName());
+		setLastName(user.getLastName());
+		setToken(user.getToken());
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -75,14 +86,6 @@ public class UserViewModel extends AbstractEntityViewModel {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public SocialProvider getSignInProvider() {
-		return signInProvider;
-	}
-
-	public void setSignInProvider(SocialProvider signInProvider) {
-		this.signInProvider = signInProvider;
 	}
 
 }

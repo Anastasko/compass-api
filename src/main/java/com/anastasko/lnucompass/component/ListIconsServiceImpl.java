@@ -72,7 +72,7 @@ public class ListIconsServiceImpl implements ListIconsService {
 					String iconName = getAndroidIconName(file.getName());
 					String iconSize = getAndroidIconSize(file.getName());
 					Map<String, String> iconPathes = json.get(iconName);
-					String iconUrl = "/" + PATH_TO_ICONS + file.getName();
+					String iconUrl = PATH_TO_ICONS + file.getName();
 					if (iconPathes == null){
 						iconPathes = new HashMap<String, String>();
 						iconPathes.put(iconSize, iconUrl);
@@ -113,7 +113,7 @@ public class ListIconsServiceImpl implements ListIconsService {
 					String iconName = getiosIconName(file.getName());
 					String iconSize = getiosIconSize(file.getName());
 					Map<String, String> iconPathes = json.get(iconName);
-					String iconUrl = "/" + PATH_TO_ICONS + file.getName();
+					String iconUrl = PATH_TO_ICONS + file.getName();
 					if (iconPathes == null){
 						iconPathes = new HashMap<String, String>();
 						iconPathes.put(iconSize, iconUrl);

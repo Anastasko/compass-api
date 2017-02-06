@@ -1,16 +1,10 @@
 package com.anastasko.lnucompass.model.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import com.anastasko.lnucompass.model.enums.SocialProvider;
 
 @Entity
 public class UserAccount extends AbstractEntity {
@@ -32,9 +26,17 @@ public class UserAccount extends AbstractEntity {
 	
 	@Basic
 	private String token;
-
+	
 	@Basic
-	private SocialProvider signInProvider;
+	private Date tokenExpires;
+
+	public Date getTokenExpires() {
+		return tokenExpires;
+	}
+
+	public void setTokenExpires(Date tokenExpires) {
+		this.tokenExpires = tokenExpires;
+	}
 
 	public String getUsername() {
 		return username;
@@ -82,23 +84,6 @@ public class UserAccount extends AbstractEntity {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public SocialProvider getSignInProvider() {
-		return signInProvider;
-	}
-
-	public void setSignInProvider(SocialProvider signInProvider) {
-		this.signInProvider = signInProvider;
-	}
-
-	public Set<GrantedAuthority> getAuthorities() {
-		String[] roles = {};
-		Set<GrantedAuthority> rols = new HashSet<GrantedAuthority>();
-		for (int i = 0; i < roles.length; i++) {
-			rols.add(new SimpleGrantedAuthority(roles[i]));
-		}
-		return rols;
 	}
 	
 }

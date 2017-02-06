@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @SuppressWarnings("serial")
 public class ResourceNotFoundException extends RuntimeException {
 	
+	public ResourceNotFoundException(){
+	}
+	
 	public ResourceNotFoundException(String text){
 		super(text);
 	}

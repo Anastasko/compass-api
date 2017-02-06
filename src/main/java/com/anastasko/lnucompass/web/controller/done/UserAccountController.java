@@ -4,8 +4,8 @@ import org.jsondoc.core.annotation.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.anastasko.lnucompass.infrastructure.UserService;
 import com.anastasko.lnucompass.model.domain.UserAccount;
+import com.anastasko.lnucompass.model.view.UserAuthViewModel;
 import com.anastasko.lnucompass.model.view.UserViewModel;
-import com.anastasko.lnucompass.validation.exceptions.ServiceException;
+import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import com.anastasko.lnucompass.web.controller.AbstractController;
 
 @Api(name="User", description = "User")
@@ -27,33 +28,24 @@ public class UserAccountController extends AbstractController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-
 	@RequestMapping(method=RequestMethod.POST)
 	public @ResponseBody void signup(@RequestBody UserViewModel userModel){
-		UserAccount user = new UserAccount();
-		user.setUsername(userModel.getUsername());
-		user.setPassword(passwordEncoder.encode(userModel.getPassword()));
-		user.setEmail(userModel.getEmail());
-		user.setFirstName(userModel.getFirstName());
-		user.setLastName(userModel.getLastName());
-		user.setToken(user.getPassword());
-		userService.create(user);
+		userService.registerNewUser(userModel);
+	}
+
+	@RequestMapping(value="/auth", method=RequestMethod.POST)
+	public @ResponseBody UserViewModel login(@RequestBody UserAuthViewModel userModel){
+		return userService.auth(userModel);
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public @ResponseBody String login(@RequestBody UserViewModel userModel){
-		
+	@RequestMapping(method=RequestMethod.DELETE)
+	public @ResponseBody void remove(@RequestBody UserAuthViewModel userModel){
+		userService.auth(userModel);
 		UserAccount user = userService.findByUsername(userModel.getUsername());
 		if (user == null){
-			throw new ServiceException("user with username '" + userModel.getUsername() + "' does not exist");
+			throw new ResourceNotFoundException();
 		}
-		if (!passwordEncoder.matches(userModel.getPassword(), user.getPassword())){
-			throw new ServiceException("password does not match");
-		}
-		return user.getToken();		
+		userService.deleteOne(user);
 	}
-				
 		
 }

@@ -1,19 +1,17 @@
 package com.anastasko.lnucompass.implementation;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.ViewService;
 import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
-import com.anastasko.lnucompass.model.view.Pair;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * controller will invoke methods from here

@@ -3,7 +3,7 @@ package com.anastasko.lnucompass.model.view;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name="File View Model", description = "on disk file view model")
+@ApiObject(name="File View Model", description = "on disk file view model", show = false)
 public class FileInfo {
 
     @ApiObjectField
