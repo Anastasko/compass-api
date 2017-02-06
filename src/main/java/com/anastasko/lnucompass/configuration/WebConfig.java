@@ -79,7 +79,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		for (String resource : resources) {
 			registry.addResourceHandler(resource + "**").addResourceLocations(resource);
 		}
-		registry.addResourceHandler("/uploads/**").addResourceLocations("file://" + COMPASS_DIR + "uploads/");
+		registry.addResourceHandler("/uploads/**").addResourceLocations("file://" + COMPASS_DIR + "/uploads/");
 	}
 
 	@Autowired
