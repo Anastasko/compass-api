@@ -2,8 +2,8 @@
 package com.anastasko.lnucompass.api.controller;
 
 import java.util.List;
-import com.anastasko.lnucompass.api.infrastructure.MapViewService;
-import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
+import com.anastasko.lnucompass.api.infrastructure.IosIconViewService;
+import com.anastasko.lnucompass.api.model.view.EntityIosIconViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jsondoc.core.annotation.Api;
@@ -14,59 +14,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "Map", description = "Map")
+@Api(name = "Ios Icon", description = "Ios Icon")
 @RestController
-@RequestMapping("/map")
-public class MapController {
+@RequestMapping("/iosIcon")
+public class IosIconController {
 
     @Autowired
-    private MapViewService mapViewService;
+    private IosIconViewService iosIconViewService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<EntityMapViewModel> findAll() {
-        return mapViewService.findAll();
+    public List<EntityIosIconViewModel> findAll() {
+        return iosIconViewService.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/find")
     public List<ObjectNode> forSynchronisation(
         @RequestBody
         LongIdsList ids) {
-        return mapViewService.findForSynchronisation(ids.getIds());
+        return iosIconViewService.findForSynchronisation(ids.getIds());
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public Long create(
         @RequestBody
-        EntityMapViewModel item) {
-        return mapViewService.create(item);
+        EntityIosIconViewModel item) {
+        return iosIconViewService.create(item);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/findMany")
-    public List<EntityMapViewModel> findMany(
+    public List<EntityIosIconViewModel> findMany(
         @RequestBody
         LongIdsList ids) {
-        return mapViewService.findMany(ids.getIds());
+        return iosIconViewService.findMany(ids.getIds());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public EntityMapViewModel findOne(
+    public EntityIosIconViewModel findOne(
         @PathVariable("id")
         Long id) {
-        return mapViewService.findOne(id);
-    }
-
-    @RequestMapping(method = RequestMethod.PUT)
-    public void update(
-        @RequestBody
-        EntityMapViewModel item) {
-        mapViewService.update(item);
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public void delete(
-        @PathVariable("id")
-        Long id) {
-        mapViewService.delete(id);
+        return iosIconViewService.findOne(id);
     }
 
 }

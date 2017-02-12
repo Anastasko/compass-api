@@ -8,13 +8,15 @@ public class AbstractContentEntity extends AbstractEntity {
     @MapsId
     @JoinColumn(name="id")
     @OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
-    private ItemProperties properties = new ItemProperties();
+    private Item item = new Item();
 
-    public ItemProperties getProperties() {
-        return properties;
-    }
+	public Item getItem() {
+		return item;
+	}
 
-    public void setProperties(ItemProperties properties) {
-        this.properties = properties;
-    }
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+   
 }

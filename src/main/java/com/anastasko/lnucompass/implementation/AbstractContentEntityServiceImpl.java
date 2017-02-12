@@ -20,16 +20,16 @@ public abstract class AbstractContentEntityServiceImpl<T extends AbstractContent
     @Transactional
     public void create(T item){
         Date now = new Date();
-        item.getProperties().setType(getEntityTypeName());
-        item.getProperties().setCreated(now);
-        item.getProperties().setModified(now);
+        item.getItem().setType(getEntityTypeName());
+        item.getItem().setCreated(now);
+        item.getItem().setModified(now);
         super.create(item);
     }
 
     @Override
     @Transactional
     public void update(T item){
-        item.getProperties().setModified(new Date());
+        item.getItem().setModified(new Date());
         super.create(item);
     }
 

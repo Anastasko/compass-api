@@ -1,5 +1,6 @@
 package com.anastasko.lnucompass.model.enums;
 
+/* TODO: remove */
 public enum ItemKind {
 
 	FACULTIES,

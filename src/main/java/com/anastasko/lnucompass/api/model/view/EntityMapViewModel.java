@@ -3,6 +3,7 @@ package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityMap;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
+import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
@@ -12,28 +13,29 @@ public class EntityMapViewModel
 {
 
     @ApiObjectField
-    private String imageUrl;
+    private UrlResourceViewModel image;
     @ApiObjectField
     private Long floor;
     @ApiObjectField
     private AbstractEntityViewModel owner;
 
     public EntityMapViewModel() {
+        setImage(new UrlResourceViewModel());
     }
 
     public EntityMapViewModel(EntityMap item) {
         super(item);
-        setImageUrl(item.getImageUrl());
+        setImage(new UrlResourceViewModel(item.getImage()));
         setFloor(item.getFloor());
         setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public UrlResourceViewModel getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(UrlResourceViewModel image) {
+        this.image = image;
     }
 
     public Long getFloor() {

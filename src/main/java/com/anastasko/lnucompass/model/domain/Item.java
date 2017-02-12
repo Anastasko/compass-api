@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import java.util.Date;
 
 @Entity
-public class ItemProperties extends AbstractEntity {
+public class Item extends AbstractEntity {
 
     @Basic(fetch = FetchType.LAZY)
     private Date created;

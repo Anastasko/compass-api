@@ -2,11 +2,15 @@
 package com.anastasko.lnucompass.api.model.domain;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedEntityGraphs;
+import javax.persistence.OneToOne;
 import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
+import com.anastasko.lnucompass.model.domain.UrlResource;
 
 @Entity
 @NamedEntityGraphs({
@@ -16,9 +20,8 @@ public class EntityMap
     extends AbstractContentEntity
 {
 
-    @Basic
-    @Column(nullable = true)
-    private String imageUrl;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private UrlResource image;
     @Basic
     @Column(nullable = true)
     private Long floor;
@@ -26,14 +29,15 @@ public class EntityMap
     private EntityCityItem owner;
 
     public EntityMap() {
+        setImage(new UrlResource());
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public UrlResource getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(UrlResource image) {
+        this.image = image;
     }
 
     public Long getFloor() {

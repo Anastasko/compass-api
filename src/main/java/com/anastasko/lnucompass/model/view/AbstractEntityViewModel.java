@@ -5,7 +5,7 @@ import org.jsondoc.core.annotation.ApiObjectField;
 
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 
-@ApiObject(name="AbstractEntity", show=true)
+@ApiObject(name="AbstractEntity", show=false)
 public class AbstractEntityViewModel implements EntityViewModel<Long> {
 
 	@ApiObjectField(required=true)

@@ -2,6 +2,7 @@ package com.anastasko.lnucompass.infrastructure;
 
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
+import com.anastasko.lnucompass.model.view.EntityViewModel;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public interface ViewService<T extends AbstractEntity, V extends AbstractEntityViewModel> {
+public interface ViewService<T extends AbstractEntity, V extends EntityViewModel> {
 
     List<V> findAll();
 
@@ -26,5 +27,9 @@ public interface ViewService<T extends AbstractEntity, V extends AbstractEntityV
     List<V> viewModels(Collection<T> list);
 
     List<ObjectNode> findForSynchronisation(List<Long> ids);
+
+    ObjectNode toSynchronisationView(T e);
+
+    void mergeFields(T e, V v);
 
 }

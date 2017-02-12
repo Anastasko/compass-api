@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "CityItem", description = "CityItem")
+@Api(name = "City Item", description = "City Item")
 @RestController
 @RequestMapping("/cityItem")
 public class CityItemController {
@@ -36,6 +36,20 @@ public class CityItemController {
         return cityItemViewService.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/find")
+    public List<ObjectNode> forSynchronisation(
+        @RequestBody
+        LongIdsList ids) {
+        return cityItemViewService.findForSynchronisation(ids.getIds());
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Long create(
+        @RequestBody
+        EntityCityItemViewModel item) {
+        return cityItemViewService.create(item);
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/findMany")
     public List<EntityCityItemViewModel> findMany(
         @RequestBody
@@ -50,11 +64,15 @@ public class CityItemController {
         return cityItemViewService.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public Long create(
-        @RequestBody
-        EntityCityItemViewModel item) {
-        return cityItemViewService.create(item);
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/maps")
+    public List<EntityMapViewModel> find_maps(
+        @PathVariable("id")
+        Long id) {
+        EntityCityItem item = cityItemService.findOne(id, "mapsGraph");
+        if (item == null) {
+            throw new ResourceNotFoundException(("CityItem does not exist. id="+ id));
+        }
+        return mapViewService.viewModels(item.getMaps());
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -69,24 +87,6 @@ public class CityItemController {
         @PathVariable("id")
         Long id) {
         cityItemViewService.delete(id);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}/maps")
-    public List<EntityMapViewModel> find_maps(
-        @PathVariable("id")
-        Long id) {
-        EntityCityItem item = cityItemService.findOne(id, "mapsGraph");
-        if (item == null) {
-            throw new ResourceNotFoundException(("CityItem does not exist. id="+ id));
-        }
-        return mapViewService.viewModels(item.getMaps());
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/find")
-    public List<ObjectNode> forSynchronisation(
-        @RequestBody
-        LongIdsList ids) {
-        return cityItemViewService.findForSynchronisation(ids.getIds());
     }
 
 }

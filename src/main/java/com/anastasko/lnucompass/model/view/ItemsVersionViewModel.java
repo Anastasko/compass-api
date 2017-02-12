@@ -6,13 +6,13 @@ import com.anastasko.lnucompass.model.domain.AbstractEntity;
 import org.jsondoc.core.annotation.ApiObject;
 
 @ApiObject(name="ModifiedEntities", show=false)
-public class ModifiedEntitiesViewModel extends EntitiesViewModel<ModifiedEntityViewModel> {
+public class ItemsVersionViewModel extends EntitiesViewModel<ItemVersionViewModel> {
 
-	public ModifiedEntitiesViewModel() {}
+	public ItemsVersionViewModel() {}
 
-	public ModifiedEntitiesViewModel(Iterable<? extends AbstractContentEntity> list){
+	public ItemsVersionViewModel(Iterable<? extends AbstractContentEntity> list){
 		for(AbstractContentEntity entity : list){
-			add(new ModifiedEntityViewModel(entity));
+			add(new ItemVersionViewModel(entity));
 		}
 	}
 

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.anastasko.lnucompass.model.view.EntityViewModel;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
@@ -16,13 +17,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 /**
  * controller will invoke methods from here
  */
-public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V extends AbstractEntityViewModel> implements ViewService<T, V> {
+public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V extends EntityViewModel<Long>> implements ViewService<T, V> {
 
     public abstract V toView(T e);
-
-    public abstract ObjectNode toSynchronisationView(T e);
-
-    public abstract void mergeFields(T e, V v);
 
     public abstract ContentEntityService<T> getEntityService();
 

@@ -2,17 +2,18 @@
 package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
-import com.anastasko.lnucompass.model.enums.ItemKind;
 import com.anastasko.lnucompass.model.view.AbstractEntitiesViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name = "CityItem")
+@ApiObject(name = "City Item")
 public class EntityCityItemViewModel
     extends AbstractEntityViewModel
 {
 
+    @ApiObjectField
+    private AbstractEntityViewModel owner;
     @ApiObjectField
     private String name;
     @ApiObjectField
@@ -22,7 +23,7 @@ public class EntityCityItemViewModel
     @ApiObjectField
     private AbstractEntitiesViewModel maps;
     @ApiObjectField
-    private ItemKind kind;
+    private AbstractEntityViewModel kind;
 
     public EntityCityItemViewModel() {
         setMaps(new AbstractEntitiesViewModel());
@@ -30,11 +31,20 @@ public class EntityCityItemViewModel
 
     public EntityCityItemViewModel(EntityCityItem item) {
         super(item);
+        setOwner(new AbstractEntityViewModel(item.getOwner()));
         setName(item.getName());
         setLongitude(item.getLongitude());
         setLatitude(item.getLatitude());
         setMaps(new AbstractEntitiesViewModel(item.getMaps()));
-        setKind(item.getKind());
+        setKind(new AbstractEntityViewModel(item.getKind()));
+    }
+
+    public AbstractEntityViewModel getOwner() {
+        return owner;
+    }
+
+    public void setOwner(AbstractEntityViewModel owner) {
+        this.owner = owner;
     }
 
     public String getName() {
@@ -69,11 +79,11 @@ public class EntityCityItemViewModel
         this.maps = maps;
     }
 
-    public ItemKind getKind() {
+    public AbstractEntityViewModel getKind() {
         return kind;
     }
 
-    public void setKind(ItemKind kind) {
+    public void setKind(AbstractEntityViewModel kind) {
         this.kind = kind;
     }
 

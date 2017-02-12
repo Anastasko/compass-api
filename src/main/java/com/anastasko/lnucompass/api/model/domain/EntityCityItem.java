@@ -4,16 +4,15 @@ package com.anastasko.lnucompass.api.model.domain;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedEntityGraphs;
 import javax.persistence.OneToMany;
 import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
-import com.anastasko.lnucompass.model.enums.ItemKind;
 
 @Entity
 @NamedEntityGraphs({
@@ -25,6 +24,8 @@ public class EntityCityItem
     extends AbstractContentEntity
 {
 
+    @ManyToOne
+    private EntityRoot owner;
     @Basic
     @Column(nullable = true)
     private String name;
@@ -34,14 +35,21 @@ public class EntityCityItem
     @Basic
     @Column(nullable = true)
     private Double latitude;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
     private Set<EntityMap> maps;
-    @Basic
-    @Column(nullable = true)
-    private ItemKind kind;
+    @ManyToOne
+    private EntityItemKind kind;
 
     public EntityCityItem() {
         setMaps(new HashSet<EntityMap>());
+    }
+
+    public EntityRoot getOwner() {
+        return owner;
+    }
+
+    public void setOwner(EntityRoot owner) {
+        this.owner = owner;
     }
 
     public String getName() {
@@ -76,11 +84,11 @@ public class EntityCityItem
         this.maps = maps;
     }
 
-    public ItemKind getKind() {
+    public EntityItemKind getKind() {
         return kind;
     }
 
-    public void setKind(ItemKind kind) {
+    public void setKind(EntityItemKind kind) {
         this.kind = kind;
     }
 

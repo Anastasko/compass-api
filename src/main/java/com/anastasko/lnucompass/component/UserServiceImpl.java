@@ -51,10 +51,10 @@ public class UserServiceImpl extends AbstractEntityPersistenceServiceImpl<UserAc
 
 	private void validate(UserViewModel user) {
 		if (user.getUsername() == null || user.getUsername().length() < 3) {
-			throw new ServiceException("username requires at least 3 characters");
+			throw new ServiceException("username must be at least 3 characters");
 		}
 		if (user.getPassword() == null || user.getPassword().length() < 5) {
-			throw new ServiceException("password requires at least 5 characters");
+			throw new ServiceException("password must be at least 5 characters");
 		}
 	}
 

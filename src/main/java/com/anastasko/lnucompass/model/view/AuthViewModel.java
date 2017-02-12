@@ -1,6 +1,7 @@
 package com.anastasko.lnucompass.model.view;
 
 import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
 
 @ApiObject(name="Auth", description="g+ & fb auth view model", show = false)
 public class AuthViewModel {

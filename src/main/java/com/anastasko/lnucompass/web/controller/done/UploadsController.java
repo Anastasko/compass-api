@@ -6,7 +6,6 @@ import java.util.*;
 import javax.servlet.http.HttpServletResponse;
 
 import com.anastasko.lnucompass.model.view.FileInfo;
-import com.anastasko.lnucompass.model.view.StringIdsList;
 import com.anastasko.lnucompass.web.controller.AbstractController;
 import org.jsondoc.core.annotation.Api;
 import org.slf4j.Logger;
@@ -50,19 +49,5 @@ class UploadsController extends AbstractController {
         }
 	    return traverse(prefix);
 	}
-
-    @RequestMapping(method = RequestMethod.POST)
-    public List<FileInfo> getList(@RequestBody StringIdsList ids, HttpServletResponse response) {
-	    List<FileInfo> result = new ArrayList<>();
-	    for(String path : ids.getIds()){
-            File file = new File(WebConfig.COMPASS_DIR + path);
-            if (file.exists()){
-                result.add(new FileInfo(path, file.lastModified()));
-            }
-        }
-        response.setHeader("Timestamp", ""+System.currentTimeMillis());
-        return result;
-    }
-
 
 }
