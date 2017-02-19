@@ -1,0 +1,201 @@
+[ {
+  "id" : 0,
+  "typeName" : null,
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "INTEGER",
+  "fields" : [ ]
+}, {
+  "id" : 1,
+  "typeName" : null,
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "STRING",
+  "fields" : [ ]
+}, {
+  "id" : 2,
+  "typeName" : null,
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "DOUBLE",
+  "fields" : [ ]
+}, {
+  "id" : 3,
+  "typeName" : null,
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "URL_RESOURCE",
+  "fields" : [ ]
+}, {
+  "id" : 4,
+  "typeName" : "ITEM_KIND",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 19,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "NAME"
+  }, {
+    "id" : 20,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 5
+    },
+    "fieldName" : "IOS_ICON"
+  }, {
+    "id" : 21,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 6
+    },
+    "fieldName" : "ANDROID_ICON"
+  } ]
+}, {
+  "id" : 5,
+  "typeName" : "IOS_ICON",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 12,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "SIZE_2X"
+  }, {
+    "id" : 13,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "SIZE_3X"
+  } ]
+}, {
+  "id" : 6,
+  "typeName" : "ANDROID_ICON",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 14,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "xxxhdpi"
+  }, {
+    "id" : 15,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "xxhdpi"
+  }, {
+    "id" : 16,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "xhdpi"
+  }, {
+    "id" : 17,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "mdpi"
+  }, {
+    "id" : 18,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "hdpi"
+  } ]
+}, {
+  "id" : 7,
+  "typeName" : "ROOT",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 10,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 8
+    },
+    "fieldName" : "CITY_ITEMS"
+  } ]
+}, {
+  "id" : 8,
+  "typeName" : "CITY_ITEM",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 11,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 7
+    },
+    "fieldName" : "OWNER"
+  }, {
+    "id" : 24,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "NAME"
+  }, {
+    "id" : 25,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "LONGITUDE"
+  }, {
+    "id" : 26,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "LATITUDE"
+  }, {
+    "id" : 27,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 9
+    },
+    "fieldName" : "MAPS"
+  }, {
+    "id" : 28,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 4
+    },
+    "fieldName" : "KIND"
+  } ]
+}, {
+  "id" : 9,
+  "typeName" : "MAP",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 22,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "IMAGE"
+  }, {
+    "id" : 23,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 0
+    },
+    "fieldName" : "FLOOR"
+  }, {
+    "id" : 29,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 8
+    },
+    "fieldName" : "OWNER"
+  } ]
+} ]

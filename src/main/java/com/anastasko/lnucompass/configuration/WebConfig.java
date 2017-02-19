@@ -46,6 +46,7 @@ import javax.servlet.ServletContext;
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	public static String COMPASS_DIR = "/home/" + System.getProperty("user.name") + "/compass";
+	public static String API_PACKAGE = "/com/anastasko/lnucompass/api";
 	
 	@Autowired
 	private Environment environment;
