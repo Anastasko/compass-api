@@ -13,8 +13,6 @@ public class EntityCityItemViewModel
 {
 
     @ApiObjectField
-    private AbstractEntityViewModel owner;
-    @ApiObjectField
     private String name;
     @ApiObjectField
     private Double longitude;
@@ -24,6 +22,8 @@ public class EntityCityItemViewModel
     private AbstractEntitiesViewModel maps;
     @ApiObjectField
     private AbstractEntityViewModel kind;
+    @ApiObjectField
+    private AbstractEntityViewModel owner;
 
     public EntityCityItemViewModel() {
         setMaps(new AbstractEntitiesViewModel());
@@ -31,20 +31,12 @@ public class EntityCityItemViewModel
 
     public EntityCityItemViewModel(EntityCityItem item) {
         super(item);
-        setOwner(new AbstractEntityViewModel(item.getOwner()));
         setName(item.getName());
         setLongitude(item.getLongitude());
         setLatitude(item.getLatitude());
         setMaps(new AbstractEntitiesViewModel(item.getMaps()));
         setKind(new AbstractEntityViewModel(item.getKind()));
-    }
-
-    public AbstractEntityViewModel getOwner() {
-        return owner;
-    }
-
-    public void setOwner(AbstractEntityViewModel owner) {
-        this.owner = owner;
+        setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
     public String getName() {
@@ -85,6 +77,14 @@ public class EntityCityItemViewModel
 
     public void setKind(AbstractEntityViewModel kind) {
         this.kind = kind;
+    }
+
+    public AbstractEntityViewModel getOwner() {
+        return owner;
+    }
+
+    public void setOwner(AbstractEntityViewModel owner) {
+        this.owner = owner;
     }
 
 }

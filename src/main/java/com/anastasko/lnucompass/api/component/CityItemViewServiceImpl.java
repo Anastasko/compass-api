@@ -30,11 +30,11 @@ public class CityItemViewServiceImpl
     @Autowired
     private UrlResourceViewService urlResourceViewService;
     @Autowired
-    private RootService rootService;
-    @Autowired
     private MapService mapService;
     @Autowired
     private ItemKindService itemKindService;
+    @Autowired
+    private RootService rootService;
     @Autowired
     private CityItemService cityItemService;
 
@@ -57,7 +57,6 @@ public class CityItemViewServiceImpl
     @Override
     @Transactional
     public void mergeFields(EntityCityItem entity, EntityCityItemViewModel item) {
-        entity.setOwner(rootService.getReference(item.getOwner().getId()));
         entity.setName(item.getName());
         entity.setLongitude(item.getLongitude());
         entity.setLatitude(item.getLatitude());
@@ -66,6 +65,7 @@ public class CityItemViewServiceImpl
             entity.getMaps().add(mapService.getReference(view.getId()));
         }
         entity.setKind(itemKindService.getReference(item.getKind().getId()));
+        entity.setOwner(rootService.getReference(item.getOwner().getId()));
     }
 
     @Override

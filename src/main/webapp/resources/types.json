@@ -1,57 +1,87 @@
 [ {
   "id" : 0,
-  "typeName" : null,
+  "typeName" : "Undefined",
   "typeKind" : "PRIMITIVE",
   "primitiveEntityType" : "INTEGER",
   "fields" : [ ]
 }, {
   "id" : 1,
-  "typeName" : null,
+  "typeName" : "Undefined",
   "typeKind" : "PRIMITIVE",
   "primitiveEntityType" : "STRING",
   "fields" : [ ]
 }, {
   "id" : 2,
-  "typeName" : null,
+  "typeName" : "Undefined",
   "typeKind" : "PRIMITIVE",
   "primitiveEntityType" : "DOUBLE",
   "fields" : [ ]
 }, {
   "id" : 3,
-  "typeName" : null,
+  "typeName" : "Undefined",
   "typeKind" : "PRIMITIVE",
   "primitiveEntityType" : "URL_RESOURCE",
   "fields" : [ ]
 }, {
   "id" : 4,
-  "typeName" : "ITEM_KIND",
+  "typeName" : "ItemKind",
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 19,
+    "id" : 17,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
     },
-    "fieldName" : "NAME"
+    "fieldName" : "name",
+    "label" : "Name",
+    "order" : 1
   }, {
-    "id" : 20,
+    "id" : 18,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 5
     },
-    "fieldName" : "IOS_ICON"
+    "fieldName" : "iosIcon",
+    "label" : "Ios Icon",
+    "order" : 2
   }, {
-    "id" : 21,
+    "id" : 19,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 6
     },
-    "fieldName" : "ANDROID_ICON"
+    "fieldName" : "androidIcon",
+    "label" : "Android Icon",
+    "order" : 3
   } ]
 }, {
   "id" : 5,
-  "typeName" : "IOS_ICON",
+  "typeName" : "IosIcon",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 10,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "size2x",
+    "label" : "Size 2x",
+    "order" : 1
+  }, {
+    "id" : 11,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "size3x",
+    "label" : "Size 3x",
+    "order" : 2
+  } ]
+}, {
+  "id" : 6,
+  "typeName" : "AndroidIcon",
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
@@ -60,142 +90,152 @@
     "fieldType" : {
       "id" : 3
     },
-    "fieldName" : "SIZE_2X"
+    "fieldName" : "xxxhdpi",
+    "label" : "Xxxhdpi",
+    "order" : 1
   }, {
     "id" : 13,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
     },
-    "fieldName" : "SIZE_3X"
-  } ]
-}, {
-  "id" : 6,
-  "typeName" : "ANDROID_ICON",
-  "typeKind" : "ENTITY",
-  "primitiveEntityType" : null,
-  "fields" : [ {
+    "fieldName" : "xxhdpi",
+    "label" : "Xxhdpi",
+    "order" : 2
+  }, {
     "id" : 14,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
     },
-    "fieldName" : "xxxhdpi"
+    "fieldName" : "xhdpi",
+    "label" : "Xhdpi",
+    "order" : 3
   }, {
     "id" : 15,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
     },
-    "fieldName" : "xxhdpi"
+    "fieldName" : "mdpi",
+    "label" : "Mdpi",
+    "order" : 4
   }, {
     "id" : 16,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
     },
-    "fieldName" : "xhdpi"
-  }, {
-    "id" : 17,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 3
-    },
-    "fieldName" : "mdpi"
-  }, {
-    "id" : 18,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 3
-    },
-    "fieldName" : "hdpi"
+    "fieldName" : "hdpi",
+    "label" : "Hdpi",
+    "order" : 5
   } ]
 }, {
   "id" : 7,
-  "typeName" : "ROOT",
+  "typeName" : "Root",
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 10,
+    "id" : 28,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 8
     },
-    "fieldName" : "CITY_ITEMS"
+    "fieldName" : "cityItems",
+    "label" : "City Items",
+    "order" : 1
   } ]
 }, {
   "id" : 8,
-  "typeName" : "CITY_ITEM",
-  "typeKind" : "ENTITY",
-  "primitiveEntityType" : null,
-  "fields" : [ {
-    "id" : 11,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 7
-    },
-    "fieldName" : "OWNER"
-  }, {
-    "id" : 24,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 1
-    },
-    "fieldName" : "NAME"
-  }, {
-    "id" : 25,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 2
-    },
-    "fieldName" : "LONGITUDE"
-  }, {
-    "id" : 26,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 2
-    },
-    "fieldName" : "LATITUDE"
-  }, {
-    "id" : 27,
-    "fieldKind" : "COLLECTION",
-    "fieldType" : {
-      "id" : 9
-    },
-    "fieldName" : "MAPS"
-  }, {
-    "id" : 28,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 4
-    },
-    "fieldName" : "KIND"
-  } ]
-}, {
-  "id" : 9,
-  "typeName" : "MAP",
+  "typeName" : "CityItem",
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
     "id" : 22,
     "fieldKind" : "REGULAR",
     "fieldType" : {
-      "id" : 3
+      "id" : 1
     },
-    "fieldName" : "IMAGE"
+    "fieldName" : "name",
+    "label" : "Name",
+    "order" : 1
   }, {
     "id" : 23,
     "fieldKind" : "REGULAR",
     "fieldType" : {
-      "id" : 0
+      "id" : 2
     },
-    "fieldName" : "FLOOR"
+    "fieldName" : "longitude",
+    "label" : "Longitude",
+    "order" : 2
+  }, {
+    "id" : 24,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "latitude",
+    "label" : "Latitude",
+    "order" : 3
+  }, {
+    "id" : 25,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 9
+    },
+    "fieldName" : "maps",
+    "label" : "Maps",
+    "order" : 4
+  }, {
+    "id" : 26,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 4
+    },
+    "fieldName" : "kind",
+    "label" : "Kind",
+    "order" : 5
   }, {
     "id" : 29,
     "fieldKind" : "REGULAR",
     "fieldType" : {
+      "id" : 7
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 6
+  } ]
+}, {
+  "id" : 9,
+  "typeName" : "Map",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 20,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "image",
+    "label" : "Image",
+    "order" : 1
+  }, {
+    "id" : 21,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 0
+    },
+    "fieldName" : "floor",
+    "label" : "Floor",
+    "order" : 2
+  }, {
+    "id" : 27,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
       "id" : 8
     },
-    "fieldName" : "OWNER"
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 3
   } ]
 } ]

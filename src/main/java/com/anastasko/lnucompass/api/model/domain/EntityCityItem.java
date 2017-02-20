@@ -24,8 +24,6 @@ public class EntityCityItem
     extends AbstractContentEntity
 {
 
-    @ManyToOne
-    private EntityRoot owner;
     @Basic
     @Column(nullable = true)
     private String name;
@@ -39,17 +37,11 @@ public class EntityCityItem
     private Set<EntityMap> maps;
     @ManyToOne
     private EntityItemKind kind;
+    @ManyToOne
+    private EntityRoot owner;
 
     public EntityCityItem() {
         setMaps(new HashSet<EntityMap>());
-    }
-
-    public EntityRoot getOwner() {
-        return owner;
-    }
-
-    public void setOwner(EntityRoot owner) {
-        this.owner = owner;
     }
 
     public String getName() {
@@ -90,6 +82,14 @@ public class EntityCityItem
 
     public void setKind(EntityItemKind kind) {
         this.kind = kind;
+    }
+
+    public EntityRoot getOwner() {
+        return owner;
+    }
+
+    public void setOwner(EntityRoot owner) {
+        this.owner = owner;
     }
 
 }
