@@ -4,14 +4,12 @@ package com.anastasko.lnucompass.api.component;
 import com.anastasko.lnucompass.api.infrastructure.CityItemService;
 import com.anastasko.lnucompass.api.infrastructure.CityItemViewService;
 import com.anastasko.lnucompass.api.infrastructure.ItemKindService;
-import com.anastasko.lnucompass.api.infrastructure.MapService;
 import com.anastasko.lnucompass.api.infrastructure.RootService;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
 import com.anastasko.lnucompass.api.model.view.EntityCityItemViewModel;
 import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.UrlResourceViewService;
-import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.ItemsVersionViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -29,8 +27,6 @@ public class CityItemViewServiceImpl
     private ObjectMapper objectMapper;
     @Autowired
     private UrlResourceViewService urlResourceViewService;
-    @Autowired
-    private MapService mapService;
     @Autowired
     private ItemKindService itemKindService;
     @Autowired
@@ -60,10 +56,6 @@ public class CityItemViewServiceImpl
         entity.setName(item.getName());
         entity.setLongitude(item.getLongitude());
         entity.setLatitude(item.getLatitude());
-        entity.getMaps().clear();
-        for (AbstractEntityViewModel view: item.getMaps()) {
-            entity.getMaps().add(mapService.getReference(view.getId()));
-        }
         entity.setKind(itemKindService.getReference(item.getKind().getId()));
         entity.setOwner(rootService.getReference(item.getOwner().getId()));
     }

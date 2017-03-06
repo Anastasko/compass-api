@@ -1,7 +1,6 @@
 
 package com.anastasko.lnucompass.api.component;
 
-import com.anastasko.lnucompass.api.infrastructure.CityItemService;
 import com.anastasko.lnucompass.api.infrastructure.RootService;
 import com.anastasko.lnucompass.api.infrastructure.RootViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityRoot;
@@ -9,7 +8,6 @@ import com.anastasko.lnucompass.api.model.view.EntityRootViewModel;
 import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.UrlResourceViewService;
-import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.ItemsVersionViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -27,8 +25,6 @@ public class RootViewServiceImpl
     private ObjectMapper objectMapper;
     @Autowired
     private UrlResourceViewService urlResourceViewService;
-    @Autowired
-    private CityItemService cityItemService;
     @Autowired
     private RootService rootService;
 
@@ -51,10 +47,6 @@ public class RootViewServiceImpl
     @Override
     @Transactional
     public void mergeFields(EntityRoot entity, EntityRootViewModel item) {
-        entity.getCityItems().clear();
-        for (AbstractEntityViewModel view: item.getCityItems()) {
-            entity.getCityItems().add(cityItemService.getReference(view.getId()));
-        }
     }
 
     @Override
