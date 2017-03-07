@@ -20,7 +20,7 @@ public class EntityMapItemViewModel
     @ApiObjectField
     private Double y;
     @ApiObjectField
-    private Double pathId;
+    private Double path;
     @ApiObjectField
     private AbstractEntityViewModel kind;
 
@@ -33,7 +33,7 @@ public class EntityMapItemViewModel
         setName(item.getName());
         setX(item.getX());
         setY(item.getY());
-        setPathId(item.getPathId());
+        setPath(item.getPath());
         setKind(new AbstractEntityViewModel(item.getKind()));
     }
 
@@ -69,12 +69,12 @@ public class EntityMapItemViewModel
         this.y = y;
     }
 
-    public Double getPathId() {
-        return pathId;
+    public Double getPath() {
+        return path;
     }
 
-    public void setPathId(Double pathId) {
-        this.pathId = pathId;
+    public void setPath(Double path) {
+        this.path = path;
     }
 
     public AbstractEntityViewModel getKind() {

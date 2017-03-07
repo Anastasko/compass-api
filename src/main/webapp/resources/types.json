@@ -294,8 +294,8 @@
     "fieldType" : {
       "id" : 2
     },
-    "fieldName" : "pathId",
-    "label" : "Path Id",
+    "fieldName" : "path",
+    "label" : "Path",
     "order" : 5
   }, {
     "id" : 35,

@@ -29,7 +29,7 @@ public class EntityMapItem
     private Double y;
     @Basic
     @Column(nullable = true)
-    private Double pathId;
+    private Double path;
     @ManyToOne
     private EntityItemKind kind;
 
@@ -68,12 +68,12 @@ public class EntityMapItem
         this.y = y;
     }
 
-    public Double getPathId() {
-        return pathId;
+    public Double getPath() {
+        return path;
     }
 
-    public void setPathId(Double pathId) {
-        this.pathId = pathId;
+    public void setPath(Double path) {
+        this.path = path;
     }
 
     public EntityItemKind getKind() {

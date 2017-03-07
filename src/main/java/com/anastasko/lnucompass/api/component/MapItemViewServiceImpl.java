@@ -55,7 +55,7 @@ public class MapItemViewServiceImpl
         entity.setName(item.getName());
         entity.setX(item.getX());
         entity.setY(item.getY());
-        entity.setPathId(item.getPathId());
+        entity.setPath(item.getPath());
         entity.setKind(itemKindService.getReference(item.getKind().getId()));
     }
 
