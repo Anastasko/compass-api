@@ -2,14 +2,14 @@
 package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityAndroidIcon;
-import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
+import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
 @ApiObject(name = "Android Icon")
 public class EntityAndroidIconViewModel
-    extends AbstractEntityViewModel
+    extends AbstractContentEntityViewModel
 {
 
     @ApiObjectField
