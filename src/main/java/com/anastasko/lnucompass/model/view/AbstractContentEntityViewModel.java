@@ -16,6 +16,7 @@ public class AbstractContentEntityViewModel extends AbstractEntityViewModel {
 	}
 
 	public AbstractContentEntityViewModel(AbstractContentEntity entity) {
+		super(entity);
 		setVersion(entity.getItem().getModified().getTime());
 	}
 
