@@ -16,7 +16,9 @@ public class AbstractEntityViewModel implements EntityViewModel<Long> {
 	}
 
 	public AbstractEntityViewModel(AbstractEntity entity) {
-		setId(entity.getId());
+		if (entity != null){
+			setId(entity.getId());
+		}
 	}
 
 	@Override

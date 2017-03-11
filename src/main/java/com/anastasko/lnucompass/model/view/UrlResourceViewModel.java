@@ -18,7 +18,9 @@ public class UrlResourceViewModel implements EntityViewModel<Long> {
     }
 
 	public UrlResourceViewModel(UrlResource r) {
-		setUrl(r.getUrl());
+		if (r != null) {
+			setUrl(r.getUrl());
+		}
 	}
 
 	public String getUrl() {
