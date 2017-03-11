@@ -84,4 +84,10 @@ public class EntityMapItem
         this.kind = kind;
     }
 
+    @Override
+    public Long getVersion() {
+        Long version = getItem().getModified().getTime();
+        return version;
+    }
+
 }

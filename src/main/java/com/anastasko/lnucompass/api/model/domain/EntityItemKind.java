@@ -22,7 +22,13 @@ public class EntityItemKind
     @ManyToOne
     private EntityIosIcon iosIcon;
     @ManyToOne
+    private EntityIosIcon iosSelectedIcon;
+    @ManyToOne
     private EntityAndroidIcon androidIcon;
+    @ManyToOne
+    private EntityIosIcon androidSelectedIcon;
+    @ManyToOne
+    private EntityRoot owner;
 
     public EntityItemKind() {
     }
@@ -43,12 +49,42 @@ public class EntityItemKind
         this.iosIcon = iosIcon;
     }
 
+    public EntityIosIcon getIosSelectedIcon() {
+        return iosSelectedIcon;
+    }
+
+    public void setIosSelectedIcon(EntityIosIcon iosSelectedIcon) {
+        this.iosSelectedIcon = iosSelectedIcon;
+    }
+
     public EntityAndroidIcon getAndroidIcon() {
         return androidIcon;
     }
 
     public void setAndroidIcon(EntityAndroidIcon androidIcon) {
         this.androidIcon = androidIcon;
+    }
+
+    public EntityIosIcon getAndroidSelectedIcon() {
+        return androidSelectedIcon;
+    }
+
+    public void setAndroidSelectedIcon(EntityIosIcon androidSelectedIcon) {
+        this.androidSelectedIcon = androidSelectedIcon;
+    }
+
+    public EntityRoot getOwner() {
+        return owner;
+    }
+
+    public void setOwner(EntityRoot owner) {
+        this.owner = owner;
+    }
+
+    @Override
+    public Long getVersion() {
+        Long version = getItem().getModified().getTime();
+        return version;
     }
 
 }

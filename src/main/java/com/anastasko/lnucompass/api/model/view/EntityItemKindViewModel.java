@@ -17,7 +17,13 @@ public class EntityItemKindViewModel
     @ApiObjectField
     private AbstractEntityViewModel iosIcon;
     @ApiObjectField
+    private AbstractEntityViewModel iosSelectedIcon;
+    @ApiObjectField
     private AbstractEntityViewModel androidIcon;
+    @ApiObjectField
+    private AbstractEntityViewModel androidSelectedIcon;
+    @ApiObjectField
+    private AbstractEntityViewModel owner;
 
     public EntityItemKindViewModel() {
     }
@@ -26,7 +32,10 @@ public class EntityItemKindViewModel
         super(item);
         setName(item.getName());
         setIosIcon(new AbstractEntityViewModel(item.getIosIcon()));
+        setIosSelectedIcon(new AbstractEntityViewModel(item.getIosSelectedIcon()));
         setAndroidIcon(new AbstractEntityViewModel(item.getAndroidIcon()));
+        setAndroidSelectedIcon(new AbstractEntityViewModel(item.getAndroidSelectedIcon()));
+        setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
     public String getName() {
@@ -45,12 +54,36 @@ public class EntityItemKindViewModel
         this.iosIcon = iosIcon;
     }
 
+    public AbstractEntityViewModel getIosSelectedIcon() {
+        return iosSelectedIcon;
+    }
+
+    public void setIosSelectedIcon(AbstractEntityViewModel iosSelectedIcon) {
+        this.iosSelectedIcon = iosSelectedIcon;
+    }
+
     public AbstractEntityViewModel getAndroidIcon() {
         return androidIcon;
     }
 
     public void setAndroidIcon(AbstractEntityViewModel androidIcon) {
         this.androidIcon = androidIcon;
+    }
+
+    public AbstractEntityViewModel getAndroidSelectedIcon() {
+        return androidSelectedIcon;
+    }
+
+    public void setAndroidSelectedIcon(AbstractEntityViewModel androidSelectedIcon) {
+        this.androidSelectedIcon = androidSelectedIcon;
+    }
+
+    public AbstractEntityViewModel getOwner() {
+        return owner;
+    }
+
+    public void setOwner(AbstractEntityViewModel owner) {
+        this.owner = owner;
     }
 
 }

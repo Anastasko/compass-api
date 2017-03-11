@@ -19,6 +19,8 @@ public class EntityCityItemViewModel
     @ApiObjectField
     private Double latitude;
     @ApiObjectField
+    private String address;
+    @ApiObjectField
     private AbstractEntityViewModel kind;
     @ApiObjectField
     private AbstractEntityViewModel owner;
@@ -31,6 +33,7 @@ public class EntityCityItemViewModel
         setName(item.getName());
         setLongitude(item.getLongitude());
         setLatitude(item.getLatitude());
+        setAddress(item.getAddress());
         setKind(new AbstractEntityViewModel(item.getKind()));
         setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
@@ -57,6 +60,14 @@ public class EntityCityItemViewModel
 
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public AbstractEntityViewModel getKind() {

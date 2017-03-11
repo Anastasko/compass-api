@@ -56,6 +56,7 @@ public class CityItemViewServiceImpl
         entity.setName(item.getName());
         entity.setLongitude(item.getLongitude());
         entity.setLatitude(item.getLatitude());
+        entity.setAddress(item.getAddress());
         entity.setKind(itemKindService.getReference(item.getKind().getId()));
         entity.setOwner(rootService.getReference(item.getOwner().getId()));
     }

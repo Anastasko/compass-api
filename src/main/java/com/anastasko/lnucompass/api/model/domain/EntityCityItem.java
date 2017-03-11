@@ -33,6 +33,9 @@ public class EntityCityItem
     @Basic
     @Column(nullable = true)
     private Double latitude;
+    @Basic
+    @Column(nullable = true)
+    private String address;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
     private Set<EntityMap> maps;
     @ManyToOne
@@ -68,6 +71,14 @@ public class EntityCityItem
         this.latitude = latitude;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Set<EntityMap> getMaps() {
         return maps;
     }
@@ -90,6 +101,12 @@ public class EntityCityItem
 
     public void setOwner(EntityRoot owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public Long getVersion() {
+        Long version = getItem().getModified().getTime();
+        return version;
     }
 
 }

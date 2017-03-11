@@ -3,7 +3,7 @@ package com.anastasko.lnucompass.model.domain;
 import javax.persistence.*;
 
 @MappedSuperclass
-public class AbstractContentEntity extends AbstractEntity {
+public abstract class AbstractContentEntity extends AbstractEntity {
 
     @MapsId
     @JoinColumn(name="id")
@@ -18,5 +18,6 @@ public class AbstractContentEntity extends AbstractEntity {
 		this.item = item;
 	}
 
-   
+	public abstract Long getVersion();
+
 }

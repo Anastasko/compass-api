@@ -34,8 +34,7 @@ public class UrlResourceViewServiceImpl
     @Override
     public ObjectNode toSynchronisationView(UrlResource e) {
         ObjectNode item = objectMapper.createObjectNode();
-        File file = new File(WebConfig.COMPASS_DIR + e.getUrl());
-        item.put("version", file.exists() ? file.lastModified() : 0);
+        item.put("version", e.getVersion());
         return item;
     }
 

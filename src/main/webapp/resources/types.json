@@ -49,11 +49,38 @@
     "id" : 20,
     "fieldKind" : "REGULAR",
     "fieldType" : {
+      "id" : 5
+    },
+    "fieldName" : "iosSelectedIcon",
+    "label" : "Ios Selected Icon",
+    "order" : 3
+  }, {
+    "id" : 21,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
       "id" : 6
     },
     "fieldName" : "androidIcon",
     "label" : "Android Icon",
-    "order" : 3
+    "order" : 4
+  }, {
+    "id" : 22,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 5
+    },
+    "fieldName" : "androidSelectedIcon",
+    "label" : "Android Selected Icon",
+    "order" : 5
+  }, {
+    "id" : 44,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 7
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 6
   } ]
 }, {
   "id" : 5,
@@ -78,6 +105,15 @@
     "fieldName" : "size3x",
     "label" : "Size 3x",
     "order" : 2
+  }, {
+    "id" : 45,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 7
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 3
   } ]
 }, {
   "id" : 6,
@@ -129,74 +165,8 @@
     "fieldName" : "hdpi",
     "label" : "Hdpi",
     "order" : 5
-  } ]
-}, {
-  "id" : 7,
-  "typeName" : "Root",
-  "typeKind" : "ENTITY",
-  "primitiveEntityType" : null,
-  "fields" : [ {
-    "id" : 36,
-    "fieldKind" : "COLLECTION",
-    "fieldType" : {
-      "id" : 8
-    },
-    "fieldName" : "cityItems",
-    "label" : "City Items",
-    "order" : 1
-  } ]
-}, {
-  "id" : 8,
-  "typeName" : "CityItem",
-  "typeKind" : "ENTITY",
-  "primitiveEntityType" : null,
-  "fields" : [ {
-    "id" : 25,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 1
-    },
-    "fieldName" : "name",
-    "label" : "Name",
-    "order" : 1
   }, {
-    "id" : 26,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 2
-    },
-    "fieldName" : "longitude",
-    "label" : "Longitude",
-    "order" : 2
-  }, {
-    "id" : 27,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 2
-    },
-    "fieldName" : "latitude",
-    "label" : "Latitude",
-    "order" : 3
-  }, {
-    "id" : 28,
-    "fieldKind" : "COLLECTION",
-    "fieldType" : {
-      "id" : 9
-    },
-    "fieldName" : "maps",
-    "label" : "Maps",
-    "order" : 4
-  }, {
-    "id" : 29,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 4
-    },
-    "fieldName" : "kind",
-    "label" : "Kind",
-    "order" : 5
-  }, {
-    "id" : 37,
+    "id" : 46,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 7
@@ -206,12 +176,123 @@
     "order" : 6
   } ]
 }, {
+  "id" : 7,
+  "typeName" : "Root",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 39,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 8
+    },
+    "fieldName" : "cityItems",
+    "label" : "City Items",
+    "order" : 1
+  }, {
+    "id" : 40,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 4
+    },
+    "fieldName" : "itemKinds",
+    "label" : "Item Kinds",
+    "order" : 2
+  }, {
+    "id" : 41,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 5
+    },
+    "fieldName" : "iosIcons",
+    "label" : "Ios Icons",
+    "order" : 3
+  }, {
+    "id" : 42,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 6
+    },
+    "fieldName" : "androidIcons",
+    "label" : "Android Icons",
+    "order" : 4
+  } ]
+}, {
+  "id" : 8,
+  "typeName" : "CityItem",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 27,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "name",
+    "label" : "Name",
+    "order" : 1
+  }, {
+    "id" : 28,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "longitude",
+    "label" : "Longitude",
+    "order" : 2
+  }, {
+    "id" : 29,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "latitude",
+    "label" : "Latitude",
+    "order" : 3
+  }, {
+    "id" : 30,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "address",
+    "label" : "Address",
+    "order" : 4
+  }, {
+    "id" : 31,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 9
+    },
+    "fieldName" : "maps",
+    "label" : "Maps",
+    "order" : 5
+  }, {
+    "id" : 32,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 4
+    },
+    "fieldName" : "kind",
+    "label" : "Kind",
+    "order" : 6
+  }, {
+    "id" : 43,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 7
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 7
+  } ]
+}, {
   "id" : 9,
   "typeName" : "Map",
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 21,
+    "id" : 23,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -220,7 +301,7 @@
     "label" : "Image",
     "order" : 1
   }, {
-    "id" : 22,
+    "id" : 24,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 0
@@ -229,7 +310,7 @@
     "label" : "Floor",
     "order" : 2
   }, {
-    "id" : 23,
+    "id" : 25,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 10
@@ -238,7 +319,7 @@
     "label" : "Map Items",
     "order" : 3
   }, {
-    "id" : 30,
+    "id" : 33,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 8
@@ -253,7 +334,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 24,
+    "id" : 26,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 9
@@ -262,7 +343,7 @@
     "label" : "Owner",
     "order" : 1
   }, {
-    "id" : 31,
+    "id" : 34,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
@@ -271,7 +352,7 @@
     "label" : "Name",
     "order" : 2
   }, {
-    "id" : 32,
+    "id" : 35,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -280,7 +361,7 @@
     "label" : "X",
     "order" : 3
   }, {
-    "id" : 33,
+    "id" : 36,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -289,7 +370,7 @@
     "label" : "Y",
     "order" : 4
   }, {
-    "id" : 34,
+    "id" : 37,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -298,7 +379,7 @@
     "label" : "Path",
     "order" : 5
   }, {
-    "id" : 35,
+    "id" : 38,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 4
