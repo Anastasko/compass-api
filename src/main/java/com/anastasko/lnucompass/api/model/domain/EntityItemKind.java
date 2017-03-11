@@ -26,7 +26,7 @@ public class EntityItemKind
     @ManyToOne
     private EntityAndroidIcon androidIcon;
     @ManyToOne
-    private EntityIosIcon androidSelectedIcon;
+    private EntityAndroidIcon androidSelectedIcon;
 
     public EntityItemKind() {
     }
@@ -63,11 +63,11 @@ public class EntityItemKind
         this.androidIcon = androidIcon;
     }
 
-    public EntityIosIcon getAndroidSelectedIcon() {
+    public EntityAndroidIcon getAndroidSelectedIcon() {
         return androidSelectedIcon;
     }
 
-    public void setAndroidSelectedIcon(EntityIosIcon androidSelectedIcon) {
+    public void setAndroidSelectedIcon(EntityAndroidIcon androidSelectedIcon) {
         this.androidSelectedIcon = androidSelectedIcon;
     }
 

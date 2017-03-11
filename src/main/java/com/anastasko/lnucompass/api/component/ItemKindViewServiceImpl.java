@@ -55,7 +55,7 @@ public class ItemKindViewServiceImpl
         entity.setIosIcon(iosIconService.getReference(item.getIosIcon().getId()));
         entity.setIosSelectedIcon(iosIconService.getReference(item.getIosSelectedIcon().getId()));
         entity.setAndroidIcon(androidIconService.getReference(item.getAndroidIcon().getId()));
-        entity.setAndroidSelectedIcon(iosIconService.getReference(item.getAndroidSelectedIcon().getId()));
+        entity.setAndroidSelectedIcon(androidIconService.getReference(item.getAndroidSelectedIcon().getId()));
     }
 
     @Override
