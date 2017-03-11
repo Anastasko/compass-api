@@ -35,7 +35,8 @@
     },
     "fieldName" : "name",
     "label" : "Name",
-    "order" : 1
+    "order" : 1,
+    "prefixPath" : ""
   }, {
     "id" : 19,
     "fieldKind" : "REGULAR",
@@ -44,7 +45,8 @@
     },
     "fieldName" : "iosIcon",
     "label" : "Ios Icon",
-    "order" : 2
+    "order" : 2,
+    "prefixPath" : ""
   }, {
     "id" : 20,
     "fieldKind" : "REGULAR",
@@ -53,7 +55,8 @@
     },
     "fieldName" : "iosSelectedIcon",
     "label" : "Ios Selected Icon",
-    "order" : 3
+    "order" : 3,
+    "prefixPath" : ""
   }, {
     "id" : 21,
     "fieldKind" : "REGULAR",
@@ -62,7 +65,8 @@
     },
     "fieldName" : "androidIcon",
     "label" : "Android Icon",
-    "order" : 4
+    "order" : 4,
+    "prefixPath" : ""
   }, {
     "id" : 22,
     "fieldKind" : "REGULAR",
@@ -71,7 +75,8 @@
     },
     "fieldName" : "androidSelectedIcon",
     "label" : "Android Selected Icon",
-    "order" : 5
+    "order" : 5,
+    "prefixPath" : ""
   } ]
 }, {
   "id" : 5,
@@ -86,7 +91,8 @@
     },
     "fieldName" : "size2x",
     "label" : "Size 2x",
-    "order" : 1
+    "order" : 1,
+    "prefixPath" : "/uploads/icons/ios"
   }, {
     "id" : 12,
     "fieldKind" : "REGULAR",
@@ -95,7 +101,8 @@
     },
     "fieldName" : "size3x",
     "label" : "Size 3x",
-    "order" : 2
+    "order" : 2,
+    "prefixPath" : "/uploads/icons/ios"
   } ]
 }, {
   "id" : 6,
@@ -110,7 +117,8 @@
     },
     "fieldName" : "xxxhdpi",
     "label" : "Xxxhdpi",
-    "order" : 1
+    "order" : 1,
+    "prefixPath" : ""
   }, {
     "id" : 14,
     "fieldKind" : "REGULAR",
@@ -119,7 +127,8 @@
     },
     "fieldName" : "xxhdpi",
     "label" : "Xxhdpi",
-    "order" : 2
+    "order" : 2,
+    "prefixPath" : ""
   }, {
     "id" : 15,
     "fieldKind" : "REGULAR",
@@ -128,7 +137,8 @@
     },
     "fieldName" : "xhdpi",
     "label" : "Xhdpi",
-    "order" : 3
+    "order" : 3,
+    "prefixPath" : ""
   }, {
     "id" : 16,
     "fieldKind" : "REGULAR",
@@ -137,7 +147,8 @@
     },
     "fieldName" : "mdpi",
     "label" : "Mdpi",
-    "order" : 4
+    "order" : 4,
+    "prefixPath" : ""
   }, {
     "id" : 17,
     "fieldKind" : "REGULAR",
@@ -146,7 +157,8 @@
     },
     "fieldName" : "hdpi",
     "label" : "Hdpi",
-    "order" : 5
+    "order" : 5,
+    "prefixPath" : ""
   } ]
 }, {
   "id" : 7,
@@ -161,7 +173,8 @@
     },
     "fieldName" : "cityItems",
     "label" : "City Items",
-    "order" : 1
+    "order" : 1,
+    "prefixPath" : ""
   } ]
 }, {
   "id" : 8,
@@ -176,7 +189,8 @@
     },
     "fieldName" : "name",
     "label" : "Name",
-    "order" : 1
+    "order" : 1,
+    "prefixPath" : ""
   }, {
     "id" : 28,
     "fieldKind" : "REGULAR",
@@ -185,7 +199,8 @@
     },
     "fieldName" : "longitude",
     "label" : "Longitude",
-    "order" : 2
+    "order" : 2,
+    "prefixPath" : ""
   }, {
     "id" : 29,
     "fieldKind" : "REGULAR",
@@ -194,7 +209,8 @@
     },
     "fieldName" : "latitude",
     "label" : "Latitude",
-    "order" : 3
+    "order" : 3,
+    "prefixPath" : ""
   }, {
     "id" : 30,
     "fieldKind" : "REGULAR",
@@ -203,7 +219,8 @@
     },
     "fieldName" : "address",
     "label" : "Address",
-    "order" : 4
+    "order" : 4,
+    "prefixPath" : ""
   }, {
     "id" : 31,
     "fieldKind" : "COLLECTION",
@@ -212,7 +229,8 @@
     },
     "fieldName" : "maps",
     "label" : "Maps",
-    "order" : 5
+    "order" : 5,
+    "prefixPath" : ""
   }, {
     "id" : 32,
     "fieldKind" : "REGULAR",
@@ -221,7 +239,8 @@
     },
     "fieldName" : "kind",
     "label" : "Kind",
-    "order" : 6
+    "order" : 6,
+    "prefixPath" : ""
   }, {
     "id" : 40,
     "fieldKind" : "REGULAR",
@@ -230,7 +249,8 @@
     },
     "fieldName" : "owner",
     "label" : "Owner",
-    "order" : 7
+    "order" : 7,
+    "prefixPath" : ""
   } ]
 }, {
   "id" : 9,
@@ -245,7 +265,8 @@
     },
     "fieldName" : "image",
     "label" : "Image",
-    "order" : 1
+    "order" : 1,
+    "prefixPath" : "/uploads/maps"
   }, {
     "id" : 24,
     "fieldKind" : "REGULAR",
@@ -254,7 +275,8 @@
     },
     "fieldName" : "floor",
     "label" : "Floor",
-    "order" : 2
+    "order" : 2,
+    "prefixPath" : ""
   }, {
     "id" : 25,
     "fieldKind" : "COLLECTION",
@@ -263,7 +285,8 @@
     },
     "fieldName" : "mapItems",
     "label" : "Map Items",
-    "order" : 3
+    "order" : 3,
+    "prefixPath" : ""
   }, {
     "id" : 33,
     "fieldKind" : "REGULAR",
@@ -272,7 +295,8 @@
     },
     "fieldName" : "owner",
     "label" : "Owner",
-    "order" : 4
+    "order" : 4,
+    "prefixPath" : ""
   } ]
 }, {
   "id" : 10,
@@ -287,7 +311,8 @@
     },
     "fieldName" : "owner",
     "label" : "Owner",
-    "order" : 1
+    "order" : 1,
+    "prefixPath" : ""
   }, {
     "id" : 34,
     "fieldKind" : "REGULAR",
@@ -296,7 +321,8 @@
     },
     "fieldName" : "name",
     "label" : "Name",
-    "order" : 2
+    "order" : 2,
+    "prefixPath" : ""
   }, {
     "id" : 35,
     "fieldKind" : "REGULAR",
@@ -305,7 +331,8 @@
     },
     "fieldName" : "x",
     "label" : "X",
-    "order" : 3
+    "order" : 3,
+    "prefixPath" : ""
   }, {
     "id" : 36,
     "fieldKind" : "REGULAR",
@@ -314,7 +341,8 @@
     },
     "fieldName" : "y",
     "label" : "Y",
-    "order" : 4
+    "order" : 4,
+    "prefixPath" : ""
   }, {
     "id" : 37,
     "fieldKind" : "REGULAR",
@@ -323,7 +351,8 @@
     },
     "fieldName" : "path",
     "label" : "Path",
-    "order" : 5
+    "order" : 5,
+    "prefixPath" : ""
   }, {
     "id" : 38,
     "fieldKind" : "REGULAR",
@@ -332,6 +361,7 @@
     },
     "fieldName" : "kind",
     "label" : "Kind",
-    "order" : 6
+    "order" : 6,
+    "prefixPath" : ""
   } ]
 } ]

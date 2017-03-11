@@ -55,4 +55,18 @@ public class ItemKindController {
         return itemKindViewService.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    public void update(
+        @RequestBody
+        EntityItemKindViewModel item) {
+        itemKindViewService.update(item);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public void delete(
+        @PathVariable("id")
+        Long id) {
+        itemKindViewService.delete(id);
+    }
+
 }

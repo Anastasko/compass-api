@@ -55,4 +55,18 @@ public class AndroidIconController {
         return androidIconViewService.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    public void update(
+        @RequestBody
+        EntityAndroidIconViewModel item) {
+        androidIconViewService.update(item);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public void delete(
+        @PathVariable("id")
+        Long id) {
+        androidIconViewService.delete(id);
+    }
+
 }

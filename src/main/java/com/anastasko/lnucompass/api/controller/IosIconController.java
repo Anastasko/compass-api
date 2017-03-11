@@ -55,4 +55,18 @@ public class IosIconController {
         return iosIconViewService.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    public void update(
+        @RequestBody
+        EntityIosIconViewModel item) {
+        iosIconViewService.update(item);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public void delete(
+        @PathVariable("id")
+        Long id) {
+        iosIconViewService.delete(id);
+    }
+
 }
