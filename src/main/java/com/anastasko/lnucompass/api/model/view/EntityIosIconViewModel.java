@@ -3,7 +3,6 @@ package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityIosIcon;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
-import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
@@ -17,8 +16,6 @@ public class EntityIosIconViewModel
     private UrlResourceViewModel size2x;
     @ApiObjectField
     private UrlResourceViewModel size3x;
-    @ApiObjectField
-    private AbstractEntityViewModel owner;
 
     public EntityIosIconViewModel() {
         setSize2x(new UrlResourceViewModel());
@@ -29,7 +26,6 @@ public class EntityIosIconViewModel
         super(item);
         setSize2x(new UrlResourceViewModel(item.getSize2x()));
         setSize3x(new UrlResourceViewModel(item.getSize3x()));
-        setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
     public UrlResourceViewModel getSize2x() {
@@ -46,14 +42,6 @@ public class EntityIosIconViewModel
 
     public void setSize3x(UrlResourceViewModel size3x) {
         this.size3x = size3x;
-    }
-
-    public AbstractEntityViewModel getOwner() {
-        return owner;
-    }
-
-    public void setOwner(AbstractEntityViewModel owner) {
-        this.owner = owner;
     }
 
 }

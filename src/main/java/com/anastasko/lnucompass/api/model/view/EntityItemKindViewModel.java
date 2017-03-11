@@ -22,8 +22,6 @@ public class EntityItemKindViewModel
     private AbstractEntityViewModel androidIcon;
     @ApiObjectField
     private AbstractEntityViewModel androidSelectedIcon;
-    @ApiObjectField
-    private AbstractEntityViewModel owner;
 
     public EntityItemKindViewModel() {
     }
@@ -35,7 +33,6 @@ public class EntityItemKindViewModel
         setIosSelectedIcon(new AbstractEntityViewModel(item.getIosSelectedIcon()));
         setAndroidIcon(new AbstractEntityViewModel(item.getAndroidIcon()));
         setAndroidSelectedIcon(new AbstractEntityViewModel(item.getAndroidSelectedIcon()));
-        setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
     public String getName() {
@@ -76,14 +73,6 @@ public class EntityItemKindViewModel
 
     public void setAndroidSelectedIcon(AbstractEntityViewModel androidSelectedIcon) {
         this.androidSelectedIcon = androidSelectedIcon;
-    }
-
-    public AbstractEntityViewModel getOwner() {
-        return owner;
-    }
-
-    public void setOwner(AbstractEntityViewModel owner) {
-        this.owner = owner;
     }
 
 }

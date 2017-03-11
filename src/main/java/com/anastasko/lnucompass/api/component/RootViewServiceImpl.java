@@ -41,9 +41,6 @@ public class RootViewServiceImpl
         item.put("id", entity.getId());
         item.put("version", entity.getItem().getModified().getTime());
         item.putPOJO("cityItems", new ItemsVersionViewModel(entity.getCityItems()));
-        item.putPOJO("itemKinds", new ItemsVersionViewModel(entity.getItemKinds()));
-        item.putPOJO("iosIcons", new ItemsVersionViewModel(entity.getIosIcons()));
-        item.putPOJO("androidIcons", new ItemsVersionViewModel(entity.getAndroidIcons()));
         return item;
     }
 

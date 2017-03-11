@@ -3,7 +3,6 @@ package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityAndroidIcon;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
-import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
@@ -23,8 +22,6 @@ public class EntityAndroidIconViewModel
     private UrlResourceViewModel mdpi;
     @ApiObjectField
     private UrlResourceViewModel hdpi;
-    @ApiObjectField
-    private AbstractEntityViewModel owner;
 
     public EntityAndroidIconViewModel() {
         setXxxhdpi(new UrlResourceViewModel());
@@ -41,7 +38,6 @@ public class EntityAndroidIconViewModel
         setXhdpi(new UrlResourceViewModel(item.getXhdpi()));
         setMdpi(new UrlResourceViewModel(item.getMdpi()));
         setHdpi(new UrlResourceViewModel(item.getHdpi()));
-        setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
     public UrlResourceViewModel getXxxhdpi() {
@@ -82,14 +78,6 @@ public class EntityAndroidIconViewModel
 
     public void setHdpi(UrlResourceViewModel hdpi) {
         this.hdpi = hdpi;
-    }
-
-    public AbstractEntityViewModel getOwner() {
-        return owner;
-    }
-
-    public void setOwner(AbstractEntityViewModel owner) {
-        this.owner = owner;
     }
 
 }

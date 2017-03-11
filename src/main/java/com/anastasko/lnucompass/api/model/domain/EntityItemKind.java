@@ -27,8 +27,6 @@ public class EntityItemKind
     private EntityAndroidIcon androidIcon;
     @ManyToOne
     private EntityIosIcon androidSelectedIcon;
-    @ManyToOne
-    private EntityRoot owner;
 
     public EntityItemKind() {
     }
@@ -71,14 +69,6 @@ public class EntityItemKind
 
     public void setAndroidSelectedIcon(EntityIosIcon androidSelectedIcon) {
         this.androidSelectedIcon = androidSelectedIcon;
-    }
-
-    public EntityRoot getOwner() {
-        return owner;
-    }
-
-    public void setOwner(EntityRoot owner) {
-        this.owner = owner;
     }
 
     @Override

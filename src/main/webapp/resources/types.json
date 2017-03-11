@@ -72,15 +72,6 @@
     "fieldName" : "androidSelectedIcon",
     "label" : "Android Selected Icon",
     "order" : 5
-  }, {
-    "id" : 44,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 7
-    },
-    "fieldName" : "owner",
-    "label" : "Owner",
-    "order" : 6
   } ]
 }, {
   "id" : 5,
@@ -105,15 +96,6 @@
     "fieldName" : "size3x",
     "label" : "Size 3x",
     "order" : 2
-  }, {
-    "id" : 45,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 7
-    },
-    "fieldName" : "owner",
-    "label" : "Owner",
-    "order" : 3
   } ]
 }, {
   "id" : 6,
@@ -165,15 +147,6 @@
     "fieldName" : "hdpi",
     "label" : "Hdpi",
     "order" : 5
-  }, {
-    "id" : 46,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 7
-    },
-    "fieldName" : "owner",
-    "label" : "Owner",
-    "order" : 6
   } ]
 }, {
   "id" : 7,
@@ -189,33 +162,6 @@
     "fieldName" : "cityItems",
     "label" : "City Items",
     "order" : 1
-  }, {
-    "id" : 40,
-    "fieldKind" : "COLLECTION",
-    "fieldType" : {
-      "id" : 4
-    },
-    "fieldName" : "itemKinds",
-    "label" : "Item Kinds",
-    "order" : 2
-  }, {
-    "id" : 41,
-    "fieldKind" : "COLLECTION",
-    "fieldType" : {
-      "id" : 5
-    },
-    "fieldName" : "iosIcons",
-    "label" : "Ios Icons",
-    "order" : 3
-  }, {
-    "id" : 42,
-    "fieldKind" : "COLLECTION",
-    "fieldType" : {
-      "id" : 6
-    },
-    "fieldName" : "androidIcons",
-    "label" : "Android Icons",
-    "order" : 4
   } ]
 }, {
   "id" : 8,
@@ -277,7 +223,7 @@
     "label" : "Kind",
     "order" : 6
   }, {
-    "id" : 43,
+    "id" : 40,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 7

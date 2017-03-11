@@ -3,7 +3,6 @@ package com.anastasko.lnucompass.api.component;
 
 import com.anastasko.lnucompass.api.infrastructure.IosIconService;
 import com.anastasko.lnucompass.api.infrastructure.IosIconViewService;
-import com.anastasko.lnucompass.api.infrastructure.RootService;
 import com.anastasko.lnucompass.api.model.domain.EntityIosIcon;
 import com.anastasko.lnucompass.api.model.view.EntityIosIconViewModel;
 import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
@@ -25,8 +24,6 @@ public class IosIconViewServiceImpl
     private ObjectMapper objectMapper;
     @Autowired
     private UrlResourceViewService urlResourceViewService;
-    @Autowired
-    private RootService rootService;
     @Autowired
     private IosIconService iosIconService;
 
@@ -52,7 +49,6 @@ public class IosIconViewServiceImpl
     public void mergeFields(EntityIosIcon entity, EntityIosIconViewModel item) {
         urlResourceViewService.mergeFields(entity.getSize2x(), item.getSize2x());
         urlResourceViewService.mergeFields(entity.getSize3x(), item.getSize3x());
-        entity.setOwner(rootService.getReference(item.getOwner().getId()));
     }
 
     @Override

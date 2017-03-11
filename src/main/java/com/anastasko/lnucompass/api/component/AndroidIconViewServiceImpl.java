@@ -3,7 +3,6 @@ package com.anastasko.lnucompass.api.component;
 
 import com.anastasko.lnucompass.api.infrastructure.AndroidIconService;
 import com.anastasko.lnucompass.api.infrastructure.AndroidIconViewService;
-import com.anastasko.lnucompass.api.infrastructure.RootService;
 import com.anastasko.lnucompass.api.model.domain.EntityAndroidIcon;
 import com.anastasko.lnucompass.api.model.view.EntityAndroidIconViewModel;
 import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
@@ -25,8 +24,6 @@ public class AndroidIconViewServiceImpl
     private ObjectMapper objectMapper;
     @Autowired
     private UrlResourceViewService urlResourceViewService;
-    @Autowired
-    private RootService rootService;
     @Autowired
     private AndroidIconService androidIconService;
 
@@ -58,7 +55,6 @@ public class AndroidIconViewServiceImpl
         urlResourceViewService.mergeFields(entity.getXhdpi(), item.getXhdpi());
         urlResourceViewService.mergeFields(entity.getMdpi(), item.getMdpi());
         urlResourceViewService.mergeFields(entity.getHdpi(), item.getHdpi());
-        entity.setOwner(rootService.getReference(item.getOwner().getId()));
     }
 
     @Override
