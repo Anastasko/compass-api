@@ -1,0 +1,377 @@
+[ {
+  "id" : 0,
+  "typeName" : "Undefined",
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "INTEGER",
+  "fields" : [ ]
+}, {
+  "id" : 1,
+  "typeName" : "Undefined",
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "STRING",
+  "fields" : [ ]
+}, {
+  "id" : 2,
+  "typeName" : "Undefined",
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "DOUBLE",
+  "fields" : [ ]
+}, {
+  "id" : 3,
+  "typeName" : "Undefined",
+  "typeKind" : "PRIMITIVE",
+  "primitiveEntityType" : "URL_RESOURCE",
+  "fields" : [ ]
+}, {
+  "id" : 4,
+  "typeName" : "ItemKind",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 18,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "name",
+    "label" : "Name",
+    "order" : 1,
+    "prefixPath" : ""
+  }, {
+    "id" : 19,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 5
+    },
+    "fieldName" : "iosIcon",
+    "label" : "Ios Icon",
+    "order" : 2,
+    "prefixPath" : ""
+  }, {
+    "id" : 20,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 5
+    },
+    "fieldName" : "iosSelectedIcon",
+    "label" : "Ios Selected Icon",
+    "order" : 3,
+    "prefixPath" : ""
+  }, {
+    "id" : 21,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 6
+    },
+    "fieldName" : "androidIcon",
+    "label" : "Android Icon",
+    "order" : 4,
+    "prefixPath" : ""
+  }, {
+    "id" : 22,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 6
+    },
+    "fieldName" : "androidSelectedIcon",
+    "label" : "Android Selected Icon",
+    "order" : 5,
+    "prefixPath" : ""
+  } ]
+}, {
+  "id" : 5,
+  "typeName" : "IosIcon",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 11,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "size2x",
+    "label" : "Size 2x",
+    "order" : 1,
+    "prefixPath" : "/uploads/icons/ios"
+  }, {
+    "id" : 12,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "size3x",
+    "label" : "Size 3x",
+    "order" : 2,
+    "prefixPath" : "/uploads/icons/ios"
+  } ]
+}, {
+  "id" : 6,
+  "typeName" : "AndroidIcon",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 13,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "xxxhdpi",
+    "label" : "Xxxhdpi",
+    "order" : 1,
+    "prefixPath" : ""
+  }, {
+    "id" : 14,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "xxhdpi",
+    "label" : "Xxhdpi",
+    "order" : 2,
+    "prefixPath" : ""
+  }, {
+    "id" : 15,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "xhdpi",
+    "label" : "Xhdpi",
+    "order" : 3,
+    "prefixPath" : ""
+  }, {
+    "id" : 16,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "mdpi",
+    "label" : "Mdpi",
+    "order" : 4,
+    "prefixPath" : ""
+  }, {
+    "id" : 17,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "hdpi",
+    "label" : "Hdpi",
+    "order" : 5,
+    "prefixPath" : ""
+  } ]
+}, {
+  "id" : 7,
+  "typeName" : "Root",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 40,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 8
+    },
+    "fieldName" : "cityItems",
+    "label" : "City Items",
+    "order" : 1,
+    "prefixPath" : ""
+  } ]
+}, {
+  "id" : 8,
+  "typeName" : "CityItem",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 27,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "name",
+    "label" : "Name",
+    "order" : 1,
+    "prefixPath" : ""
+  }, {
+    "id" : 28,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "longitude",
+    "label" : "Longitude",
+    "order" : 2,
+    "prefixPath" : ""
+  }, {
+    "id" : 29,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "latitude",
+    "label" : "Latitude",
+    "order" : 3,
+    "prefixPath" : ""
+  }, {
+    "id" : 30,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "address",
+    "label" : "Address",
+    "order" : 4,
+    "prefixPath" : ""
+  }, {
+    "id" : 31,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 9
+    },
+    "fieldName" : "maps",
+    "label" : "Maps",
+    "order" : 5,
+    "prefixPath" : ""
+  }, {
+    "id" : 32,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 4
+    },
+    "fieldName" : "kind",
+    "label" : "Kind",
+    "order" : 6,
+    "prefixPath" : ""
+  }, {
+    "id" : 41,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 7
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 7,
+    "prefixPath" : ""
+  } ]
+}, {
+  "id" : 9,
+  "typeName" : "Map",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 23,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "image",
+    "label" : "Image",
+    "order" : 1,
+    "prefixPath" : "/uploads/maps"
+  }, {
+    "id" : 24,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 0
+    },
+    "fieldName" : "floor",
+    "label" : "Floor",
+    "order" : 2,
+    "prefixPath" : ""
+  }, {
+    "id" : 25,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 10
+    },
+    "fieldName" : "mapItems",
+    "label" : "Map Items",
+    "order" : 3,
+    "prefixPath" : ""
+  }, {
+    "id" : 33,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 8
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 4,
+    "prefixPath" : ""
+  } ]
+}, {
+  "id" : 10,
+  "typeName" : "MapItem",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 26,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 9
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 1,
+    "prefixPath" : ""
+  }, {
+    "id" : 34,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "name",
+    "label" : "Name",
+    "order" : 2,
+    "prefixPath" : ""
+  }, {
+    "id" : 35,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "x",
+    "label" : "X",
+    "order" : 3,
+    "prefixPath" : ""
+  }, {
+    "id" : 36,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "y",
+    "label" : "Y",
+    "order" : 4,
+    "prefixPath" : ""
+  }, {
+    "id" : 37,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 2
+    },
+    "fieldName" : "square",
+    "label" : "Square",
+    "order" : 5,
+    "prefixPath" : ""
+  }, {
+    "id" : 38,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "room",
+    "label" : "Room",
+    "order" : 6,
+    "prefixPath" : ""
+  }, {
+    "id" : 39,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 4
+    },
+    "fieldName" : "kind",
+    "label" : "Kind",
+    "order" : 7,
+    "prefixPath" : ""
+  } ]
+} ]
