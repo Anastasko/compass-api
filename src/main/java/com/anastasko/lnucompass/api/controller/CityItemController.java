@@ -4,9 +4,11 @@ package com.anastasko.lnucompass.api.controller;
 import java.util.List;
 import com.anastasko.lnucompass.api.infrastructure.CityItemService;
 import com.anastasko.lnucompass.api.infrastructure.CityItemViewService;
+import com.anastasko.lnucompass.api.infrastructure.FacultyViewService;
 import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
 import com.anastasko.lnucompass.api.model.view.EntityCityItemViewModel;
+import com.anastasko.lnucompass.api.model.view.EntityFacultyViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
@@ -30,6 +32,8 @@ public class CityItemController {
     private CityItemService cityItemService;
     @Autowired
     private MapViewService mapViewService;
+    @Autowired
+    private FacultyViewService facultyViewService;
 
     @RequestMapping(method = RequestMethod.GET)
     public List<EntityCityItemViewModel> findAll() {
@@ -73,6 +77,17 @@ public class CityItemController {
             throw new ResourceNotFoundException(("CityItem does not exist. id="+ id));
         }
         return mapViewService.viewModels(item.getMaps());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/faculties")
+    public List<EntityFacultyViewModel> find_faculties(
+        @PathVariable("id")
+        Long id) {
+        EntityCityItem item = cityItemService.findOne(id, "facultiesGraph");
+        if (item == null) {
+            throw new ResourceNotFoundException(("CityItem does not exist. id="+ id));
+        }
+        return facultyViewService.viewModels(item.getFaculties());
     }
 
     @RequestMapping(method = RequestMethod.PUT)

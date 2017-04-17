@@ -28,7 +28,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 18,
+    "id" : 24,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
@@ -38,7 +38,7 @@
     "order" : 1,
     "prefixPath" : ""
   }, {
-    "id" : 19,
+    "id" : 25,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 5
@@ -48,7 +48,7 @@
     "order" : 2,
     "prefixPath" : ""
   }, {
-    "id" : 20,
+    "id" : 26,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 5
@@ -58,7 +58,7 @@
     "order" : 3,
     "prefixPath" : ""
   }, {
-    "id" : 21,
+    "id" : 27,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 6
@@ -68,7 +68,7 @@
     "order" : 4,
     "prefixPath" : ""
   }, {
-    "id" : 22,
+    "id" : 28,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 6
@@ -84,7 +84,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 11,
+    "id" : 17,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -94,7 +94,7 @@
     "order" : 1,
     "prefixPath" : "/uploads/icons/ios"
   }, {
-    "id" : 12,
+    "id" : 18,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -110,7 +110,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 13,
+    "id" : 19,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -120,7 +120,7 @@
     "order" : 1,
     "prefixPath" : ""
   }, {
-    "id" : 14,
+    "id" : 20,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -130,7 +130,7 @@
     "order" : 2,
     "prefixPath" : ""
   }, {
-    "id" : 15,
+    "id" : 21,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -140,7 +140,7 @@
     "order" : 3,
     "prefixPath" : ""
   }, {
-    "id" : 16,
+    "id" : 22,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -150,7 +150,7 @@
     "order" : 4,
     "prefixPath" : ""
   }, {
-    "id" : 17,
+    "id" : 23,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -166,7 +166,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 40,
+    "id" : 49,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 8
@@ -182,7 +182,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 27,
+    "id" : 33,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
@@ -192,7 +192,7 @@
     "order" : 1,
     "prefixPath" : ""
   }, {
-    "id" : 28,
+    "id" : 34,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -202,7 +202,7 @@
     "order" : 2,
     "prefixPath" : ""
   }, {
-    "id" : 29,
+    "id" : 35,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -212,7 +212,7 @@
     "order" : 3,
     "prefixPath" : ""
   }, {
-    "id" : 30,
+    "id" : 36,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
@@ -222,7 +222,7 @@
     "order" : 4,
     "prefixPath" : ""
   }, {
-    "id" : 31,
+    "id" : 37,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 9
@@ -232,7 +232,7 @@
     "order" : 5,
     "prefixPath" : ""
   }, {
-    "id" : 32,
+    "id" : 38,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 4
@@ -242,14 +242,24 @@
     "order" : 6,
     "prefixPath" : ""
   }, {
-    "id" : 41,
+    "id" : 39,
+    "fieldKind" : "COLLECTION",
+    "fieldType" : {
+      "id" : 11
+    },
+    "fieldName" : "faculties",
+    "label" : "Faculties",
+    "order" : 7,
+    "prefixPath" : ""
+  }, {
+    "id" : 50,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 7
     },
     "fieldName" : "owner",
     "label" : "Owner",
-    "order" : 7,
+    "order" : 8,
     "prefixPath" : ""
   } ]
 }, {
@@ -258,7 +268,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 23,
+    "id" : 29,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 3
@@ -268,7 +278,7 @@
     "order" : 1,
     "prefixPath" : "/uploads/maps"
   }, {
-    "id" : 24,
+    "id" : 30,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 0
@@ -278,7 +288,7 @@
     "order" : 2,
     "prefixPath" : ""
   }, {
-    "id" : 25,
+    "id" : 31,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 10
@@ -288,7 +298,7 @@
     "order" : 3,
     "prefixPath" : ""
   }, {
-    "id" : 33,
+    "id" : 40,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 8
@@ -304,7 +314,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 26,
+    "id" : 32,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 9
@@ -314,7 +324,7 @@
     "order" : 1,
     "prefixPath" : ""
   }, {
-    "id" : 34,
+    "id" : 42,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
@@ -324,7 +334,7 @@
     "order" : 2,
     "prefixPath" : ""
   }, {
-    "id" : 35,
+    "id" : 43,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -334,7 +344,7 @@
     "order" : 3,
     "prefixPath" : ""
   }, {
-    "id" : 36,
+    "id" : 44,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -344,7 +354,7 @@
     "order" : 4,
     "prefixPath" : ""
   }, {
-    "id" : 37,
+    "id" : 45,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
@@ -354,7 +364,7 @@
     "order" : 5,
     "prefixPath" : ""
   }, {
-    "id" : 38,
+    "id" : 46,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
@@ -364,7 +374,7 @@
     "order" : 6,
     "prefixPath" : ""
   }, {
-    "id" : 39,
+    "id" : 47,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 4
@@ -372,6 +382,82 @@
     "fieldName" : "kind",
     "label" : "Kind",
     "order" : 7,
+    "prefixPath" : ""
+  }, {
+    "id" : 48,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 11
+    },
+    "fieldName" : "faculty",
+    "label" : "Faculty",
+    "order" : 8,
+    "prefixPath" : ""
+  } ]
+}, {
+  "id" : 11,
+  "typeName" : "Faculty",
+  "typeKind" : "ENTITY",
+  "primitiveEntityType" : null,
+  "fields" : [ {
+    "id" : 12,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "name",
+    "label" : "Name",
+    "order" : 1,
+    "prefixPath" : ""
+  }, {
+    "id" : 13,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "phone",
+    "label" : "Phone",
+    "order" : 2,
+    "prefixPath" : ""
+  }, {
+    "id" : 14,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "email",
+    "label" : "Email",
+    "order" : 3,
+    "prefixPath" : ""
+  }, {
+    "id" : 15,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "website",
+    "label" : "Website",
+    "order" : 4,
+    "prefixPath" : ""
+  }, {
+    "id" : 16,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 3
+    },
+    "fieldName" : "icon",
+    "label" : "Icon",
+    "order" : 5,
+    "prefixPath" : "/uploads/faculties"
+  }, {
+    "id" : 41,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 8
+    },
+    "fieldName" : "owner",
+    "label" : "Owner",
+    "order" : 6,
     "prefixPath" : ""
   } ]
 } ]

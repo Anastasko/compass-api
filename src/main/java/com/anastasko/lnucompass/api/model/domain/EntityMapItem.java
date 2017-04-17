@@ -35,6 +35,8 @@ public class EntityMapItem
     private String room;
     @ManyToOne
     private EntityItemKind kind;
+    @ManyToOne
+    private EntityFaculty faculty;
 
     public EntityMapItem() {
     }
@@ -93,6 +95,14 @@ public class EntityMapItem
 
     public void setKind(EntityItemKind kind) {
         this.kind = kind;
+    }
+
+    public EntityFaculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(EntityFaculty faculty) {
+        this.faculty = faculty;
     }
 
     @Override

@@ -18,6 +18,9 @@ import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
 @NamedEntityGraphs({
     @NamedEntityGraph(name = "mapsGraph", attributeNodes = {
         @NamedAttributeNode("maps")
+    }),
+    @NamedEntityGraph(name = "facultiesGraph", attributeNodes = {
+        @NamedAttributeNode("faculties")
     })
 })
 public class EntityCityItem
@@ -40,11 +43,14 @@ public class EntityCityItem
     private Set<EntityMap> maps;
     @ManyToOne
     private EntityItemKind kind;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
+    private Set<EntityFaculty> faculties;
     @ManyToOne
     private EntityRoot owner;
 
     public EntityCityItem() {
         setMaps(new HashSet<EntityMap>());
+        setFaculties(new HashSet<EntityFaculty>());
     }
 
     public String getName() {
@@ -93,6 +99,14 @@ public class EntityCityItem
 
     public void setKind(EntityItemKind kind) {
         this.kind = kind;
+    }
+
+    public Set<EntityFaculty> getFaculties() {
+        return faculties;
+    }
+
+    public void setFaculties(Set<EntityFaculty> faculties) {
+        this.faculties = faculties;
     }
 
     public EntityRoot getOwner() {

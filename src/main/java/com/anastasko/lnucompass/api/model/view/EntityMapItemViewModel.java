@@ -26,6 +26,8 @@ public class EntityMapItemViewModel
     private String room;
     @ApiObjectField
     private AbstractEntityViewModel kind;
+    @ApiObjectField
+    private AbstractEntityViewModel faculty;
 
     public EntityMapItemViewModel() {
     }
@@ -39,6 +41,7 @@ public class EntityMapItemViewModel
         setSquare(item.getSquare());
         setRoom(item.getRoom());
         setKind(new AbstractEntityViewModel(item.getKind()));
+        setFaculty(new AbstractEntityViewModel(item.getFaculty()));
     }
 
     public AbstractEntityViewModel getOwner() {
@@ -95,6 +98,14 @@ public class EntityMapItemViewModel
 
     public void setKind(AbstractEntityViewModel kind) {
         this.kind = kind;
+    }
+
+    public AbstractEntityViewModel getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(AbstractEntityViewModel faculty) {
+        this.faculty = faculty;
     }
 
 }

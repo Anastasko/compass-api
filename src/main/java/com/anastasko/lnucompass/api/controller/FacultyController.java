@@ -2,8 +2,8 @@
 package com.anastasko.lnucompass.api.controller;
 
 import java.util.List;
-import com.anastasko.lnucompass.api.infrastructure.MapItemViewService;
-import com.anastasko.lnucompass.api.model.view.EntityMapItemViewModel;
+import com.anastasko.lnucompass.api.infrastructure.FacultyViewService;
+import com.anastasko.lnucompass.api.model.view.EntityFacultyViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jsondoc.core.annotation.Api;
@@ -14,66 +14,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "Map Item", description = "Map Item")
+@Api(name = "Faculty", description = "Faculty")
 @RestController
-@RequestMapping("/mapItem")
-public class MapItemController {
+@RequestMapping("/faculty")
+public class FacultyController {
 
     @Autowired
-    private MapItemViewService mapItemViewService;
+    private FacultyViewService facultyViewService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<EntityMapItemViewModel> findAll() {
-        return mapItemViewService.findAll();
+    public List<EntityFacultyViewModel> findAll() {
+        return facultyViewService.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/find")
     public List<ObjectNode> forSynchronisation(
         @RequestBody
         LongIdsList ids) {
-        return mapItemViewService.findForSynchronisation(ids.getIds());
+        return facultyViewService.findForSynchronisation(ids.getIds());
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public Long create(
         @RequestBody
-        EntityMapItemViewModel item) {
-        return mapItemViewService.create(item);
+        EntityFacultyViewModel item) {
+        return facultyViewService.create(item);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/findMany")
-    public List<EntityMapItemViewModel> findMany(
+    public List<EntityFacultyViewModel> findMany(
         @RequestBody
         LongIdsList ids) {
-        return mapItemViewService.findMany(ids.getIds());
+        return facultyViewService.findMany(ids.getIds());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public EntityMapItemViewModel findOne(
+    public EntityFacultyViewModel findOne(
         @PathVariable("id")
         Long id) {
-        return mapItemViewService.findOne(id);
+        return facultyViewService.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     public void update(
         @RequestBody
-        EntityMapItemViewModel item) {
-        mapItemViewService.update(item);
+        EntityFacultyViewModel item) {
+        facultyViewService.update(item);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void delete(
         @PathVariable("id")
         Long id) {
-        mapItemViewService.delete(id);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/findByRoom/{room}")
-    public EntityMapItemViewModel findOneByRoom(
-        @PathVariable("room")
-        String room) {
-        return mapItemViewService.findOneByAttribute("room", room);
+        facultyViewService.delete(id);
     }
 
 }

@@ -47,6 +47,7 @@ public class CityItemViewServiceImpl
         item.put("id", entity.getId());
         item.put("version", entity.getItem().getModified().getTime());
         item.putPOJO("maps", new ItemsVersionViewModel(entity.getMaps()));
+        item.putPOJO("faculties", new ItemsVersionViewModel(entity.getFaculties()));
         return item;
     }
 

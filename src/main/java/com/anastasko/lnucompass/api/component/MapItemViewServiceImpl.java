@@ -1,6 +1,7 @@
 
 package com.anastasko.lnucompass.api.component;
 
+import com.anastasko.lnucompass.api.infrastructure.FacultyService;
 import com.anastasko.lnucompass.api.infrastructure.ItemKindService;
 import com.anastasko.lnucompass.api.infrastructure.MapItemService;
 import com.anastasko.lnucompass.api.infrastructure.MapItemViewService;
@@ -31,6 +32,8 @@ public class MapItemViewServiceImpl
     @Autowired
     private ItemKindService itemKindService;
     @Autowired
+    private FacultyService facultyService;
+    @Autowired
     private MapItemService mapItemService;
 
     @Override
@@ -58,6 +61,7 @@ public class MapItemViewServiceImpl
         entity.setSquare(item.getSquare());
         entity.setRoom(item.getRoom());
         entity.setKind(itemKindService.getReference(item.getKind().getId()));
+        entity.setFaculty(facultyService.getReference(item.getFaculty().getId()));
     }
 
     @Override
