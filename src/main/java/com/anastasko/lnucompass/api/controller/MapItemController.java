@@ -69,11 +69,4 @@ public class MapItemController {
         mapItemViewService.delete(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/findByRoom/{room}")
-    public EntityMapItemViewModel findOneByRoom(
-        @PathVariable("room")
-        String room) {
-        return mapItemViewService.findOneByAttribute("room", room);
-    }
-
 }
