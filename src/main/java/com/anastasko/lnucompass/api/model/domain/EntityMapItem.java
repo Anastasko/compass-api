@@ -23,12 +23,6 @@ public class EntityMapItem
     private String name;
     @Basic
     @Column(nullable = true)
-    private Double x;
-    @Basic
-    @Column(nullable = true)
-    private Double y;
-    @Basic
-    @Column(nullable = true)
     private Double square;
     @Basic
     @Column(nullable = true)
@@ -55,22 +49,6 @@ public class EntityMapItem
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Double getX() {
-        return x;
-    }
-
-    public void setX(Double x) {
-        this.x = x;
-    }
-
-    public Double getY() {
-        return y;
-    }
-
-    public void setY(Double y) {
-        this.y = y;
     }
 
     public Double getSquare() {

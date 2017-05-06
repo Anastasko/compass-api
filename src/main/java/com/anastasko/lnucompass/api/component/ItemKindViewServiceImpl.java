@@ -52,10 +52,10 @@ public class ItemKindViewServiceImpl
     @Transactional
     public void mergeFields(EntityItemKind entity, EntityItemKindViewModel item) {
         entity.setName(item.getName());
-        entity.setIosIcon(iosIconService.getReference(item.getIosIcon().getId()));
-        entity.setIosSelectedIcon(iosIconService.getReference(item.getIosSelectedIcon().getId()));
-        entity.setAndroidIcon(androidIconService.getReference(item.getAndroidIcon().getId()));
-        entity.setAndroidSelectedIcon(androidIconService.getReference(item.getAndroidSelectedIcon().getId()));
+        entity.setIosIcon(((item.getIosIcon() == null)?null:iosIconService.getReference(item.getIosIcon().getId())));
+        entity.setIosSelectedIcon(((item.getIosSelectedIcon() == null)?null:iosIconService.getReference(item.getIosSelectedIcon().getId())));
+        entity.setAndroidIcon(((item.getAndroidIcon() == null)?null:androidIconService.getReference(item.getAndroidIcon().getId())));
+        entity.setAndroidSelectedIcon(((item.getAndroidSelectedIcon() == null)?null:androidIconService.getReference(item.getAndroidSelectedIcon().getId())));
     }
 
     @Override

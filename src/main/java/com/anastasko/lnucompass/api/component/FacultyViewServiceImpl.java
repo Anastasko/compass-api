@@ -54,7 +54,7 @@ public class FacultyViewServiceImpl
         entity.setEmail(item.getEmail());
         entity.setWebsite(item.getWebsite());
         urlResourceViewService.mergeFields(entity.getIcon(), item.getIcon());
-        entity.setOwner(cityItemService.getReference(item.getOwner().getId()));
+        entity.setOwner(((item.getOwner() == null)?null:cityItemService.getReference(item.getOwner().getId())));
     }
 
     @Override

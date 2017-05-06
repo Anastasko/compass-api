@@ -32,6 +32,9 @@ public class EntityCityItem
     private String name;
     @Basic
     @Column(nullable = true)
+    private String placeId;
+    @Basic
+    @Column(nullable = true)
     private Double longitude;
     @Basic
     @Column(nullable = true)
@@ -59,6 +62,14 @@ public class EntityCityItem
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
     }
 
     public Double getLongitude() {

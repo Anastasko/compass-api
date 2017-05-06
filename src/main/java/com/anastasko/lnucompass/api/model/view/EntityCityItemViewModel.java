@@ -15,6 +15,8 @@ public class EntityCityItemViewModel
     @ApiObjectField
     private String name;
     @ApiObjectField
+    private String placeId;
+    @ApiObjectField
     private Double longitude;
     @ApiObjectField
     private Double latitude;
@@ -31,6 +33,7 @@ public class EntityCityItemViewModel
     public EntityCityItemViewModel(EntityCityItem item) {
         super(item);
         setName(item.getName());
+        setPlaceId(item.getPlaceId());
         setLongitude(item.getLongitude());
         setLatitude(item.getLatitude());
         setAddress(item.getAddress());
@@ -44,6 +47,14 @@ public class EntityCityItemViewModel
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
     }
 
     public Double getLongitude() {

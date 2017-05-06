@@ -17,10 +17,6 @@ public class EntityMapItemViewModel
     @ApiObjectField
     private String name;
     @ApiObjectField
-    private Double x;
-    @ApiObjectField
-    private Double y;
-    @ApiObjectField
     private Double square;
     @ApiObjectField
     private String room;
@@ -36,8 +32,6 @@ public class EntityMapItemViewModel
         super(item);
         setOwner(new AbstractEntityViewModel(item.getOwner()));
         setName(item.getName());
-        setX(item.getX());
-        setY(item.getY());
         setSquare(item.getSquare());
         setRoom(item.getRoom());
         setKind(new AbstractEntityViewModel(item.getKind()));
@@ -58,22 +52,6 @@ public class EntityMapItemViewModel
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Double getX() {
-        return x;
-    }
-
-    public void setX(Double x) {
-        this.x = x;
-    }
-
-    public Double getY() {
-        return y;
-    }
-
-    public void setY(Double y) {
-        this.y = y;
     }
 
     public Double getSquare() {

@@ -166,7 +166,7 @@
   "typeKind" : "ENTITY",
   "primitiveEntityType" : null,
   "fields" : [ {
-    "id" : 49,
+    "id" : 48,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 8
@@ -195,10 +195,10 @@
     "id" : 34,
     "fieldKind" : "REGULAR",
     "fieldType" : {
-      "id" : 2
+      "id" : 1
     },
-    "fieldName" : "longitude",
-    "label" : "Longitude",
+    "fieldName" : "placeId",
+    "label" : "Place Id",
     "order" : 2,
     "prefixPath" : ""
   }, {
@@ -207,59 +207,69 @@
     "fieldType" : {
       "id" : 2
     },
-    "fieldName" : "latitude",
-    "label" : "Latitude",
+    "fieldName" : "longitude",
+    "label" : "Longitude",
     "order" : 3,
     "prefixPath" : ""
   }, {
     "id" : 36,
     "fieldKind" : "REGULAR",
     "fieldType" : {
-      "id" : 1
+      "id" : 2
     },
-    "fieldName" : "address",
-    "label" : "Address",
+    "fieldName" : "latitude",
+    "label" : "Latitude",
     "order" : 4,
     "prefixPath" : ""
   }, {
     "id" : 37,
+    "fieldKind" : "REGULAR",
+    "fieldType" : {
+      "id" : 1
+    },
+    "fieldName" : "address",
+    "label" : "Address",
+    "order" : 5,
+    "prefixPath" : ""
+  }, {
+    "id" : 38,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 9
     },
     "fieldName" : "maps",
     "label" : "Maps",
-    "order" : 5,
+    "order" : 6,
     "prefixPath" : ""
   }, {
-    "id" : 38,
+    "id" : 39,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 4
     },
     "fieldName" : "kind",
     "label" : "Kind",
-    "order" : 6,
+    "order" : 7,
     "prefixPath" : ""
   }, {
-    "id" : 39,
+    "id" : 40,
     "fieldKind" : "COLLECTION",
     "fieldType" : {
       "id" : 11
     },
     "fieldName" : "faculties",
     "label" : "Faculties",
-    "order" : 7,
+    "order" : 8,
     "prefixPath" : ""
   }, {
-    "id" : 50,
+    "id" : 49,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 7
     },
     "fieldName" : "owner",
     "label" : "Owner",
-    "order" : 8,
+    "order" : 9,
     "prefixPath" : ""
   } ]
 }, {
@@ -298,7 +308,7 @@
     "order" : 3,
     "prefixPath" : ""
   }, {
-    "id" : 40,
+    "id" : 41,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 8
@@ -324,7 +334,7 @@
     "order" : 1,
     "prefixPath" : ""
   }, {
-    "id" : 42,
+    "id" : 43,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
@@ -334,64 +344,44 @@
     "order" : 2,
     "prefixPath" : ""
   }, {
-    "id" : 43,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 2
-    },
-    "fieldName" : "x",
-    "label" : "X",
-    "order" : 3,
-    "prefixPath" : ""
-  }, {
     "id" : 44,
-    "fieldKind" : "REGULAR",
-    "fieldType" : {
-      "id" : 2
-    },
-    "fieldName" : "y",
-    "label" : "Y",
-    "order" : 4,
-    "prefixPath" : ""
-  }, {
-    "id" : 45,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 2
     },
     "fieldName" : "square",
     "label" : "Square",
-    "order" : 5,
+    "order" : 3,
     "prefixPath" : ""
   }, {
-    "id" : 46,
+    "id" : 45,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 1
     },
     "fieldName" : "room",
     "label" : "Room",
-    "order" : 6,
+    "order" : 4,
     "prefixPath" : ""
   }, {
-    "id" : 47,
+    "id" : 46,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 4
     },
     "fieldName" : "kind",
     "label" : "Kind",
-    "order" : 7,
+    "order" : 5,
     "prefixPath" : ""
   }, {
-    "id" : 48,
+    "id" : 47,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 11
     },
     "fieldName" : "faculty",
     "label" : "Faculty",
-    "order" : 8,
+    "order" : 6,
     "prefixPath" : ""
   } ]
 }, {
@@ -450,7 +440,7 @@
     "order" : 5,
     "prefixPath" : "/uploads/faculties"
   }, {
-    "id" : 41,
+    "id" : 42,
     "fieldKind" : "REGULAR",
     "fieldType" : {
       "id" : 8

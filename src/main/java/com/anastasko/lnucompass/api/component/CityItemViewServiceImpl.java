@@ -55,11 +55,12 @@ public class CityItemViewServiceImpl
     @Transactional
     public void mergeFields(EntityCityItem entity, EntityCityItemViewModel item) {
         entity.setName(item.getName());
+        entity.setPlaceId(item.getPlaceId());
         entity.setLongitude(item.getLongitude());
         entity.setLatitude(item.getLatitude());
         entity.setAddress(item.getAddress());
-        entity.setKind(itemKindService.getReference(item.getKind().getId()));
-        entity.setOwner(rootService.getReference(item.getOwner().getId()));
+        entity.setKind(((item.getKind() == null)?null:itemKindService.getReference(item.getKind().getId())));
+        entity.setOwner(((item.getOwner() == null)?null:rootService.getReference(item.getOwner().getId())));
     }
 
     @Override

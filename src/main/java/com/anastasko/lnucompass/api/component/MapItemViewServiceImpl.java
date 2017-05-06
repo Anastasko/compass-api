@@ -54,14 +54,12 @@ public class MapItemViewServiceImpl
     @Override
     @Transactional
     public void mergeFields(EntityMapItem entity, EntityMapItemViewModel item) {
-        entity.setOwner(mapService.getReference(item.getOwner().getId()));
+        entity.setOwner(((item.getOwner() == null)?null:mapService.getReference(item.getOwner().getId())));
         entity.setName(item.getName());
-        entity.setX(item.getX());
-        entity.setY(item.getY());
         entity.setSquare(item.getSquare());
         entity.setRoom(item.getRoom());
-        entity.setKind(itemKindService.getReference(item.getKind().getId()));
-        entity.setFaculty(facultyService.getReference(item.getFaculty().getId()));
+        entity.setKind(((item.getKind() == null)?null:itemKindService.getReference(item.getKind().getId())));
+        entity.setFaculty(((item.getFaculty() == null)?null:facultyService.getReference(item.getFaculty().getId())));
     }
 
     @Override

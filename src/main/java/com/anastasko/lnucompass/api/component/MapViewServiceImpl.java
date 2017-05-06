@@ -53,7 +53,7 @@ public class MapViewServiceImpl
     public void mergeFields(EntityMap entity, EntityMapViewModel item) {
         urlResourceViewService.mergeFields(entity.getImage(), item.getImage());
         entity.setFloor(item.getFloor());
-        entity.setOwner(cityItemService.getReference(item.getOwner().getId()));
+        entity.setOwner(((item.getOwner() == null)?null:cityItemService.getReference(item.getOwner().getId())));
     }
 
     @Override
