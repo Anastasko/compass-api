@@ -43,12 +43,4 @@ public class EntityIosIcon
         this.size3x = size3x;
     }
 
-    @Override
-    public Long getVersion() {
-        Long version = getItem().getModified().getTime();
-        version = Math.max(version, this.getSize2x().getVersion());
-        version = Math.max(version, this.getSize3x().getVersion());
-        return version;
-    }
-
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import com.anastasko.lnucompass.api.infrastructure.MapItemViewService;
 import com.anastasko.lnucompass.api.model.view.EntityMapItemViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jsondoc.core.annotation.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,13 +24,6 @@ public class MapItemController {
     @RequestMapping(method = RequestMethod.GET)
     public List<EntityMapItemViewModel> findAll() {
         return mapItemViewService.findAll();
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/find")
-    public List<ObjectNode> forSynchronisation(
-        @RequestBody
-        LongIdsList ids) {
-        return mapItemViewService.findForSynchronisation(ids.getIds());
     }
 
     @RequestMapping(method = RequestMethod.POST)

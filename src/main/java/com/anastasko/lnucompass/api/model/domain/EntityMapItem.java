@@ -83,10 +83,4 @@ public class EntityMapItem
         this.faculty = faculty;
     }
 
-    @Override
-    public Long getVersion() {
-        Long version = getItem().getModified().getTime();
-        return version;
-    }
-
 }
