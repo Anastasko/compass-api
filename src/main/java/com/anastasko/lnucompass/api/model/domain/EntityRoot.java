@@ -36,4 +36,10 @@ public class EntityRoot
         this.cityItems = cityItems;
     }
 
+    @Override
+    public Long getVersion() {
+        Long version = getItem().getModified().getTime();
+        return version;
+    }
+
 }

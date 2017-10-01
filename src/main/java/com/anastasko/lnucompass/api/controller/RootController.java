@@ -13,6 +13,8 @@ import com.anastasko.lnucompass.api.infrastructure.MapItemViewService;
 import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.infrastructure.RootViewService;
 import com.anastasko.lnucompass.api.model.view.EntityRootViewModel;
+import com.anastasko.lnucompass.model.view.LongIdsList;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jsondoc.core.annotation.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,6 +47,13 @@ public class RootController {
     @RequestMapping(method = RequestMethod.GET)
     public List<EntityRootViewModel> findAll() {
         return rootViewService.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/find")
+    public List<ObjectNode> forSynchronisation(
+        @RequestBody
+        LongIdsList ids) {
+        return rootViewService.findForSynchronisation(ids.getIds());
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -9,6 +9,7 @@ import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.UrlResourceViewService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,20 @@ public class AndroidIconViewServiceImpl
     @Transactional
     public EntityAndroidIconViewModel toView(EntityAndroidIcon entity) {
         return new EntityAndroidIconViewModel(entity);
+    }
+
+    @Override
+    @Transactional
+    public ObjectNode toSynchronisationView(EntityAndroidIcon entity) {
+        ObjectNode item = objectMapper.createObjectNode();
+        item.put("id", entity.getId());
+        item.put("version", entity.getItem().getModified().getTime());
+        item.putPOJO("xxxhdpi", urlResourceViewService.toSynchronisationView(entity.getXxxhdpi()));
+        item.putPOJO("xxhdpi", urlResourceViewService.toSynchronisationView(entity.getXxhdpi()));
+        item.putPOJO("xhdpi", urlResourceViewService.toSynchronisationView(entity.getXhdpi()));
+        item.putPOJO("mdpi", urlResourceViewService.toSynchronisationView(entity.getMdpi()));
+        item.putPOJO("hdpi", urlResourceViewService.toSynchronisationView(entity.getHdpi()));
+        return item;
     }
 
     @Override

@@ -76,4 +76,15 @@ public class EntityAndroidIcon
         this.hdpi = hdpi;
     }
 
+    @Override
+    public Long getVersion() {
+        Long version = getItem().getModified().getTime();
+        version = Math.max(version, this.getXxxhdpi().getVersion());
+        version = Math.max(version, this.getXxhdpi().getVersion());
+        version = Math.max(version, this.getXhdpi().getVersion());
+        version = Math.max(version, this.getMdpi().getVersion());
+        version = Math.max(version, this.getHdpi().getVersion());
+        return version;
+    }
+
 }

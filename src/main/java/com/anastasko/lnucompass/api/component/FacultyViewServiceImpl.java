@@ -10,6 +10,7 @@ import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.UrlResourceViewService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,16 @@ public class FacultyViewServiceImpl
     @Transactional
     public EntityFacultyViewModel toView(EntityFaculty entity) {
         return new EntityFacultyViewModel(entity);
+    }
+
+    @Override
+    @Transactional
+    public ObjectNode toSynchronisationView(EntityFaculty entity) {
+        ObjectNode item = objectMapper.createObjectNode();
+        item.put("id", entity.getId());
+        item.put("version", entity.getItem().getModified().getTime());
+        item.putPOJO("icon", urlResourceViewService.toSynchronisationView(entity.getIcon()));
+        return item;
     }
 
     @Override

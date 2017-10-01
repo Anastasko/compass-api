@@ -9,7 +9,9 @@ import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
 import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.UrlResourceViewService;
+import com.anastasko.lnucompass.model.view.ItemsVersionViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,17 @@ public class MapViewServiceImpl
     @Transactional
     public EntityMapViewModel toView(EntityMap entity) {
         return new EntityMapViewModel(entity);
+    }
+
+    @Override
+    @Transactional
+    public ObjectNode toSynchronisationView(EntityMap entity) {
+        ObjectNode item = objectMapper.createObjectNode();
+        item.put("id", entity.getId());
+        item.put("version", entity.getItem().getModified().getTime());
+        item.putPOJO("image", urlResourceViewService.toSynchronisationView(entity.getImage()));
+        item.putPOJO("mapItems", new ItemsVersionViewModel(entity.getMapItems()));
+        return item;
     }
 
     @Override

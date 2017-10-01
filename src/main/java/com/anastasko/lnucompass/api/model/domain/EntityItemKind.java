@@ -71,4 +71,10 @@ public class EntityItemKind
         this.androidSelectedIcon = androidSelectedIcon;
     }
 
+    @Override
+    public Long getVersion() {
+        Long version = getItem().getModified().getTime();
+        return version;
+    }
+
 }

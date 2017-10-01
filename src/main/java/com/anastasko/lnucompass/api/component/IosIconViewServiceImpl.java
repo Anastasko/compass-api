@@ -9,6 +9,7 @@ import com.anastasko.lnucompass.implementation.AbstractViewServiceImpl;
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
 import com.anastasko.lnucompass.infrastructure.UrlResourceViewService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,17 @@ public class IosIconViewServiceImpl
     @Transactional
     public EntityIosIconViewModel toView(EntityIosIcon entity) {
         return new EntityIosIconViewModel(entity);
+    }
+
+    @Override
+    @Transactional
+    public ObjectNode toSynchronisationView(EntityIosIcon entity) {
+        ObjectNode item = objectMapper.createObjectNode();
+        item.put("id", entity.getId());
+        item.put("version", entity.getItem().getModified().getTime());
+        item.putPOJO("size2x", urlResourceViewService.toSynchronisationView(entity.getSize2x()));
+        item.putPOJO("size3x", urlResourceViewService.toSynchronisationView(entity.getSize3x()));
+        return item;
     }
 
     @Override
