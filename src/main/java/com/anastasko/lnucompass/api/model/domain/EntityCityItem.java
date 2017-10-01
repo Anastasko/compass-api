@@ -128,10 +128,4 @@ public class EntityCityItem
         this.owner = owner;
     }
 
-    @Override
-    public Long getVersion() {
-        Long version = getItem().getModified().getTime();
-        return version;
-    }
-
 }

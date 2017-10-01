@@ -27,10 +27,6 @@ public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V
         return list.stream().map(e -> toView(e)).collect(Collectors.toList());
     }
 
-    public List<ObjectNode> synchronisationViewModels(List<T> list){
-        return list.stream().map(e -> toSynchronisationView(e)).collect(Collectors.toList());
-    }
-
     @Override
     @Transactional
     public List<V> findAll() {
@@ -85,12 +81,5 @@ public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V
     public void delete(Long id) {
         getEntityService().deleteOne(id);
     }
-
-    @Override
-    @Transactional
-    public List<ObjectNode> findForSynchronisation(List<Long> ids){
-        return synchronisationViewModels(getEntityService().findMany(ids));
-    }
-
 
 }

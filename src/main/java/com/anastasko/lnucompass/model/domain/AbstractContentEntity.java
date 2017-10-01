@@ -18,6 +18,4 @@ public abstract class AbstractContentEntity extends AbstractEntity {
 		this.item = item;
 	}
 
-	public abstract Long getVersion();
-
 }

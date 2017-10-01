@@ -1,11 +1,13 @@
 package com.anastasko.lnucompass.configuration;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.anastasko.lnucompass.component.ListIconsServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jsondoc.core.pojo.JSONDoc.MethodDisplay;
 import org.jsondoc.springmvc.controller.JSONDocController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -17,34 +19,30 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.spring5.ISpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
-import javax.servlet.ServletContext;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "${controller.api.package}", "${controller.package}",  })
 public class WebConfig extends WebMvcConfigurerAdapter {
-	
+
+	private static final Logger logger = LoggerFactory.getLogger(WebConfig.class);
+
 	public static String COMPASS_DIR = (isMac() ? "/Users/" : "/home/") + System.getProperty("user.name") + "/compass";
 	public static String API_PACKAGE = "/com/anastasko/lnucompass/api";
 
@@ -62,12 +60,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedMethods("*");
     }
-	
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/403").setViewName("403");
-		registry.addViewController("/login").setViewName("login");
-	}
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -78,13 +70,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String[] resources = { 
-				environment.getProperty("web.resources"), 
-				environment.getProperty("web.webjars")};
-		for (String resource : resources) {
-			registry.addResourceHandler(resource + "**").addResourceLocations(resource);
-		}
-		System.out.println(COMPASS_DIR);
+		registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		logger.info("COMPASS_DIR=" + COMPASS_DIR);
 		registry.addResourceHandler("/uploads/**").addResourceLocations("file://" + COMPASS_DIR + "/uploads/");
 	}
 
@@ -123,6 +111,24 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
+	
+	@Bean
+	public JSONDocController documentationController(){
+		List<String> packages = new ArrayList<>();
+		packages.add(environment.getRequiredProperty("controller.api.package"));
+		packages.add(environment.getRequiredProperty("model.view.api.package"));
+		packages.add(environment.getRequiredProperty("controller.done.package"));
+		packages.add(environment.getRequiredProperty("model.view.package"));
+		JSONDocController controller = new JSONDocController("1", environment.getProperty("endpoint"), packages);
+		controller.setPlaygroundEnabled(true);
+		controller.setDisplayMethodAs(MethodDisplay.URI);
+		return controller;
+	}
+
+	@Bean
 	public ITemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setApplicationContext(applicationContext);
@@ -135,7 +141,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public TemplateEngine templateEngine() {
+	public ISpringTemplateEngine templateEngine() {
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
 		templateEngine.setEnableSpringELCompiler(true);
 		templateEngine.setTemplateResolver(templateResolver());
@@ -153,25 +159,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return viewResolver;
 	}
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
-	
-	@Bean
-	public JSONDocController documentationController(){
-		List<String> packages = new ArrayList<>();
-		packages.add(environment.getRequiredProperty("controller.api.package"));
-		packages.add(environment.getRequiredProperty("model.view.api.package"));
-		packages.add(environment.getRequiredProperty("controller.done.package"));
-		packages.add(environment.getRequiredProperty("model.view.package"));
-		JSONDocController controller = new JSONDocController("1", environment.getProperty("endpoint") + servletContext.getContextPath(), packages);
-		controller.setPlaygroundEnabled(true);
-		controller.setDisplayMethodAs(MethodDisplay.URI);
-		return controller;
-	}
-
-	@Autowired
-	private ServletContext servletContext;
 
 }

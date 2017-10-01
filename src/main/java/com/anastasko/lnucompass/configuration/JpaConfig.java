@@ -5,9 +5,9 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import com.p6spy.engine.spy.P6DataSource;
 import org.hibernate.dialect.H2Dialect;
 import org.hibernate.dialect.PostgreSQL9Dialect;
-import org.jinq.jpa.JinqJPAStreamProvider;
 import org.postgresql.ds.PGSimpleDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
+import org.springframework.orm.hibernate5.HibernateExceptionTranslator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -28,8 +28,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariDataSource;
-
-import net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy;
 
 @Configuration
 @EnableTransactionManagement
@@ -49,6 +47,7 @@ public class JpaConfig {
 	private Environment environment;
 	
 	@Bean
+	@Primary
 	public PGSimpleDataSource pgDataSource() {
 		PGSimpleDataSource dataSource = new PGSimpleDataSource();
 		dataSource.setServerName(environment.getProperty("postgresql.server"));
@@ -58,14 +57,14 @@ public class JpaConfig {
 		dataSource.setPassword(environment.getProperty("postgresql.password"));
 		return dataSource;
 	}
-	
+
 	@Bean
 	public DataSource dataSource() {
 		switch(CONFIG_KIND) {
 		case EMBEDDED:
-			return embeddedDatabase();
+			return new P6DataSource(embeddedDatabase());
 		case POSTGRESQL:
-			return hikariDataSource();
+			return new P6DataSource(hikariDataSource());
 		}
 		return null;
 	}
@@ -100,9 +99,6 @@ public class JpaConfig {
 		factory.setDataSource(dataSource());
 		Properties properties = new Properties();
 		properties.put(environment.getProperty("jpa.dialect"), getJpaDialectClass().getName());
-		//if (CONFIG_KIND == JpaConfigKind.POSTGRESQL){
-		//	properties.put("hibernate.hbm2ddl.auto", "validate");
-		//}
 		factory.setJpaProperties(properties);
 		factory.afterPropertiesSet();
 		return factory.getObject();
@@ -120,12 +116,6 @@ public class JpaConfig {
 	@Bean
 	public HibernateExceptionTranslator hibernateExceptionTranslator() {
 		return new HibernateExceptionTranslator();
-	}
-	
-	@Bean
-	public JinqJPAStreamProvider jinqJPAStreamProvider() throws NoSuchMethodException, SecurityException {
-		JinqJPAStreamProvider provider = new JinqJPAStreamProvider(entityManagerFactory());
-		return provider;
 	}
 
 	private Class<?> getJpaDialectClass() {

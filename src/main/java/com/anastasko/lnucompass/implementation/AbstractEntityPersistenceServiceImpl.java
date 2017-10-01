@@ -7,15 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.StreamSupport;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 
-import com.anastasko.lnucompass.model.domain.UserAccount;
-import org.jinq.jpa.JPAJinqStream;
-import org.jinq.jpa.JinqJPAStreamProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,9 +31,6 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 	
 	@Autowired
 	private PropertyService propertyService;
-
-	@Autowired
-	private JinqJPAStreamProvider jinqJPAStreamProvider;
 
 	protected EntityManager getEntityManager() {
 		
@@ -62,20 +55,6 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 		return typedQuery.getResultList();
 	}
 
-	@PostConstruct
-	private void postConstruct() {
-		try {
-			jinqJPAStreamProvider.
-					registerAssociationAttribute(
-							this.getEntityClass().getMethod("getId"),
-							this.getEntityClass(), "id", false);
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	@Override
 	@Transactional(readOnly = true)
 	public final List<T> findMany(Iterable<Long> keys) {

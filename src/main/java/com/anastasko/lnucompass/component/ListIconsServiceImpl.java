@@ -1,20 +1,17 @@
 package com.anastasko.lnucompass.component;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-
+import com.anastasko.lnucompass.configuration.WebConfig;
+import com.anastasko.lnucompass.infrastructure.ListIconsService;
+import com.anastasko.lnucompass.infrastructure.PropertyService;
+import com.anastasko.lnucompass.model.enums.ItemKind;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.anastasko.lnucompass.configuration.WebConfig;
-import com.anastasko.lnucompass.infrastructure.ListIconsService;
-import com.anastasko.lnucompass.infrastructure.PropertyService;
-import com.anastasko.lnucompass.model.enums.ItemKind;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class ListIconsServiceImpl implements ListIconsService {

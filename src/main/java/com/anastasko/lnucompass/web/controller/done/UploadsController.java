@@ -1,18 +1,18 @@
 package com.anastasko.lnucompass.web.controller.done;
 
-import java.io.File;
-import java.util.*;
-
-import javax.servlet.http.HttpServletResponse;
-
-import com.anastasko.lnucompass.model.view.FileInfo;
+import com.anastasko.lnucompass.configuration.WebConfig;
 import com.anastasko.lnucompass.web.controller.AbstractController;
 import org.jsondoc.core.annotation.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.anastasko.lnucompass.configuration.WebConfig;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @Api(name = "Uploads", description = "UploadsController")
 @RestController

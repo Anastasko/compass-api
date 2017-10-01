@@ -3,11 +3,11 @@ package com.anastasko.lnucompass.web.controller;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
-public class ControllerAdvice {
+@ControllerAdvice
+public class MyControllerAdvice {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity handleResourceNotFoundException(ResourceNotFoundException e) {

@@ -24,7 +24,6 @@ public class UrlResource extends AbstractContentEntity {
 		this.url = url;
 	}
 
-	@Override
 	public Long getVersion() {
 		File file = new File(WebConfig.COMPASS_DIR + this.getUrl());
 		return file.exists() ? file.lastModified() : 0;

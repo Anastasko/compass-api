@@ -28,10 +28,6 @@ public interface ViewService<T extends AbstractEntity, V extends EntityViewModel
 
     List<V> viewModels(Collection<T> list);
 
-    List<ObjectNode> findForSynchronisation(List<Long> ids);
-
-    ObjectNode toSynchronisationView(T e);
-
     void mergeFields(T e, V v);
 
 }

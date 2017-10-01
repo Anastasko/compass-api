@@ -1,13 +1,8 @@
 package com.anastasko.lnucompass.infrastructure;
 
-import java.io.Serializable;
-import java.util.List;
-
 import com.anastasko.lnucompass.model.enums.EntityTypeName;
-import org.jinq.jpa.JPAJinqStream;
 
-import com.anastasko.lnucompass.model.domain.AbstractEntity;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 public interface EntityPersistenceService<T> {
 

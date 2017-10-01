@@ -32,13 +32,6 @@ public class UrlResourceViewServiceImpl
     }
 
     @Override
-    public ObjectNode toSynchronisationView(UrlResource e) {
-        ObjectNode item = objectMapper.createObjectNode();
-        item.put("version", e.getVersion());
-        return item;
-    }
-
-    @Override
     public void mergeFields(UrlResource l, UrlResourceViewModel r) {
         l.setUrl(r.getUrl());
     }

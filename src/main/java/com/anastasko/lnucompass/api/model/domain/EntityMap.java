@@ -74,11 +74,4 @@ public class EntityMap
         this.owner = owner;
     }
 
-    @Override
-    public Long getVersion() {
-        Long version = getItem().getModified().getTime();
-        version = Math.max(version, this.getImage().getVersion());
-        return version;
-    }
-
 }

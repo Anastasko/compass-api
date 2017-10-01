@@ -30,7 +30,7 @@ public abstract class AbstractContentEntityServiceImpl<T extends AbstractContent
     @Transactional
     public void update(T item){
         item.getItem().setModified(new Date());
-        super.create(item);
+        super.update(item);
     }
 
 }

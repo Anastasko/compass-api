@@ -5,7 +5,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource({
-	"classpath:app.properties",
+	"classpath:application.properties",
 	"classpath:persistence.properties"
 })
 public class PropertyConfig {
