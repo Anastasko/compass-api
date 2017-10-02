@@ -132,7 +132,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public ITemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setApplicationContext(applicationContext);
-		resolver.setPrefix(environment.getProperty("web.view.prefix"));
 		resolver.setSuffix(environment.getProperty("web.view.suffix"));
 		resolver.setTemplateMode(TemplateMode.HTML);
 		resolver.setCharacterEncoding(environment.getProperty("core.encoding"));
