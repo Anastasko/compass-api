@@ -21,7 +21,7 @@ public class HomeController extends AbstractController {
 	public String apiPage (Model model) {
 		logger.info("get api docs");
 	    model.addAttribute("jsondoc", documentationController.getApi());
-	    return "jsondoc-ui";
+	    return "my-jsondoc-ui";
 	}
 
 }
