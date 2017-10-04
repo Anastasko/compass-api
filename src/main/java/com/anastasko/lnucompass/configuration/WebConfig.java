@@ -122,7 +122,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		packages.add(environment.getRequiredProperty("model.view.api.package"));
 		packages.add(environment.getRequiredProperty("controller.done.package"));
 		packages.add(environment.getRequiredProperty("model.view.package"));
-		JSONDocController controller = new JSONDocController("1", environment.getProperty("endpoint"), packages);
+		String basePath = environment.getProperty("endpoint") + environment.getProperty("server.servlet.contextPath")
+		JSONDocController controller = new JSONDocController("1", basePath, packages);
 		controller.setPlaygroundEnabled(true);
 		controller.setDisplayMethodAs(MethodDisplay.URI);
 		return controller;
