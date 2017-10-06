@@ -5,15 +5,18 @@ import java.util.List;
 import com.anastasko.lnucompass.api.infrastructure.ItemKindViewService;
 import com.anastasko.lnucompass.api.model.view.EntityItemKindViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
-import org.jsondoc.core.annotation.Api;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "Item Kind", description = "Item Kind")
+@Api(tags = "Item Kind")
 @RestController
 @RequestMapping("/itemKind")
 public class ItemKindController {
@@ -21,40 +24,40 @@ public class ItemKindController {
     @Autowired
     private ItemKindViewService itemKindViewService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<EntityItemKindViewModel> findAll() {
         return itemKindViewService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Long create(
         @RequestBody
         EntityItemKindViewModel item) {
         return itemKindViewService.create(item);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/findMany")
+    @PostMapping("/findMany")
     public List<EntityItemKindViewModel> findMany(
         @RequestBody
         LongIdsList ids) {
         return itemKindViewService.findMany(ids.getIds());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @GetMapping("/{id}")
     public EntityItemKindViewModel findOne(
         @PathVariable("id")
         Long id) {
         return itemKindViewService.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public void update(
         @RequestBody
         EntityItemKindViewModel item) {
         itemKindViewService.update(item);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    @DeleteMapping("/{id}")
     public void delete(
         @PathVariable("id")
         Long id) {

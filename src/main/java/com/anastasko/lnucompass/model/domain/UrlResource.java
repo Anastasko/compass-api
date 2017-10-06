@@ -1,14 +1,10 @@
 package com.anastasko.lnucompass.model.domain;
 
 import com.anastasko.lnucompass.configuration.WebConfig;
-import org.jsondoc.core.annotation.ApiObject;
-
-import java.io.File;
-import java.util.Date;
 
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.io.File;
 
 @Entity
 public class UrlResource extends AbstractContentEntity {

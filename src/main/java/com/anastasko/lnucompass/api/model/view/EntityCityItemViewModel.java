@@ -4,27 +4,17 @@ package com.anastasko.lnucompass.api.model.view;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name = "City Item")
 public class EntityCityItemViewModel
     extends AbstractContentEntityViewModel
 {
 
-    @ApiObjectField
     private String name;
-    @ApiObjectField
     private String placeId;
-    @ApiObjectField
     private Double longitude;
-    @ApiObjectField
     private Double latitude;
-    @ApiObjectField
     private String address;
-    @ApiObjectField
     private AbstractEntityViewModel kind;
-    @ApiObjectField
     private AbstractEntityViewModel owner;
 
     public EntityCityItemViewModel() {

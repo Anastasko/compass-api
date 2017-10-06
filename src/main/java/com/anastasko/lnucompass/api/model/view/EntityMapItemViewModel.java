@@ -4,25 +4,16 @@ package com.anastasko.lnucompass.api.model.view;
 import com.anastasko.lnucompass.api.model.domain.EntityMapItem;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name = "Map Item")
 public class EntityMapItemViewModel
     extends AbstractContentEntityViewModel
 {
 
-    @ApiObjectField
     private AbstractEntityViewModel owner;
-    @ApiObjectField
     private String name;
-    @ApiObjectField
     private Double square;
-    @ApiObjectField
     private String room;
-    @ApiObjectField
     private AbstractEntityViewModel kind;
-    @ApiObjectField
     private AbstractEntityViewModel faculty;
 
     public EntityMapItemViewModel() {

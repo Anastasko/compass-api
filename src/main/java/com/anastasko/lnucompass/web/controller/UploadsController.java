@@ -1,8 +1,8 @@
-package com.anastasko.lnucompass.web.controller.done;
+package com.anastasko.lnucompass.web.controller;
 
 import com.anastasko.lnucompass.configuration.WebConfig;
 import com.anastasko.lnucompass.web.controller.AbstractController;
-import org.jsondoc.core.annotation.Api;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-@Api(name = "Uploads", description = "UploadsController")
+@Api(tags = "Uploads")
 @RestController
 @RequestMapping("/uploads")
 class UploadsController extends AbstractController {

@@ -5,19 +5,13 @@ import com.anastasko.lnucompass.api.model.domain.EntityMap;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name = "Map")
 public class EntityMapViewModel
     extends AbstractContentEntityViewModel
 {
 
-    @ApiObjectField
     private UrlResourceViewModel image;
-    @ApiObjectField
     private Long floor;
-    @ApiObjectField
     private AbstractEntityViewModel owner;
 
     public EntityMapViewModel() {

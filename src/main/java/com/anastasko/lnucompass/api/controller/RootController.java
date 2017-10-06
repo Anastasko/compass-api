@@ -13,14 +13,15 @@ import com.anastasko.lnucompass.api.infrastructure.MapItemViewService;
 import com.anastasko.lnucompass.api.infrastructure.MapViewService;
 import com.anastasko.lnucompass.api.infrastructure.RootViewService;
 import com.anastasko.lnucompass.api.model.view.EntityRootViewModel;
-import org.jsondoc.core.annotation.Api;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "Root", description = "Root")
+@Api(tags = "Root")
 @RestController
 @RequestMapping("/root")
 public class RootController {
@@ -42,19 +43,19 @@ public class RootController {
     @Autowired
     private FacultyViewService facultyViewService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<EntityRootViewModel> findAll() {
         return rootViewService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Long create(
         @RequestBody
         EntityRootViewModel item) {
         return rootViewService.create(item);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/count")
+    @GetMapping("/count")
     public Map<String, Integer> countAll() {
         Map<String, Integer> map = new TreeMap<String, Integer>();
         map.put("ItemKind", itemKindViewService.findAll().size());

@@ -1,16 +1,10 @@
 package com.anastasko.lnucompass.model.view;
 
-import com.anastasko.lnucompass.model.domain.AbstractEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.jsondoc.core.annotation.ApiObject;
-
 import com.anastasko.lnucompass.model.domain.UrlResource;
-import org.jsondoc.core.annotation.ApiObjectField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@ApiObject(name = "UrlResource", description = "UrlResource", show = false)
 public class UrlResourceViewModel implements EntityViewModel<Long> {
 
-	@ApiObjectField
 	private String url;
 
     public UrlResourceViewModel() {

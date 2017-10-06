@@ -4,23 +4,15 @@ package com.anastasko.lnucompass.api.model.view;
 import com.anastasko.lnucompass.api.model.domain.EntityItemKind;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name = "Item Kind")
 public class EntityItemKindViewModel
     extends AbstractContentEntityViewModel
 {
 
-    @ApiObjectField
     private String name;
-    @ApiObjectField
     private AbstractEntityViewModel iosIcon;
-    @ApiObjectField
     private AbstractEntityViewModel iosSelectedIcon;
-    @ApiObjectField
     private AbstractEntityViewModel androidIcon;
-    @ApiObjectField
     private AbstractEntityViewModel androidSelectedIcon;
 
     public EntityItemKindViewModel() {

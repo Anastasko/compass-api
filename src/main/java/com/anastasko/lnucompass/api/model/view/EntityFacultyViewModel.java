@@ -5,25 +5,16 @@ import com.anastasko.lnucompass.api.model.domain.EntityFaculty;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name = "Faculty")
 public class EntityFacultyViewModel
     extends AbstractContentEntityViewModel
 {
 
-    @ApiObjectField
     private String name;
-    @ApiObjectField
     private String phone;
-    @ApiObjectField
     private String email;
-    @ApiObjectField
     private String website;
-    @ApiObjectField
     private UrlResourceViewModel icon;
-    @ApiObjectField
     private AbstractEntityViewModel owner;
 
     public EntityFacultyViewModel() {

@@ -5,15 +5,18 @@ import java.util.List;
 import com.anastasko.lnucompass.api.infrastructure.IosIconViewService;
 import com.anastasko.lnucompass.api.model.view.EntityIosIconViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
-import org.jsondoc.core.annotation.Api;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "Ios Icon", description = "Ios Icon")
+@Api(tags = "Ios Icon")
 @RestController
 @RequestMapping("/iosIcon")
 public class IosIconController {
@@ -21,40 +24,40 @@ public class IosIconController {
     @Autowired
     private IosIconViewService iosIconViewService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<EntityIosIconViewModel> findAll() {
         return iosIconViewService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Long create(
         @RequestBody
         EntityIosIconViewModel item) {
         return iosIconViewService.create(item);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/findMany")
+    @PostMapping("/findMany")
     public List<EntityIosIconViewModel> findMany(
         @RequestBody
         LongIdsList ids) {
         return iosIconViewService.findMany(ids.getIds());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @GetMapping("/{id}")
     public EntityIosIconViewModel findOne(
         @PathVariable("id")
         Long id) {
         return iosIconViewService.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public void update(
         @RequestBody
         EntityIosIconViewModel item) {
         iosIconViewService.update(item);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    @DeleteMapping("/{id}")
     public void delete(
         @PathVariable("id")
         Long id) {

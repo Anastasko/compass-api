@@ -1,13 +1,9 @@
 package com.anastasko.lnucompass.configuration;
 
-import com.anastasko.lnucompass.component.ListIconsServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.jsondoc.core.pojo.JSONDoc.MethodDisplay;
-import org.jsondoc.springmvc.controller.JSONDocController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -24,8 +20,6 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -33,7 +27,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -113,20 +106,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
-	}
-	
-	@Bean
-	public JSONDocController documentationController(){
-		List<String> packages = new ArrayList<>();
-		packages.add(environment.getRequiredProperty("controller.api.package"));
-		packages.add(environment.getRequiredProperty("model.view.api.package"));
-		packages.add(environment.getRequiredProperty("controller.done.package"));
-		packages.add(environment.getRequiredProperty("model.view.package"));
-		String basePath = environment.getProperty("endpoint") + environment.getProperty("server.servlet.contextPath");
-		JSONDocController controller = new JSONDocController("1", basePath, packages);
-		controller.setPlaygroundEnabled(true);
-		controller.setDisplayMethodAs(MethodDisplay.URI);
-		return controller;
 	}
 
 	@Bean

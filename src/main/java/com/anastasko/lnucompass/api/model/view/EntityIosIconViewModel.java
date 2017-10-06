@@ -4,17 +4,12 @@ package com.anastasko.lnucompass.api.model.view;
 import com.anastasko.lnucompass.api.model.domain.EntityIosIcon;
 import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
 
-@ApiObject(name = "Ios Icon")
 public class EntityIosIconViewModel
     extends AbstractContentEntityViewModel
 {
 
-    @ApiObjectField
     private UrlResourceViewModel size2x;
-    @ApiObjectField
     private UrlResourceViewModel size3x;
 
     public EntityIosIconViewModel() {

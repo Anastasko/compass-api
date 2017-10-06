@@ -10,15 +10,18 @@ import com.anastasko.lnucompass.api.model.view.EntityMapItemViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
-import org.jsondoc.core.annotation.Api;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "Map", description = "Map")
+@Api(tags = "Map")
 @RestController
 @RequestMapping("/map")
 public class MapController {
@@ -30,33 +33,33 @@ public class MapController {
     @Autowired
     private MapItemViewService mapItemViewService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<EntityMapViewModel> findAll() {
         return mapViewService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Long create(
         @RequestBody
         EntityMapViewModel item) {
         return mapViewService.create(item);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/findMany")
+    @PostMapping("/findMany")
     public List<EntityMapViewModel> findMany(
         @RequestBody
         LongIdsList ids) {
         return mapViewService.findMany(ids.getIds());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @GetMapping("/{id}")
     public EntityMapViewModel findOne(
         @PathVariable("id")
         Long id) {
         return mapViewService.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}/mapItems")
+    @GetMapping("/{id}/mapItems")
     public List<EntityMapItemViewModel> find_mapItems(
         @PathVariable("id")
         Long id) {
@@ -67,14 +70,14 @@ public class MapController {
         return mapItemViewService.viewModels(item.getMapItems());
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public void update(
         @RequestBody
         EntityMapViewModel item) {
         mapViewService.update(item);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    @DeleteMapping("/{id}")
     public void delete(
         @PathVariable("id")
         Long id) {

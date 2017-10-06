@@ -12,15 +12,18 @@ import com.anastasko.lnucompass.api.model.view.EntityFacultyViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
 import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
-import org.jsondoc.core.annotation.Api;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(name = "City Item", description = "City Item")
+@Api(tags = "City Item")
 @RestController
 @RequestMapping("/cityItem")
 public class CityItemController {
@@ -34,33 +37,33 @@ public class CityItemController {
     @Autowired
     private FacultyViewService facultyViewService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<EntityCityItemViewModel> findAll() {
         return cityItemViewService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Long create(
         @RequestBody
         EntityCityItemViewModel item) {
         return cityItemViewService.create(item);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/findMany")
+    @PostMapping("/findMany")
     public List<EntityCityItemViewModel> findMany(
         @RequestBody
         LongIdsList ids) {
         return cityItemViewService.findMany(ids.getIds());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @GetMapping("/{id}")
     public EntityCityItemViewModel findOne(
         @PathVariable("id")
         Long id) {
         return cityItemViewService.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}/maps")
+    @GetMapping("/{id}/maps")
     public List<EntityMapViewModel> find_maps(
         @PathVariable("id")
         Long id) {
@@ -71,7 +74,7 @@ public class CityItemController {
         return mapViewService.viewModels(item.getMaps());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}/faculties")
+    @GetMapping("/{id}/faculties")
     public List<EntityFacultyViewModel> find_faculties(
         @PathVariable("id")
         Long id) {
@@ -82,14 +85,14 @@ public class CityItemController {
         return facultyViewService.viewModels(item.getFaculties());
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public void update(
         @RequestBody
         EntityCityItemViewModel item) {
         cityItemViewService.update(item);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    @DeleteMapping("/{id}")
     public void delete(
         @PathVariable("id")
         Long id) {

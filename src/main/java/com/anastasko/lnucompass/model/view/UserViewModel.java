@@ -1,30 +1,19 @@
 package com.anastasko.lnucompass.model.view;
 
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
-
 import com.anastasko.lnucompass.model.domain.UserAccount;
-import com.anastasko.lnucompass.model.enums.SocialProvider;
 
-@ApiObject(name="User", description="User")
 public class UserViewModel extends AbstractEntityViewModel {
 
-	@ApiObjectField
 	private String username;
 	
-	@ApiObjectField
 	private String email;
 
-	@ApiObjectField
 	private String firstName;
 
-	@ApiObjectField
 	private String lastName;
 
-	@ApiObjectField
 	private String password;
 	
-	@ApiObjectField
 	private String token;
 	
 	public UserViewModel(){
