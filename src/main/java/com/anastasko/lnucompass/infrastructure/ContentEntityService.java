@@ -1,15 +1,14 @@
 package com.anastasko.lnucompass.infrastructure;
 
 import com.anastasko.lnucompass.model.domain.AbstractContentEntity;
+import com.anastasko.lnucompass.model.view.SyncModels;
 
 import java.util.List;
 
 public interface ContentEntityService<T extends AbstractContentEntity> extends EntityPersistenceService<T> {
 
-    @Override
-    void create(T item);
+    List<T> findSync(SyncModels models);
 
-    @Override
-    void update(T item);
+    List<T> findAll(boolean withDeleted);
 
 }

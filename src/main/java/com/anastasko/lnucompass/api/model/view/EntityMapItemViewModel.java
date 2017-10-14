@@ -2,11 +2,10 @@
 package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityMapItem;
-import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 
 public class EntityMapItemViewModel
-    extends AbstractContentEntityViewModel
+    extends AbstractEntityViewModel
 {
 
     private AbstractEntityViewModel owner;

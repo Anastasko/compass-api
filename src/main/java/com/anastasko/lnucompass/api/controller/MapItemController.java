@@ -2,9 +2,8 @@
 package com.anastasko.lnucompass.api.controller;
 
 import java.util.List;
-import com.anastasko.lnucompass.api.infrastructure.MapItemViewService;
+import com.anastasko.lnucompass.api.infrastructure.view.MapItemViewService;
 import com.anastasko.lnucompass.api.model.view.EntityMapItemViewModel;
-import com.anastasko.lnucompass.model.view.LongIdsList;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,8 +38,8 @@ public class MapItemController {
     @PostMapping("/findMany")
     public List<EntityMapItemViewModel> findMany(
         @RequestBody
-        LongIdsList ids) {
-        return mapItemViewService.findMany(ids.getIds());
+        List<Long> ids) {
+        return mapItemViewService.findMany(ids);
     }
 
     @GetMapping("/{id}")

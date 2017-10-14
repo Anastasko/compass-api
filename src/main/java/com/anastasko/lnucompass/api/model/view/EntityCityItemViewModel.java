@@ -2,11 +2,10 @@
 package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
-import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 
 public class EntityCityItemViewModel
-    extends AbstractContentEntityViewModel
+    extends AbstractEntityViewModel
 {
 
     private String name;
@@ -15,7 +14,6 @@ public class EntityCityItemViewModel
     private Double latitude;
     private String address;
     private AbstractEntityViewModel kind;
-    private AbstractEntityViewModel owner;
 
     public EntityCityItemViewModel() {
     }
@@ -28,7 +26,6 @@ public class EntityCityItemViewModel
         setLatitude(item.getLatitude());
         setAddress(item.getAddress());
         setKind(new AbstractEntityViewModel(item.getKind()));
-        setOwner(new AbstractEntityViewModel(item.getOwner()));
     }
 
     public String getName() {
@@ -77,14 +74,6 @@ public class EntityCityItemViewModel
 
     public void setKind(AbstractEntityViewModel kind) {
         this.kind = kind;
-    }
-
-    public AbstractEntityViewModel getOwner() {
-        return owner;
-    }
-
-    public void setOwner(AbstractEntityViewModel owner) {
-        this.owner = owner;
     }
 
 }

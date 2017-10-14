@@ -2,12 +2,11 @@
 package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityMap;
-import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
 import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
 
 public class EntityMapViewModel
-    extends AbstractContentEntityViewModel
+    extends AbstractEntityViewModel
 {
 
     private UrlResourceViewModel image;

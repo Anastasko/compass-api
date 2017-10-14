@@ -2,15 +2,14 @@
 package com.anastasko.lnucompass.api.controller;
 
 import java.util.List;
-import com.anastasko.lnucompass.api.infrastructure.CityItemService;
-import com.anastasko.lnucompass.api.infrastructure.CityItemViewService;
-import com.anastasko.lnucompass.api.infrastructure.FacultyViewService;
-import com.anastasko.lnucompass.api.infrastructure.MapViewService;
+import com.anastasko.lnucompass.api.infrastructure.service.CityItemService;
+import com.anastasko.lnucompass.api.infrastructure.view.CityItemViewService;
+import com.anastasko.lnucompass.api.infrastructure.view.FacultyViewService;
+import com.anastasko.lnucompass.api.infrastructure.view.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityCityItem;
 import com.anastasko.lnucompass.api.model.view.EntityCityItemViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityFacultyViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
-import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +51,8 @@ public class CityItemController {
     @PostMapping("/findMany")
     public List<EntityCityItemViewModel> findMany(
         @RequestBody
-        LongIdsList ids) {
-        return cityItemViewService.findMany(ids.getIds());
+        List<Long> ids) {
+        return cityItemViewService.findMany(ids);
     }
 
     @GetMapping("/{id}")

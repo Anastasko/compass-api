@@ -1,14 +1,10 @@
 package com.anastasko.lnucompass.component;
 
-import java.util.List;
-
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
+import com.anastasko.lnucompass.implementation.AbstractEntityPersistenceServiceImpl;
+import com.anastasko.lnucompass.infrastructure.SocialUserService;
+import com.anastasko.lnucompass.model.domain.SocialUserAccount;
 import com.anastasko.lnucompass.model.enums.EntityTypeName;
+import com.anastasko.lnucompass.model.enums.SocialProvider;
 import com.anastasko.lnucompass.model.view.AuthViewModel;
 import com.anastasko.lnucompass.validation.exceptions.ServiceException;
 import org.slf4j.Logger;
@@ -16,14 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.anastasko.lnucompass.implementation.AbstractEntityPersistenceServiceImpl;
-import com.anastasko.lnucompass.infrastructure.SocialUserService;
-import com.anastasko.lnucompass.model.domain.SocialUserAccount;
-import com.anastasko.lnucompass.model.domain.UserAccount;
-import com.anastasko.lnucompass.model.enums.SocialProvider;
-import com.anastasko.lnucompass.model.view.UserViewModel;
-import com.anastasko.lnucompass.validation.exceptions.DuplicateEmailException;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Service
 public class SocialUserServiceImpl extends AbstractEntityPersistenceServiceImpl<SocialUserAccount>

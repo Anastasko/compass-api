@@ -2,13 +2,12 @@
 package com.anastasko.lnucompass.api.controller;
 
 import java.util.List;
-import com.anastasko.lnucompass.api.infrastructure.MapItemViewService;
-import com.anastasko.lnucompass.api.infrastructure.MapService;
-import com.anastasko.lnucompass.api.infrastructure.MapViewService;
+import com.anastasko.lnucompass.api.infrastructure.service.MapService;
+import com.anastasko.lnucompass.api.infrastructure.view.MapItemViewService;
+import com.anastasko.lnucompass.api.infrastructure.view.MapViewService;
 import com.anastasko.lnucompass.api.model.domain.EntityMap;
 import com.anastasko.lnucompass.api.model.view.EntityMapItemViewModel;
 import com.anastasko.lnucompass.api.model.view.EntityMapViewModel;
-import com.anastasko.lnucompass.model.view.LongIdsList;
 import com.anastasko.lnucompass.validation.exceptions.ResourceNotFoundException;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +47,8 @@ public class MapController {
     @PostMapping("/findMany")
     public List<EntityMapViewModel> findMany(
         @RequestBody
-        LongIdsList ids) {
-        return mapViewService.findMany(ids.getIds());
+        List<Long> ids) {
+        return mapViewService.findMany(ids);
     }
 
     @GetMapping("/{id}")

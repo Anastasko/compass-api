@@ -2,11 +2,11 @@
 package com.anastasko.lnucompass.api.model.view;
 
 import com.anastasko.lnucompass.api.model.domain.EntityAndroidIcon;
-import com.anastasko.lnucompass.model.view.AbstractContentEntityViewModel;
+import com.anastasko.lnucompass.model.view.AbstractEntityViewModel;
 import com.anastasko.lnucompass.model.view.UrlResourceViewModel;
 
 public class EntityAndroidIconViewModel
-    extends AbstractContentEntityViewModel
+    extends AbstractEntityViewModel
 {
 
     private UrlResourceViewModel xxxhdpi;

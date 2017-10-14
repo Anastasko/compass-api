@@ -1,6 +1,5 @@
 package com.anastasko.lnucompass.implementation;
 
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 
+import com.anastasko.lnucompass.model.view.SyncModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,6 @@ import com.anastasko.lnucompass.infrastructure.EntityPersistenceService;
 import com.anastasko.lnucompass.infrastructure.PropertyService;
 import com.anastasko.lnucompass.model.domain.AbstractEntity;
 import com.anastasko.lnucompass.validation.exceptions.DomainModelException;
-
 
 @Service
 public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEntity>
@@ -38,7 +37,6 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 	}
 	
 	protected final CriteriaQuery<T> createSelectQuery(String graphName) {
-
 		CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<T> query = criteriaBuilder.createQuery(getEntityClass());
 		query = query.select(query.from(getEntityClass()));
@@ -46,12 +44,10 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 	}
 	
 	protected final List<T> getSelectQueryResultSet(CriteriaQuery<T> query, String graphName) {
-		
 		TypedQuery<T> typedQuery = getEntityManager().createQuery(query);
 		if(graphName != null) {
 			typedQuery = typedQuery.setHint(propertyService.get("jpa.graph.fetch"), getEntityManager().getEntityGraph(graphName));
 		}
-		
 		return typedQuery.getResultList();
 	}
 
@@ -83,19 +79,6 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 	}
 
 	@Override
-	@Transactional
-	public final T findOneByAttribute(String attribute, Object value){
-		CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
-		CriteriaQuery<T> query = criteriaBuilder.createQuery(getEntityClass());
-		Root<T> root = query.from(getEntityClass());
-		Predicate predicate = criteriaBuilder.equal(root.get(attribute), value);
-		query = query.select(root).where(predicate);
-		TypedQuery<T> typedQuery = getEntityManager().createQuery(query);
-		List<T> result = typedQuery.getResultList();
-		return result.size() == 0 ? null : result.get(0);
-	}
-
-	@Override
 	@Transactional(readOnly = true)
 	public final List<T> findMany(Iterable<Long> keys, String graphName) {
 		
@@ -118,15 +101,8 @@ public abstract class AbstractEntityPersistenceServiceImpl<T extends AbstractEnt
 	
 	@Override
 	@Transactional
-	public void deleteOne(Long id) {
-		
-		getEntityManager().remove(findOne(id));
-	}
-	
-	@Override
-	@Transactional
 	public void deleteOne(T item) {
-		
+
 		getEntityManager().remove(findOne(item.getId()));
 	}
 

@@ -2,9 +2,8 @@
 package com.anastasko.lnucompass.api.controller;
 
 import java.util.List;
-import com.anastasko.lnucompass.api.infrastructure.AndroidIconViewService;
+import com.anastasko.lnucompass.api.infrastructure.view.AndroidIconViewService;
 import com.anastasko.lnucompass.api.model.view.EntityAndroidIconViewModel;
-import com.anastasko.lnucompass.model.view.LongIdsList;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,8 +38,8 @@ public class AndroidIconController {
     @PostMapping("/findMany")
     public List<EntityAndroidIconViewModel> findMany(
         @RequestBody
-        LongIdsList ids) {
-        return androidIconViewService.findMany(ids.getIds());
+        List<Long> ids) {
+        return androidIconViewService.findMany(ids);
     }
 
     @GetMapping("/{id}")

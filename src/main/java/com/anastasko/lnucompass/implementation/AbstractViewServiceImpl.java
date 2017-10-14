@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.anastasko.lnucompass.model.view.EntityViewModel;
+import com.anastasko.lnucompass.model.view.SyncModels;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.anastasko.lnucompass.infrastructure.ContentEntityService;
@@ -41,22 +42,17 @@ public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V
 
     @Override
     @Transactional
-    public V findOneByAttribute(String attr, Object value) {
-        T entity = getEntityService().findOneByAttribute(attr, value);
-        if (entity == null){
-            throw new ResourceNotFoundException("This " + getEntityService().getEntityClass().getSimpleName() + " does not exist (" + attr + "=" + value + ")");
-        }
+    public V findOne(Long id) {
+        T entity = find(id);
         return toView(entity);
     }
 
-    @Override
-    @Transactional
-    public V findOne(Long id) {
+    private T find(Long id) {
         T entity = getEntityService().findOne(id);
         if (entity == null){
             throw new ResourceNotFoundException("This " + getEntityService().getEntityClass().getSimpleName() + " does not exist (id=" + id + ")");
         }
-        return toView(entity);
+        return entity;
     }
 
     @Override
@@ -79,7 +75,7 @@ public abstract class AbstractViewServiceImpl<T extends AbstractContentEntity, V
     @Override
     @Transactional
     public void delete(Long id) {
-        getEntityService().deleteOne(id);
+        getEntityService().deleteOne(find(id));
     }
 
 }

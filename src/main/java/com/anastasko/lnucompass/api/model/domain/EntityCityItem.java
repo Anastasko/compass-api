@@ -48,8 +48,6 @@ public class EntityCityItem
     private EntityItemKind kind;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
     private Set<EntityFaculty> faculties;
-    @ManyToOne
-    private EntityRoot owner;
 
     public EntityCityItem() {
         setMaps(new HashSet<EntityMap>());
@@ -118,14 +116,6 @@ public class EntityCityItem
 
     public void setFaculties(Set<EntityFaculty> faculties) {
         this.faculties = faculties;
-    }
-
-    public EntityRoot getOwner() {
-        return owner;
-    }
-
-    public void setOwner(EntityRoot owner) {
-        this.owner = owner;
     }
 
 }
