@@ -22,7 +22,10 @@ public class SyncModelsDecoderImpl extends AbstractSyncUtils implements SyncMode
     public SyncModels decode(String s) {
 
         if (s == null) {
-            throw new IllegalArgumentException("can't decode null");
+            throw new IllegalArgumentException("can't decode null hash");
+        }
+        if (s.length() == 0) {
+            throw new IllegalArgumentException("can't decode empty hash");
         }
 
         List<Boolean> bits = fromString(s);
